@@ -21,4 +21,8 @@ class SiteController extends Controller {
         }
         return $this->render('login', []);
     }
+
+    public function cart() {
+        return $this->render('cart', []);
+    }
 }
