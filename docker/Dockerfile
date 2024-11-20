@@ -1,12 +1,27 @@
 # PHP image with Apache
 FROM php:apache
 
-# Install git, zip, unzip and mysqli
+# Copy virtual host into container
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
+# Enable rewrite mode
+RUN a2enmod rewrite
+
+# Install git, zip, unzip
 RUN apt-get update && \
-    apt-get install -y git zip unzip && \
-    docker-php-ext-install mysqli
+    apt-get install -y git zip unzip
+
+# Install PHP Extensions
+RUN docker-php-ext-install mysqli
 
 # Install composer
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
-RUN a2enmod rewrite
+# Change the current working directory
+WORKDIR /var/www
+
+# Change the owner of the container document root
+RUN chown -R www-data:www-data /var/www
+
+# Start Apache in foreground
+CMD ["apache2-foreground"]
