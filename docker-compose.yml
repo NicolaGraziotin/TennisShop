@@ -3,7 +3,7 @@ services:
     build: ./docker
     image: php:apache
     volumes:
-      - ./:/var/www
+      - ./:/var/www/html
     ports:
       - "8080:80"
     depends_on:

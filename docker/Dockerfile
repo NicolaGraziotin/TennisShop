@@ -18,10 +18,10 @@ RUN docker-php-ext-install mysqli
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
 # Change the current working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 # Change the owner of the container document root
-RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www/html
 
 # Start Apache in foreground
 CMD ["apache2-foreground"]
