@@ -1,5 +1,5 @@
 <!-- Header-->
-<header class="bg-dark py-5">
+<header class="bg bg-no-repeat py-5" style="background-image: url(https://miro.medium.com/v2/resize:fit:1400/1*lVtPxJC36UaGvaKJXSr7zg.jpeg);">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Shop in style</h1>

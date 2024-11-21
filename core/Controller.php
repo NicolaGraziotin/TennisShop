@@ -12,6 +12,7 @@ class Controller {
     }
 
     public function render($view, $params) {
+        Application::$app->setCartQuantity(2);
         return Application::$app->view->renderView($view, $params);
     }
 }

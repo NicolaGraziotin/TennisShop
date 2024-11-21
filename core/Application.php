@@ -8,6 +8,7 @@ class Application {
     public static Application $app;
     public static string $ROOT_DIR;
     public string $layout = 'main';
+    public string $cartQuantity = '0';
     public Router $router;
     public ?Controller $controller = null;
     public Database $db;
@@ -23,5 +24,9 @@ class Application {
 
     public function run() {
         echo $this->router->resolve();
+    }
+
+    public function setCartQuantity($cartQuantity) {
+        $this->cartQuantity = $cartQuantity;
     }
 }

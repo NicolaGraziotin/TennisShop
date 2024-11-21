@@ -11,6 +11,7 @@ class View {
         }
         $viewContent = $this->renderViewOnly($view, $params);
         ob_start();
+        $cartQuantity = Application::$app->cartQuantity;
         include_once Application::$ROOT_DIR."/views/layouts/$layoutName.php";
         $layoutContent = ob_get_clean();
         return str_replace('{{content}}', $viewContent, $layoutContent);

@@ -3,12 +3,13 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\models\Cart;
 
 class SiteController extends Controller {
+
     public function home() {
-        return $this->render('home', [
-            'name' => 'Welcome',
-        ]);
+        return $this->render('home', []
+        );
     }
 
     public function contact() {
