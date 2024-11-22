@@ -18,13 +18,10 @@ class Cart {
 
     public static function totalElements() {
         $total = 0;
-        $statement = self::prepare("SELECT quantity FROM cart WHERE idcustomer = 1");
+        $statement = self::prepare("SELECT SUM(quantity) as total FROM cart WHERE idcustomer = 1");
         $statement->execute();
         $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
-        foreach ($result as $row) {
-            $total += $row["quantity"];
-        }
-        return $total;
+        return $result[0]['total'];
     }
 
     public static function prepare($sql) {

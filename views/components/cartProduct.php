@@ -13,7 +13,7 @@
         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
         <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
             onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-            <i class="fas fa-minus"></i>
+            <i class="bi bi-dash-lg"></i>
         </button>
 
         <input id="form1" min="0" name="quantity" value="<?php echo $quantity?>" type="number"
@@ -21,7 +21,7 @@
 
         <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
             onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-            <i class="fas fa-plus"></i>
+            <i class="bi bi-plus-lg" ></i>
         </button>
         </div>
         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
