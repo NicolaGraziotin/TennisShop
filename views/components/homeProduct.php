@@ -13,7 +13,15 @@
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/product">Apri</a>
+            <div class="text-center">
+                 <form action="/product" method="get">
+                    <input type="hidden" name="idproduct" value="<?php echo $idproduct ?>">
+                    <input type="hidden" name="name" value="<?php echo $name ?>">
+                    <input type="hidden" name="description" value="<?php echo $description ?>">
+                    <input type="hidden" name="price" value="<?php echo $price ?>">
+                    <input type="hidden" name="idcategory" value="<?php echo $idcategory ?>">
+                    <button type="submit" class="btn btn-outline-dark mt-auto">Apri</button>
+                 </form>
             </div>
         </div>
     </div>

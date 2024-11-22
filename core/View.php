@@ -15,6 +15,9 @@ class View {
     }
 
     public function renderViewOnly($view, array $params){
+        if ($view === 'product') {
+            return $this->renderProduct($view, $params);
+        }
         ob_start();
         include_once Application::$ROOT_DIR."/views/$view.php";
         $viewContent = ob_get_clean();
@@ -34,5 +37,17 @@ class View {
             include Application::$ROOT_DIR."/views/components/{$view}Product.php";
         }
         return ob_get_clean();
+    }
+
+    public function renderProduct($view, $params) {
+        ob_start();
+        foreach ($params['item'] as $key => $value) {
+            $$key = $value;
+        }
+        include_once Application::$ROOT_DIR."/views/$view.php";
+        $viewContent = ob_get_clean();
+        $view = 'home';
+        $layoutContent = $this->renderComponents($view, $params['components']);
+        return str_replace('{{content}}', $layoutContent, $viewContent);
     }
 }
