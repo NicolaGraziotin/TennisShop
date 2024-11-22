@@ -3,8 +3,14 @@
 namespace app\core;
 
 class Router {
+    private Request $request;
+    private Response $response;
     private array $routeMap = [];
 
+    public function __construct(Request $request, Response $response) {
+        $this->request = $request;
+        $this->response = $response;
+    }
     public function get(string $url, $callback) {
         $this->routeMap['get'][$url] = $callback;
     }
@@ -14,8 +20,8 @@ class Router {
     }
 
     public function resolve() {
-        $method = strtolower($_SERVER['REQUEST_METHOD']);
-        $url = $_SERVER['REQUEST_URI'];
+        $method = $this->request->getMethod();
+        $url = $this->request->getUrl();
         $callback = $this->routeMap[$method][$url] ?? false;
         if (!$callback) {
             return "Error 404";
@@ -26,10 +32,6 @@ class Router {
             Application::$app->controller = $controller;
             $callback[0] = $controller;
         }
-        return call_user_func($callback);
-    }
-
-    public function renderView($view, $params = []) {
-        return Application::$app->view->renderView($view, $params);
+        return call_user_func($callback, $this->request, $this->response);
     }
 }
