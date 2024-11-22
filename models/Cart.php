@@ -27,6 +27,13 @@ class Cart {
         return $total;
     }
 
+    public static function addProduct($idproduct, $quantity) {
+        $statement = self::prepare("INSERT INTO cart (idcustomer, idproduct, quantity) VALUES (1, ?, ?) ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity)");
+        $statement->bind_param("ii", $idproduct, $quantity);
+        $statement->execute();
+        return;
+    }
+
     public static function prepare($sql) {
         return Application::$app->db->prepare($sql);
     }
