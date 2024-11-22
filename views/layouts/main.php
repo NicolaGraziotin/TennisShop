@@ -43,11 +43,14 @@ use app\models\Cart;
                             <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
                 <div class="d-flex">
+                    <a class="btn btn-outline-dark me-1" href="/login">
+                        <i class="bi bi-person-x"></i>
+                        Login
+                    </a>
                     <a class="btn btn-outline-dark" href="/cart">
-                        <i class="bi-cart-fill me-1"></i>
+                        <i class="bi-cart-fill me-2"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo Cart::totalElements() ?></span>
                     </a>

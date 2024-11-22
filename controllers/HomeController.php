@@ -7,7 +7,7 @@ use app\core\Request;
 use app\models\Cart;
 use app\models\Product;
 
-class SiteController{
+class HomeController{
     public string $layout = 'main';
     public string $action = '';
     public function home() {

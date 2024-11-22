@@ -1,7 +1,7 @@
 <?php
 
 use app\core\Application;
-use app\controllers\SiteController;
+use app\controllers\HomeController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -17,13 +17,13 @@ $config = [
 
 $app = new Application(dirname(__DIR__), $config);
 
-$app->router->get('/', [SiteController::class, 'home']);
-$app->router->get('/cart', [SiteController::class, 'cart']);
-$app->router->get('/contact', [SiteController::class, 'contact']);
-$app->router->get('/product', [SiteController::class, 'product']);
-$app->router->get('/login', [SiteController::class, 'login']);
+$app->router->get('/', [HomeController::class, 'home']);
+$app->router->get('/cart', [HomeController::class, 'cart']);
+$app->router->get('/contact', [HomeController::class, 'contact']);
+$app->router->get('/product', [HomeController::class, 'product']);
+$app->router->get('/login', [HomeController::class, 'login']);
 
-$app->router->post('/cart', [SiteController::class,'cart']);
-$app->router->post('/login', [SiteController::class, 'login']);
+$app->router->post('/cart', [HomeController::class,'cart']);
+$app->router->post('/login', [HomeController::class, 'login']);
 
 $app->run();

@@ -3,7 +3,7 @@
 namespace app\core;
 
 use app\core\db\Database;
-use app\controllers\SiteController;
+use app\controllers\HomeController;
 use app\models\Cart;
 
 class Application {
@@ -14,7 +14,7 @@ class Application {
     public Router $router;
     public Request $request;
     public Response $response;
-    public SiteController $controller;
+    public HomeController $controller;
     public Database $db;
     public View $view;
     public Cart $cart;
