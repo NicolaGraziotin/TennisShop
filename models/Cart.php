@@ -1,17 +1,33 @@
-<?php 
+<?php
+
 namespace app\models;
 
 use app\core\Application;
 
 class Cart {
+    public int $idcustomer = 0;
+    public int $idproduct = 0;
+    public int $quantity = 0;
 
-    public static function getCartQuantity($idcustomer) {
-        $db = Application::$app->db;
+    public static function find() {
+        $statement = self::prepare("SELECT name, price, quantity FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = 1");
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
 
-        $stmt = $db->prepare("SELECT SUM(quantity) as total_quantity FROM cart WHERE idcustomer = ?");
-        $stmt->bind_param('i', $idcustomer);
-        $stmt->execute();
-        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $result[0]['total_quantity'] ?? 0;
+    public static function totalElements() {
+        $total = 0;
+        $statement = self::prepare("SELECT quantity FROM cart WHERE idcustomer = 1");
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
+        foreach ($result as $row) {
+            $total += $row["quantity"];
+        }
+        return $total;
+    }
+
+    public static function prepare($sql) {
+        return Application::$app->db->prepare($sql);
     }
 }

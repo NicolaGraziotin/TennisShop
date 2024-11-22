@@ -20,6 +20,7 @@ $app = new Application(dirname(__DIR__), $config);
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/cart', [SiteController::class, 'cart']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
+$app->router->get('/product', [SiteController::class, 'product']);
 $app->router->get('/login', [SiteController::class, 'login']);
 $app->router->post('/login', [SiteController::class, 'login']);
 

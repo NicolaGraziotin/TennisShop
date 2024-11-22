@@ -2,8 +2,10 @@
 
 namespace app\core\db;
 
+use mysqli;
+
 class Database {
-    public \mysqli $connection;
+    public mysqli $connection;
 
     public function __construct($dbConfig = []) {
         $hostname = $dbConfig['hostname'] ?? '';
@@ -12,7 +14,7 @@ class Database {
         $database = $dbConfig['database'] ??'';
         $port = $dbConfig['port'] ??'';
 
-        $this->connection = new \mysqli($hostname, $username, $password, $database, $port);
+        $this->connection = new mysqli($hostname, $username, $password, $database, $port);
     }
 
     public function prepare($sql){
