@@ -34,6 +34,10 @@ class HomeController{
         return $this->render('cart', Cart::find());
     }
 
+    public function register() {
+        return $this->render('register');
+    }
+
     public function product(Request $request) {
         if ($request->getMethod() === 'get') {
             $params['item'] = $request->getBody();
