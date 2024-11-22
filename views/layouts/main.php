@@ -1,3 +1,6 @@
+<?php
+use app\models\Cart;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +48,7 @@
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $cartQuantity ?></span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo Cart::totalElements() ?></span>
                     </a>
                 </div>
             </div>
