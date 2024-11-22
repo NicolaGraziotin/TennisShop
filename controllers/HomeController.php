@@ -34,6 +34,14 @@ class HomeController{
         return $this->render('cart', Cart::find());
     }
 
+    public function register(Request $request) {
+        if ($request->getMethod() === 'post') {
+            Application::$app->response->redirect('/login');
+            return;
+        }
+        return $this->render('register');
+    }
+
     public function product(Request $request) {
         if ($request->getMethod() === 'get') {
             $params['item'] = $request->getBody();

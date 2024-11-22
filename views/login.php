@@ -15,6 +15,7 @@
                 <label class="form-check-label" for="seller">Check me out</label>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+        <p>Not a member? <a href="/register">Register</a></p>
+    </form>
     </div>
 </section>
