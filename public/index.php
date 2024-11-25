@@ -23,6 +23,7 @@ $app->router->get('/contact', [HomeController::class, 'contact']);
 $app->router->get('/product', [HomeController::class, 'product']);
 $app->router->get('/login', [HomeController::class, 'login']);
 $app->router->get('/register', [HomeController::class, 'register']);
+$app->router->get('/category', [HomeController::class, 'categoryProduct']);
 
 $app->router->post('/cart', [HomeController::class,'cart']);
 $app->router->post('/login', [HomeController::class, 'login']);

@@ -52,6 +52,13 @@ class HomeController{
         return $this->render('product', $params);
     }
 
+    public function categoryProduct(Request $request) {
+        if ($request->getMethod() === 'get') {
+            $params['item'] = $request->getBody();
+        }
+        return $this->render('home', Product::findProductByCategory());
+    }
+
     public function render($view, $params = []) {
         return Application::$app->view->renderView($view, $params);
     }
