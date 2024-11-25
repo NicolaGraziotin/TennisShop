@@ -8,7 +8,7 @@
                 <!-- Product name-->
                 <h5 class="fw-bolder"><?php echo $name ?></h5>
                 <!-- Product price-->
-                <?php echo $price ?>
+                <?php echo "€".$price?>
             </div>
         </div>
         <!-- Product actions-->

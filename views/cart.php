@@ -7,7 +7,7 @@
           <h3 class="fw-normal mb-0">Shopping Cart</h3>
           <div>
             <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
-                  class="fas fa-angle-down mt-1"></i></a></p>
+                  class="bi bi-arrow-down-short mt-1"></i></a></p>
           </div>
         </div>
 

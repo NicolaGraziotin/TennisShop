@@ -1,6 +1,6 @@
 <section class="p-5 d-flex justify-content-center align-items-center">
-    <div class="text-center w-25">
-        <h1>Login</h1>
+    <div class="text-center col-12 col-md-6 col-lg-4">
+        <h1 class="mb-5">Login</h1>
         <form action="/login" method="post">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
@@ -14,8 +14,8 @@
                 <input type="checkbox" class="form-check-input" id="seller" value="0">
                 <label class="form-check-label" for="seller">Check me out</label>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        <p>Not a member? <a href="/register">Register</a></p>
-    </form>
+            <button type="submit" class="btn btn-primary mb-3 w-100">Login</button>
+            <p>Not a member? <a href="/register">Register</a></p>
+        </form>
     </div>
 </section>
