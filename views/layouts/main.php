@@ -1,5 +1,6 @@
 <?php
 use app\models\Cart;
+use app\models\Product;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,8 +40,8 @@ use app\models\Cart;
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="/category">Rackets</a></li>
-                            <li><a class="dropdown-item" href="#!">Balls</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=1">Rackets</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=2">Balls</a></li>
                             <li><a class="dropdown-item" href="#!">Strings</a></li>
                             <li><a class="dropdown-item" href="#!">Bags</a></li>
                         </ul>

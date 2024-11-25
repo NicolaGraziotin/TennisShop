@@ -54,9 +54,12 @@ class HomeController{
 
     public function categoryProduct(Request $request) {
         if ($request->getMethod() === 'get') {
-            $params['item'] = $request->getBody();
+            $params['idcategory'] = $request->getBody()['idcategory'];
         }
-        return $this->render('home', Product::findProductByCategory());
+        
+        
+        var_dump($_GET["idcategory"]);
+        return $this->render('home', Product::findProductByCategory($params['idcategory']));
     }
 
     public function render($view, $params = []) {
