@@ -6,6 +6,7 @@ use app\core\Application;
 use app\core\Request;
 use app\models\Cart;
 use app\models\Product;
+use app\models\User;
 
 class HomeController{
     public string $layout = 'main';
@@ -36,6 +37,7 @@ class HomeController{
 
     public function register(Request $request) {
         if ($request->getMethod() === 'post') {
+            User::addUser($request->getBody()['email'], $request->getBody()['password'], $request->getBody()['name'], $request->getBody()['surname']);
             Application::$app->response->redirect('/login');
             return;
         }
