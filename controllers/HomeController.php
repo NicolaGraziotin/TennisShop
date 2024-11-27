@@ -19,6 +19,10 @@ class HomeController{
         return $this->render('contact');
     }
 
+    public function payment() {
+        return $this->render('payment');
+    }
+
     public function login(Request $request) {
         if ($request->getMethod() === 'post') {
             //User->loadData($request->getBody());

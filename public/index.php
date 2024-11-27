@@ -24,6 +24,7 @@ $app->router->get('/product', [HomeController::class, 'product']);
 $app->router->get('/login', [HomeController::class, 'login']);
 $app->router->get('/register', [HomeController::class, 'register']);
 $app->router->get('/category', [HomeController::class, 'categoryProduct']);
+$app->router->get('/payment', [HomeController::class, 'payment']);
 
 $app->router->post('/cart', [HomeController::class,'cart']);
 $app->router->post('/login', [HomeController::class, 'login']);
