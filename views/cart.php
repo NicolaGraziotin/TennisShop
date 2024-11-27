@@ -25,6 +25,7 @@
 
         <div class="card">
           <div class="card-body">
+            <!-- Momentaneo doppio bottone, decidere se usare form o altro-->
             <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
             <a href="/payment" class="btn btn-success btn-lg btn-block" role="button">Proceed to Pay</a>
           </div>
