@@ -48,10 +48,7 @@ use app\models\Product;
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a class="btn btn-outline-dark me-1" href="/login">
-                        <i class="bi bi-person-x"></i>
-                        Login
-                    </a>
+                    {{profile}}
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
                         Cart
@@ -62,11 +59,11 @@ use app\models\Product;
         </div>
     </nav>
     <!-- Main -->
-    {{content}}
+    {{view}}
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Tennis Shop 2024</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Tennis Shop 2025</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

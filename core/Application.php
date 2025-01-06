@@ -18,6 +18,7 @@ class Application {
     public Database $db;
     public View $view;
     public Cart $cart;
+    public Session $session;
 
     public function __construct($rootDir, $config) {
         self::$ROOT_DIR = $rootDir;
@@ -27,6 +28,7 @@ class Application {
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config);
         $this->view = new View();
+        $this->session = new Session();
     }
 
     public function run() {

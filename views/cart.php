@@ -11,7 +11,7 @@
           </div>
         </div>
 
-        {{content}}
+        {{components}}
 
         <div class="card mb-4">
           <div class="card-body p-4 d-flex flex-row">

@@ -12,7 +12,8 @@ class HomeController{
     public string $layout = 'main';
     public string $action = '';
     public function home() {
-        return $this->render('home', Product::find());
+        $params['homeProducts'] = Product::find();
+        return $this->render('home', $params);
     }
 
     public function contact() {
@@ -25,9 +26,14 @@ class HomeController{
 
     public function login(Request $request) {
         if ($request->getMethod() === 'post') {
-            //User->loadData($request->getBody());
-            Application::$app->response->redirect('/');
-            return;
+            $user = User::checkUser($request->getBody()['email'], $request->getBody()['password']);
+            if ($user) {
+                Application::$app->session->set('user', $user);
+                Application::$app->response->redirect('/');
+            } else {
+                echo 'Invalid login<br>';
+            }
+            var_dump(Application::$app->session->get('user'));
         }
         return $this->render('login');
     }
@@ -36,7 +42,8 @@ class HomeController{
         if ($request->getMethod() === 'post') {
             Cart::addProduct($request->getBody()['idproduct'], $request->getBody()['quantity']);
         }
-        return $this->render('cart', Cart::find());
+        $params['cartProducts'] = Cart::find();
+        return $this->render('cart', $params);
     }
 
     public function register(Request $request) {
@@ -50,9 +57,9 @@ class HomeController{
 
     public function product(Request $request) {
         if ($request->getMethod() === 'get') {
-            $params['item'] = $request->getBody();
+            $params = $request->getBody();
         }
-        $params['components'] = Product::find();
+        $params['homeProducts'] = Product::find();
         return $this->render('product', $params);
     }
 
@@ -67,6 +74,6 @@ class HomeController{
     }
 
     public function render($view, $params = []) {
-        return Application::$app->view->renderView($view, $params);
+        return Application::$app->view->render($view, $params);
     }
 }

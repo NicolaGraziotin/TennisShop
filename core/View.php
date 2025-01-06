@@ -3,51 +3,65 @@
 namespace app\core;
 
 class View {
+    
     public string $title = 'Tennis';
-    public function renderView($view, array $params) {
-        $layoutName = Application::$app->layout;
-        $viewContent = $this->renderViewOnly($view, $params);
-        ob_start();
-        $cartQuantity = Application::$app->cartQuantity;
-        include_once Application::$ROOT_DIR."/views/layouts/$layoutName.php";
-        $layoutContent = ob_get_clean();
-        return str_replace('{{content}}', $viewContent, $layoutContent);
+
+    public function render($view, $params){
+        $templateRend = $this->renderTemplate($params);
+        $viewRend = $this->renderView($templateRend, $view, $params);
+        return $view === 'home' || $view === 'cart' || $view === 'product'
+            ? $this->renderComponents($view, $viewRend, $params)
+            : $viewRend;
     }
 
-    public function renderViewOnly($view, array $params){
-        if ($view === 'product') {
-            return $this->renderProduct($view, $params);
+    public function renderTemplate($params){
+        $layout = Application::$ROOT_DIR."/views/layouts/main.php";
+        $templateRend = $this->captureOutput($layout, $params);
+        $params['profileName'] = Application::$app->session->get('user')['name'];
+        if(!$params['profileName']){
+            $profile = Application::$ROOT_DIR."/views/nav/login.php";
+        } else {
+            $profile = Application::$ROOT_DIR."/views/nav/profile.php";
         }
-        ob_start();
-        include_once Application::$ROOT_DIR."/views/$view.php";
-        $viewContent = ob_get_clean();
-        if ($view === 'home'|| $view === 'cart') {
-            $layoutContent = $this->renderComponents($view, $params);
-            return str_replace('{{content}}', $layoutContent, $viewContent);
-        }
-        return $viewContent;
+        return str_replace('{{profile}}', $this->captureOutput($profile, $params), $templateRend);
     }
 
-    public function renderComponents($view, $params) {
-        ob_start();
-        foreach ($params as $prod) {
-            foreach ($prod as $key => $value) {
-                $$key = $value;
-            }
-            include Application::$ROOT_DIR."/views/components/{$view}Product.php";
+    public function renderView($template, $view, $params){
+        $view = Application::$ROOT_DIR."/views/$view.php";
+        $viewOut = $this->captureOutput($view, $params);
+        return str_replace('{{view}}', $viewOut, $template);
+    }
+
+    public function renderComponents($view, $viewRend, $params){
+        $componentsContent = '';
+
+        switch($view){
+            case 'home': case'product':
+                foreach($params["homeProducts"] as $prod){
+                    foreach ($prod as $key => $value) {
+                        $$key = $value;
+                    }
+                    $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/homeProduct.php", $prod);
+                }
+                break;
+            case 'cart':
+                foreach($params["cartProducts"] as $prod){
+                    foreach ($prod as $key => $value) {
+                        $$key = $value;
+                    }
+                    $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/cartProduct.php", $prod);
+                }
+                break;
+            default:
         }
+
+        return str_replace('{{components}}', $componentsContent, $viewRend);
+    }
+
+    private function captureOutput($file, $params) {
+        extract($params);
+        ob_start();
+        include $file;
         return ob_get_clean();
-    }
-
-    public function renderProduct($view, $params) {
-        ob_start();
-        foreach ($params['item'] as $key => $value) {
-            $$key = $value;
-        }
-        include_once Application::$ROOT_DIR."/views/$view.php";
-        $viewContent = ob_get_clean();
-        $view = 'home';
-        $layoutContent = $this->renderComponents($view, $params['components']);
-        return str_replace('{{content}}', $layoutContent, $viewContent);
     }
 }

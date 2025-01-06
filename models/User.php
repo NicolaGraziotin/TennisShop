@@ -19,6 +19,14 @@ class User {
         return;
     }
 
+    public static function checkUser($email, $password) {
+        $statement = self::prepare("SELECT * FROM customer WHERE email = ? AND password = ?");
+        $statement->bind_param("ss", $email, $password);
+        $statement->execute();
+        $result = $statement->get_result();
+        return $result->fetch_assoc();
+    }
+
     public static function prepare($sql) {
         return Application::$app->db->prepare($sql);
     }

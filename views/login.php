@@ -10,12 +10,8 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="seller" value="0">
-                <label class="form-check-label" for="seller">Check me out</label>
-            </div>
             <button type="submit" class="btn btn-primary mb-3 w-100">Login</button>
-            <p>Not a member? <a href="/register">Register</a></p>
         </form>
+        <p>Not a member? <a href="/register">Register</a></p>
     </div>
 </section>
