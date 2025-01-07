@@ -73,6 +73,11 @@ class HomeController{
         return $this->render('home', Product::findProductByCategory($params['idcategory']));
     }
 
+    public function logout() {
+        Application::$app->session->logout();
+        Application::$app->response->redirect('/');
+    }
+
     public function render($view, $params = []) {
         return Application::$app->view->render($view, $params);
     }

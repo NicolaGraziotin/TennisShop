@@ -17,7 +17,7 @@ class View {
     public function renderTemplate($params){
         $layout = Application::$ROOT_DIR."/views/layouts/main.php";
         $templateRend = $this->captureOutput($layout, $params);
-        $params['profileName'] = Application::$app->session->get('user')['name'];
+        $params['profileName'] = Application::$app->session->get('user')['name'] ?? false;
         if(!$params['profileName']){
             $profile = Application::$ROOT_DIR."/views/nav/login.php";
         } else {
