@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use app\models\Cart;
+
 class View {
     
     public string $title = 'Tennis';
@@ -16,6 +18,9 @@ class View {
 
     public function renderTemplate($params){
         $layout = Application::$ROOT_DIR."/views/layouts/main.php";
+        $idcustomer = Application::$app->session->get('user')['idcustomer'] ?? 0;
+        $params['cartProducts'] = Cart::find($idcustomer);
+        $params['cartElements'] = Cart::totalElements($idcustomer);
         $templateRend = $this->captureOutput($layout, $params);
         $params['profileName'] = Application::$app->session->get('user')['name'] ?? false;
         if(!$params['profileName']){
@@ -36,7 +41,7 @@ class View {
         $componentsContent = '';
 
         switch($view){
-            case 'home': case'product':
+            case 'home': case'product': case 'category':
                 foreach($params["homeProducts"] as $prod){
                     foreach ($prod as $key => $value) {
                         $$key = $value;

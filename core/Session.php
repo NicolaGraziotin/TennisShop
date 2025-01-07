@@ -21,7 +21,7 @@ class Session {
     }
 
     public function isLogged() {
-        return $this->get('idcustomer') != null;
+        return isset($_SESSION['user']);
     }
 
     public function remove($key) {

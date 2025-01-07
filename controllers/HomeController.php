@@ -39,10 +39,10 @@ class HomeController{
     }
 
     public function cart(Request $request) {
-        if ($request->getMethod() === 'post') {
-            Cart::addProduct($request->getBody()['idproduct'], $request->getBody()['quantity']);
+        if(!Application::$app->session->isLogged()){
+            Application::$app->response->redirect('/login');
         }
-        $params['cartProducts'] = Cart::find();
+        $params['cartProducts'] = Cart::find(Application::$app->session->get('user')['idcustomer']);
         return $this->render('cart', $params);
     }
 
@@ -56,21 +56,23 @@ class HomeController{
     }
 
     public function product(Request $request) {
-        if ($request->getMethod() === 'get') {
-            $params = $request->getBody();
+        if ($request->getMethod() === 'post') {
+            if(!Application::$app->session->isLogged()){
+                Application::$app->response->redirect('/login');
+            }
+            Cart::addProduct(Application::$app->session->get('user')['idcustomer'], $request->getBody()['idproduct'], $request->getBody()['quantity']);
         }
+        $params = $request->getBody();
         $params['homeProducts'] = Product::find();
         return $this->render('product', $params);
     }
 
     public function categoryProduct(Request $request) {
         if ($request->getMethod() === 'get') {
-            $params['idcategory'] = $request->getBody()['idcategory'];
+            
         }
-        
-        
-        var_dump($_GET["idcategory"]);
-        return $this->render('home', Product::findProductByCategory($params['idcategory']));
+        $params['homeProducts'] = Product::findProductByCategory($request->getBody()['idcategory']);
+        return $this->render('home', $params);
     }
 
     public function logout() {

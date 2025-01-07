@@ -42,8 +42,8 @@ use app\models\Product;
                             </li>
                             <li><a class="dropdown-item" href="/category?idcategory=1">Rackets</a></li>
                             <li><a class="dropdown-item" href="/category?idcategory=2">Balls</a></li>
-                            <li><a class="dropdown-item" href="#!">Strings</a></li>
-                            <li><a class="dropdown-item" href="#!">Bags</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=3">Strings</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=4">Bags</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -52,7 +52,7 @@ use app\models\Product;
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
                         Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo Cart::totalElements() ?></span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $cartElements ?></span>
                     </a>
                 </div>
             </div>
