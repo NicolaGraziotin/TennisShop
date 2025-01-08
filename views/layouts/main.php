@@ -1,7 +1,3 @@
-<?php
-use app\models\Cart;
-use app\models\Product;
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,10 +26,8 @@ use app\models\Product;
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Category</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/">All Products</a></li>
@@ -48,6 +42,9 @@ use app\models\Product;
                     </li>
                 </ul>
                 <div class="d-flex">
+                    <a class="btn btn-outline-dark me-1" href="">
+                        <i class="bi bi-bell"></i>
+                    </a>
                     {{profile}}
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
@@ -64,6 +61,9 @@ use app\models\Product;
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Tennis Shop 2025</p>
+        </div>
+        <div class="container text-center">
+            <a class="m-0 text-white" href="/contact">Contact</a>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

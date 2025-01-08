@@ -4,17 +4,14 @@ namespace app\core;
 
 use app\core\db\Database;
 use app\controllers\HomeController;
-use app\models\Cart;
 
 class Application {
     public static Application $app;
     public static string $ROOT_DIR;
     public string $layout = 'main';
-    public string $cartQuantity = '0';
     public Router $router;
     public Request $request;
     public Response $response;
-    public HomeController $controller;
     public Database $db;
     public View $view;
     public Cart $cart;
@@ -33,9 +30,5 @@ class Application {
 
     public function run() {
         echo $this->router->resolve();
-    }
-
-    public function setCartQuantity($cartQuantity) {
-        $this->cartQuantity = $cartQuantity;
     }
 }

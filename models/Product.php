@@ -5,11 +5,6 @@ namespace app\models;
 use app\core\Application;
 
 class Product {
-    public int $idproduct = 0;
-    public int $idcategory = 0;
-    public string $name = "";
-    public string $description = "";
-    public int $price = 0;
 
     public static function find() {
         $statement = Application::$app->db->prepare("SELECT * FROM product");

@@ -76,7 +76,7 @@ class HomeController{
     }
 
     public function logout() {
-        Application::$app->session->logout();
+        Application::$app->session->destroy();
         Application::$app->response->redirect('/');
     }
 

@@ -1,4 +1,3 @@
-
 <div class="dropdown">
     <a class="btn btn-outline-dark me-1" id="navbarDropdown" href="#" role="button"
         data-bs-toggle="dropdown" aria-expanded="false">

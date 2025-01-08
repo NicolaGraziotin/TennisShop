@@ -28,7 +28,7 @@ class Session {
         unset($_SESSION[$key]);
     }
 
-    public function logout() {
+    public function destroy() {
         session_destroy();
     }
 }
