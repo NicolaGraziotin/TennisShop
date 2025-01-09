@@ -12,11 +12,11 @@
                 <p class="lead"><?php echo $description ?></p>
                 <form action="" method="post">
                     <div class="d-flex">
-                        <input type="hidden" name="idproduct" value="<?php echo $idproduct ?>">
-                        <input type="hidden" name="name" value="<?php echo $name ?>">
-                        <input type="hidden" name="price" value="<?php echo $price ?>">
-                        <input type="hidden" name="description" value="<?php echo $description ?>">
-                        <input class="col-md-6 form-control text-center me-3" name="quantity" value="1" style="max-width: 3rem" />
+                        <input type="number" name="idproduct" value="<?php echo $idproduct ?>" hidden>
+                        <input type="text" name="name" value="<?php echo $name ?>" hidden>
+                        <input type="number" name="price" value="<?php echo $price ?>" hidden>
+                        <input type="text" name="description" value="<?php echo $description ?>" hidden>
+                        <input class="col-md-6 form-control text-center me-3" type="number" name="quantity" value="1" style="max-width: 3rem" />
                         <button class="col-md-6 btn btn-outline-dark flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
