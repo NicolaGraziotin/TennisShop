@@ -6,6 +6,7 @@
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
         <li><a class="dropdown-item" href="/informations">Personal informations</a></li>
+        <li><a class="dropdown-item" href="/orders">Orders</a></li>
         <li>
             <hr class="dropdown-divider" />
         </li>
