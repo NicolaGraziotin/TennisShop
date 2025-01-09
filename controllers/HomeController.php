@@ -33,7 +33,6 @@ class HomeController{
             } else {
                 echo 'Invalid login<br>';
             }
-            var_dump(Application::$app->session->get('user'));
         }
         return $this->render('login');
     }
@@ -68,9 +67,6 @@ class HomeController{
     }
 
     public function categoryProduct(Request $request) {
-        if ($request->getMethod() === 'get') {
-            
-        }
         $params['homeProducts'] = Product::findProductByCategory($request->getBody()['idcategory']);
         return $this->render('home', $params);
     }
@@ -78,6 +74,17 @@ class HomeController{
     public function logout() {
         Application::$app->session->destroy();
         Application::$app->response->redirect('/');
+    }
+
+    public function informations(Request $request) {
+        if($request->getMethod() === 'post') {
+            $body = $request->getBody();
+            User::setPersonalData($body['country'], $body['state'], $body['city'], $body['address'], $body['cap'], $body['phone'], Application::$app->session->get('user')['idcustomer']);
+        }
+        $params = User::getPersonalData(Application::$app->session->get('user')['idcustomer']);
+        $params['name'] = Application::$app->session->get('user')['name'];
+        $params['surname'] = Application::$app->session->get('user')['surname'];
+        return $this->render('informations', $params);
     }
 
     public function render($view, $params = []) {

@@ -26,9 +26,12 @@ $app->router->get('/register', [HomeController::class, 'register']);
 $app->router->get('/category', [HomeController::class, 'categoryProduct']);
 $app->router->get('/payment', [HomeController::class, 'payment']);
 $app->router->get('/logout', [HomeController::class, 'logout']);
+$app->router->get('/informations', [HomeController::class, 'informations']);
 
 $app->router->post('/cart', [HomeController::class,'cart']);
+$app->router->post('/product', [HomeController::class, 'product']);
 $app->router->post('/login', [HomeController::class, 'login']);
 $app->router->post('/register', [HomeController::class, 'register']);
+$app->router->post('/informations', [HomeController::class, 'informations']);
 
 $app->run();

@@ -5,7 +5,7 @@
         <?php echo $profileName ?>
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="">Prova</a></li>
+        <li><a class="dropdown-item" href="/informations">Personal informations</a></li>
         <li>
             <hr class="dropdown-divider" />
         </li>
