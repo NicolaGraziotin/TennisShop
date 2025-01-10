@@ -9,6 +9,10 @@ class View {
     public string $title = 'Tennis';
 
     public function render($view, $params){
+        $idcustomer = Application::$app->session->get('user')['idcustomer'] ?? 0;
+        $params['cartProducts'] = Cart::getCartProduct($idcustomer);
+        $params['cartElements'] = Cart::totalElements($idcustomer);
+
         $templateRend = $this->renderTemplate($params);
         $viewRend = $this->renderView($templateRend, $view, $params);
         return $view === 'home' || $view === 'cart' || $view === 'product'
@@ -18,9 +22,7 @@ class View {
 
     public function renderTemplate($params){
         $layout = Application::$ROOT_DIR."/views/layouts/main.php";
-        $idcustomer = Application::$app->session->get('user')['idcustomer'] ?? 0;
-        $params['cartProducts'] = Cart::find($idcustomer);
-        $params['cartElements'] = Cart::totalElements($idcustomer);
+        
         $templateRend = $this->captureOutput($layout, $params);
         $params['profileName'] = Application::$app->session->get('user')['name'] ?? false;
         if(!$params['profileName']){

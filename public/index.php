@@ -30,5 +30,7 @@ $app->router->get('/logout', [HomeController::class, 'logout']);
 $app->router->post('/cart', [HomeController::class,'cart']);
 $app->router->post('/login', [HomeController::class, 'login']);
 $app->router->post('/register', [HomeController::class, 'register']);
+$app->router->post('/product', [HomeController::class, 'product']);
+$app->router->post('/checkout', [HomeController::class, 'checkout']);
 
 $app->run();

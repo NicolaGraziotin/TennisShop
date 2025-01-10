@@ -42,7 +42,13 @@ class HomeController{
         if(!Application::$app->session->isLogged()){
             Application::$app->response->redirect('/login');
         }
-        $params['cartProducts'] = Cart::find(Application::$app->session->get('user')['idcustomer']);
+        $idcustomer = Application::$app->session->get('user')['idcustomer'];
+        $params['cartPrice'] = Cart::totalCartPrice($idcustomer);
+        $params['creditCard'] = Cart::getCreditCard($idcustomer, $params['idcreditcard'] ?? 1);
+        $params['cartProducts'] = Cart::getCartProduct(Application::$app->session->get('user')['idcustomer']);
+        $params['shipping'] = 5;
+        $params['idpersonaldata'] = 1;
+        $params['idcustomer'] = $idcustomer;
         return $this->render('cart', $params);
     }
 
@@ -73,6 +79,13 @@ class HomeController{
         }
         $params['homeProducts'] = Product::findProductByCategory($request->getBody()['idcategory']);
         return $this->render('home', $params);
+    }
+
+    public function checkout(Request $request) {
+        if ($request->getMethod() === 'post') {
+            Cart::checkout($request->getBody()['idcustomer'], $request->getBody()['idpersonaldata'], $request->getBody()['idcreditcard'], $request->getBody()['idstatus'], $request->getBody()['total']);
+            Application::$app->response->redirect('/');
+        }
     }
 
     public function logout() {
