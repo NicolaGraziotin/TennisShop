@@ -5,26 +5,27 @@ namespace app\controllers;
 use app\controllers\Controller;
 use app\core\Application;
 use app\core\Request;
+use app\core\Response;
 use app\core\Session;
 use app\models\User;
 
 class UserController extends Controller {
 
-    public function register(Request $request) {
+    public function register(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
             User::addUser($request->getBody()['email'], $request->getBody()['password'], $request->getBody()['name'], $request->getBody()['surname']);
-            Application::$app->response->redirect('/login');
+            $response->redirect('/login');
             return;
         }
         return $this->render('register');
     }
 
-    public function login(Request $request) {
+    public function login(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
             $user = User::checkUser($request->getBody()['email'], $request->getBody()['password']);
             if ($user) {
                 Session::set('user', $user);
-                Application::$app->response->redirect('/');
+                $response->redirect('/');
             } else {
                 echo 'Invalid login<br>';
             }
@@ -32,9 +33,9 @@ class UserController extends Controller {
         return $this->render('login');
     }
 
-    public function logout() {
+    public function logout(Request $request, Response $response) {
         Session::destroy();
-        Application::$app->response->redirect('/');
+        $response->redirect('/');
     }
 
     public function informations(Request $request) {
