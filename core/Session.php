@@ -2,10 +2,15 @@
 
 namespace app\core;
 
+use app\models\User;
+
 class Session {
 
     public static function start() {
         session_start();
+        if (isset($_COOKIE['idcustomer'])) {
+            self::set('user', User::getUserById($_COOKIE['idcustomer']));
+        }
         return;
     }
 
@@ -30,6 +35,11 @@ class Session {
         return isset($_SESSION['user']);
     }
 
+    public static function setCookie($time) {
+        setcookie('idcustomer', self::getUserId(), time() + $time, '/');
+        return;
+    }
+
     public static function remove($key) {
         unset($_SESSION[$key]);
         return;
@@ -37,6 +47,7 @@ class Session {
 
     public static function destroy() {
         session_destroy();
+        self::setCookie(-3600);
         return;
     }
 }

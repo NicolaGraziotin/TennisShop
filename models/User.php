@@ -41,4 +41,12 @@ class User extends Model {
             [$email, $password]);
         return self::fetchOne($statement);
     }
+
+    public static function getUserById($idcustomer) {
+        $statement = self::prepare(
+            "SELECT * FROM customer WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return self::fetchOne($statement);
+    }
 }

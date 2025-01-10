@@ -25,6 +25,9 @@ class UserController extends Controller {
             $user = User::checkUser($request->getBody()['email'], $request->getBody()['password']);
             if ($user) {
                 Session::set('user', $user);
+                if (isset($request->getBody()['remind'])) {
+                    Session::setCookie(24 * 3600);
+                }
                 $response->redirect('/');
             } else {
                 echo 'Invalid login<br>';

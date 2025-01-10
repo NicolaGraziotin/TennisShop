@@ -5,8 +5,6 @@ namespace app\core;
 use app\models\Cart;
 
 class View {
-    
-    public string $title = 'Tennis';
 
     public function render($view, $params){
         $templateRend = $this->renderTemplate($params);
@@ -17,7 +15,7 @@ class View {
     }
 
     public function renderTemplate($params){
-        $layout = Application::$ROOT_DIR."/views/layouts/main.php";
+        $layout = Application::$ROOT_DIR."/views/layouts/".Application::$app->layout.".php";
         $templateRend = $this->captureOutput($layout, $params);
         if(!Session::isLogged()){
             $profile = Application::$ROOT_DIR."/views/nav/login.php";
@@ -36,7 +34,7 @@ class View {
     public function renderComponents($view, $viewRend, $params){
         $componentsContent = '';
         switch($view){
-            case 'home': case'product': case 'category':
+            case 'home': case'product':
                 foreach($params["homeProducts"] as $prod){
                     foreach ($prod as $key => $value) {
                         $$key = $value;

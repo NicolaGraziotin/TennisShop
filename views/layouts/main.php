@@ -1,4 +1,5 @@
 <?php
+use app\core\Application;
 use app\core\Session;
 use app\models\Cart;
 ?>
@@ -11,7 +12,7 @@ use app\models\Cart;
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title><?php echo $this->title ?></title>
+    <title><?php echo Application::$app->title; ?></title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->

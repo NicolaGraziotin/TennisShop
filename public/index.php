@@ -23,7 +23,7 @@ $app = new Application(dirname(__DIR__), $config);
 /* Home Controller */
 $app->router->get('/', [HomeController::class, 'home']);
 $app->router->get('/contact', [HomeController::class, 'contact']);
-$app->router->get('/category', [HomeController::class, 'categoryProduct']);
+$app->router->get('/category', [HomeController::class, 'category']);
 
 /* Cart Controller */
 $app->router->get('/cart', [CartController::class, 'cart']);
