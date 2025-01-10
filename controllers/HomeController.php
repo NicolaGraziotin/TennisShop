@@ -9,7 +9,7 @@ use app\models\Product;
 class HomeController extends Controller {
 
     public function home() {
-        $params['homeProducts'] = Product::find();
+        $params['homeProducts'] = Product::getAllProducts();
         return $this->render('home', $params);
     }
 
@@ -18,7 +18,7 @@ class HomeController extends Controller {
     }
 
     public function categoryProduct(Request $request) {
-        $params['homeProducts'] = Product::findProductByCategory($request->getBody()['idcategory']);
+        $params['homeProducts'] = Product::getProductsByCategory($request->getBody()['idcategory']);
         return $this->render('home', $params);
     }
 }

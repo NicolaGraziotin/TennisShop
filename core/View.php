@@ -18,11 +18,11 @@ class View {
 
     public function renderTemplate($params){
         $layout = Application::$ROOT_DIR."/views/layouts/main.php";
-        $idcustomer = Application::$app->session->get('user')['idcustomer'] ?? 0;
-        $params['cartProducts'] = Cart::find($idcustomer);
-        $params['cartElements'] = Cart::totalElements($idcustomer);
+        $idcustomer = Session::get('user')['idcustomer'] ?? 0;
+        $params['cartProducts'] = Cart::getCart($idcustomer);
+        $params += Cart::getTotalElements($idcustomer);
         $templateRend = $this->captureOutput($layout, $params);
-        $params['profileName'] = Application::$app->session->get('user')['name'] ?? false;
+        $params['profileName'] = Session::get('user')['name'] ?? false;
         if(!$params['profileName']){
             $profile = Application::$ROOT_DIR."/views/nav/login.php";
         } else {
@@ -39,7 +39,6 @@ class View {
 
     public function renderComponents($view, $viewRend, $params){
         $componentsContent = '';
-
         switch($view){
             case 'home': case'product': case 'category':
                 foreach($params["homeProducts"] as $prod){

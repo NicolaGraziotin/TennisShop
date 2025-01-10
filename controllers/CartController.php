@@ -5,15 +5,16 @@ namespace app\controllers;
 use app\controllers\Controller;
 use app\core\Application;
 use app\core\Request;
+use app\core\Session;
 use app\models\Cart;
 
 class CartController extends Controller {
 
     public function cart(Request $request) {
-        if(!Application::$app->session->isLogged()){
+        if(!Session::isLogged()){
             Application::$app->response->redirect('/login');
         }
-        $params['cartProducts'] = Cart::find(Application::$app->session->get('user')['idcustomer']);
+        $params['cartProducts'] = Cart::getCart(Session::get('user')['idcustomer']);
         return $this->render('cart', $params);
     }
 
