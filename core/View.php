@@ -18,7 +18,7 @@ class View {
 
     public function renderTemplate($params){
         $layout = Application::$ROOT_DIR."/views/layouts/main.php";
-        $idcustomer = Session::get('user')['idcustomer'] ?? 0;
+        $idcustomer = Session::getUserId() ?? 0;
         $params['cartProducts'] = Cart::getCart($idcustomer);
         $params += Cart::getTotalElements($idcustomer);
         $templateRend = $this->captureOutput($layout, $params);

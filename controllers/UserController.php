@@ -39,18 +39,18 @@ class UserController extends Controller {
     }
 
     public function informations(Request $request) {
+        $idcustomer = Session::getUserId();
         if($request->getMethod() === 'post') {
-            $body = $request->getBody();
-            User::setPersonalData($body['country'], $body['state'], $body['city'], $body['address'], $body['cap'], $body['phone'], Session::get('user')['idcustomer']);
+            $personal_data = array_values($request->getBody());
+            User::setPersonalData($personal_data, $idcustomer);
         }
-        $params = User::getPersonalInformations(Session::get('user')['idcustomer']);
-        $params['name'] = Session::get('user')['name'];
-        $params['surname'] = Session::get('user')['surname'];
+        $params = User::getPersonalInformations($idcustomer);
+        $params += Session::get('user');
         return $this->render('informations', $params);
     }
 
     public function orders() {
-        // $params['orders'] = Cart::findOrders(Session::get('user')['idcustomer']);
+        // $params['orders'] = Cart::findOrders(Session::getUserId());
         return $this->render('orders');
     }
 }

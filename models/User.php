@@ -18,11 +18,11 @@ class User extends Model {
         return;
     }
 
-    public static function setPersonalData($country, $state, $city, $address, $cap, $phone, $idcustomer) {
+    public static function setPersonalData($personal_data, $idcustomer) {
         $statement = self::prepare(
             "INSERT INTO personal_data (idpersonaldata, country, state, city, address, cap, phone, idcustomer) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE country = VALUES(country), state = VALUES(state), city = VALUES(city), address = VALUES(address), cap = VALUES(cap), phone = VALUES(phone)",
             "ssssssi",
-            [$country, $state, $city, $address, $cap, $phone, $idcustomer]);
+            [...$personal_data, $idcustomer]);
         return;
     }
 

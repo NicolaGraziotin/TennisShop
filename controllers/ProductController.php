@@ -17,7 +17,7 @@ class ProductController extends Controller {
             if(!Session::isLogged()){
                 $response->redirect('/login');
             }
-            Cart::addProduct(Session::get('user')['idcustomer'], $request->getBody()['idproduct'], $request->getBody()['quantity']);
+            Cart::addProduct(Session::getUserId(), $request->getBody()['idproduct'], $request->getBody()['quantity']);
         }
         $params = $request->getBody();
         $params['homeProducts'] = Product::getAllProducts();
