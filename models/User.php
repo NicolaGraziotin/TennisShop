@@ -13,8 +13,8 @@ class User extends Model {
             "SELECT idcustomer FROM customer WHERE email = ?",
             "s",
             [$email]);
-        $idcustomer = $statement->get_result()->fetch_assoc();
-        self::setPersonalData('', '', '', '', '', '', $idcustomer['idcustomer']);
+        $idcustomer = self::fetchOne($statement)['idcustomer'];
+        self::setPersonalData('', '', '', '', '', '', $idcustomer);
         return;
     }
 
@@ -26,13 +26,12 @@ class User extends Model {
         return;
     }
 
-    public static function getPersonalData($idcustomer) {
+    public static function getPersonalInformations($idcustomer) {
         $statement = self::prepare(
             "SELECT * FROM personal_data WHERE idcustomer = ?",
             "i",
             [$idcustomer]);
-        $result = $statement->get_result();
-        return $result->fetch_assoc();
+        return self::fetchOne($statement);
     }
 
     public static function checkUser($email, $password) {
@@ -40,7 +39,6 @@ class User extends Model {
             "SELECT * FROM customer WHERE email = ? AND password = ?",
             "ss",
             [$email, $password]);
-        $result = $statement->get_result();
-        return $result->fetch_assoc();
+        return self::fetchOne($statement);
     }
 }

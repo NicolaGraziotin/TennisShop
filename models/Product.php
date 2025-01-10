@@ -4,28 +4,17 @@ namespace app\models;
 
 class Product extends Model {
 
-    public static function find() {
+    public static function getAllProducts() {
         $statement = self::prepare(
             "SELECT * FROM product");
-        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $result;
+        return self::fetchAll($statement);
     }
 
-    public static function findProductByCategory($idcategory) {
+    public static function getProductsByCategory($idcategory) {
         $statement = self::prepare(
             "SELECT * FROM product WHERE idcategory = ?",
             "i",
             [$idcategory]);
-        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $result;
-    }
-
-    public static function getIdCategory($name) {
-        $statement = self::prepare(
-            "SELECT idcategory FROM category WHERE name = ?",
-            "s",
-            [$name]);
-        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $result[0]["idcategory"];
+        return self::fetchAll($statement);
     }
 }

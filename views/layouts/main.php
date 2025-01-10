@@ -49,7 +49,7 @@
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
                         Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $cartElements ?></span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $total ?></span>
                     </a>
                 </div>
             </div>
