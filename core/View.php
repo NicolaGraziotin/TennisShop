@@ -7,10 +7,6 @@ use app\models\Cart;
 class View {
 
     public function render($view, $params){
-        $idcustomer = Application::$app->session->get('user')['idcustomer'] ?? 0;
-        $params['cartProducts'] = Cart::getCartProduct($idcustomer);
-        $params['cartElements'] = Cart::totalElements($idcustomer);
-
         $templateRend = $this->renderTemplate($params);
         $viewRend = $this->renderView($templateRend, $view, $params);
         return $view === 'home' || $view === 'cart' || $view === 'product'

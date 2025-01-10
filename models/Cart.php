@@ -13,7 +13,8 @@ class Cart extends Model {
     }
 
     public static function getTotalElements($idcustomer) {
-        $statement = self::prepare("SELECT SUM(quantity) as total FROM cart WHERE idcustomer = ?",
+        $statement = self::prepare(
+            "SELECT SUM(quantity) as total FROM cart WHERE idcustomer = ?",
             "i",
             [$idcustomer]);
         return self::fetchOne($statement)['total'];
@@ -28,29 +29,27 @@ class Cart extends Model {
     }
 
     public static function totalCartPrice($idcustomer) {
-        $statement = self::prepare("SELECT SUM(price * quantity) as total FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ?");
-        $statement->bind_param("i", $idcustomer);
-        $statement->execute();
-        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $result[0]['total'];
+        $statement = self::prepare(
+            "SELECT SUM(price * quantity) as total FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        
+        return self::fetchOne($statement)['total'];
     }
 
-    public static function getCreditCard($idcustomer, $idcreditcard) {
-        $statement = self::prepare("SELECT * FROM credit_card WHERE idcustomer = ? AND idcreditcard = ?");
-        $statement->bind_param("ii", $idcustomer, $idcreditcard);
-        $statement->execute();
-        $result = $statement->get_result();
-        return $result->fetch_assoc();
+    public static function getCreditCard($idcustomer) {
+        $statement = self::prepare(
+            "SELECT * FROM credit_card WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return self::fetchOne($statement);
     }
 
     public static function checkout($idcustomer, $idpersonaldata, $idcreditcard, $idstatus, $total) {
-        $statement = self::prepare("INSERT INTO customer_order (idorder, idcustomer, idpersonaldata, idcreditcard, idstatus, totalprice) VALUES (NULL, ?, ?, ?, ?, ?)");
-        $statement->bind_param("iiiii", $idcustomer, $idpersonaldata, $idcreditcard, $idstatus, $total);
-        $statement->execute();
+        $statement = self::prepare(
+            "INSERT INTO customer_order (idorder, idcustomer, idpersonaldata, idcreditcard, idstatus, totalprice) VALUES (NULL, ?, ?, ?, ?, ?)",
+            "iiiii",
+            [$idcustomer, $idpersonaldata, $idcreditcard, $idstatus, $total]);
         return;
-    }
-
-    public static function prepare($sql) {
-        return Application::$app->db->prepare($sql);
     }
 }

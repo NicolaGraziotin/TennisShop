@@ -19,6 +19,13 @@ class CartController extends Controller {
         return $this->render('cart', $params);
     }
 
+    public function checkout(Request $request, Response $response) {
+        if ($request->getMethod() === 'post') {
+            Cart::checkout($request->getBody()['idcustomer'], $request->getBody()['idpersonaldata'], $request->getBody()['idcreditcard'], $request->getBody()['idstatus'], $request->getBody()['total']);
+            $response->redirect('/');
+        }
+    }
+
     public function payment() {
         return $this->render('payment');
     }

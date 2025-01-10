@@ -29,7 +29,7 @@ $app->router->get('/category', [HomeController::class, 'category']);
 $app->router->get('/cart', [CartController::class, 'cart']);
 $app->router->post('/cart', [CartController::class, 'cart']);
 $app->router->get('/payment', [CartController::class, 'payment']);
-$app->router->post('/checkout', [HomeController::class, 'checkout']);
+$app->router->post('/checkout', [CartController::class, 'checkout']);
 
 /* Product Controller */
 $app->router->get('/product', [ProductController::class, 'product']);
