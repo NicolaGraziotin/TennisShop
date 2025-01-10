@@ -2,6 +2,9 @@
 
 use app\core\Application;
 use app\controllers\HomeController;
+use app\controllers\CartController;
+use app\controllers\UserController;
+use app\controllers\ProductController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -17,20 +20,28 @@ $config = [
 
 $app = new Application(dirname(__DIR__), $config);
 
+/* Home Controller */
 $app->router->get('/', [HomeController::class, 'home']);
-$app->router->get('/cart', [HomeController::class, 'cart']);
 $app->router->get('/contact', [HomeController::class, 'contact']);
-$app->router->get('/product', [HomeController::class, 'product']);
-$app->router->get('/login', [HomeController::class, 'login']);
-$app->router->get('/register', [HomeController::class, 'register']);
-$app->router->get('/category', [HomeController::class, 'categoryProduct']);
-$app->router->get('/payment', [HomeController::class, 'payment']);
-$app->router->get('/logout', [HomeController::class, 'logout']);
+$app->router->get('/category', [HomeController::class, 'category']);
 
-$app->router->post('/cart', [HomeController::class,'cart']);
-$app->router->post('/login', [HomeController::class, 'login']);
-$app->router->post('/register', [HomeController::class, 'register']);
-$app->router->post('/product', [HomeController::class, 'product']);
+/* Cart Controller */
+$app->router->get('/cart', [CartController::class, 'cart']);
+$app->router->post('/cart', [CartController::class, 'cart']);
+$app->router->get('/payment', [CartController::class, 'payment']);
 $app->router->post('/checkout', [HomeController::class, 'checkout']);
 
+/* Product Controller */
+$app->router->get('/product', [ProductController::class, 'product']);
+$app->router->post('/product', [ProductController::class, 'product']);
+
+/* User Controller */
+$app->router->get('/register', [UserController::class, 'register']);
+$app->router->post('/register', [UserController::class, 'register']);
+$app->router->get('/login', [UserController::class, 'login']);
+$app->router->post('/login', [UserController::class, 'login']);
+$app->router->get('/logout', [UserController::class, 'logout']);
+$app->router->get('/informations', [UserController::class, 'informations']);
+$app->router->post('/informations', [UserController::class, 'informations']);
+$app->router->get('/orders', [UserController::class, 'orders']);
 $app->run();

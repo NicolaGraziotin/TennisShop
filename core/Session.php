@@ -2,33 +2,52 @@
 
 namespace app\core;
 
+use app\models\User;
+
 class Session {
 
-    public function __construct() {
+    public static function start() {
         session_start();
+        if (isset($_COOKIE['idcustomer'])) {
+            self::set('user', User::getUserById($_COOKIE['idcustomer']));
+        }
+        return;
     }
 
-    public function set($key, $value) {
+    public static function set($key, $value) {
         $_SESSION[$key] = $value;
+        return;
     }
 
-    public function get($key) {
+    public static function get($key) {
         return $_SESSION[$key] ?? false;
     }
 
-    public function isAdmin() {
+    public static function getUserId() {
+        return $_SESSION['user']['idcustomer'] ?? false;
+    }
+
+    public static function isAdmin() {
         return $_SESSION['seller'] != null && $_SESSION['seller'] === 1;
     }
 
-    public function isLogged() {
+    public static function isLogged() {
         return isset($_SESSION['user']);
     }
 
-    public function remove($key) {
-        unset($_SESSION[$key]);
+    public static function setCookie($time) {
+        setcookie('idcustomer', self::getUserId(), time() + $time, '/');
+        return;
     }
 
-    public function destroy() {
+    public static function remove($key) {
+        unset($_SESSION[$key]);
+        return;
+    }
+
+    public static function destroy() {
         session_destroy();
+        self::setCookie(-3600);
+        return;
     }
 }

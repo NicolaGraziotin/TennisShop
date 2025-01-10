@@ -3,7 +3,7 @@
 namespace app\core;
 
 class Request {
-    private array $routeParams = [];
+
     public function getMethod() {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
