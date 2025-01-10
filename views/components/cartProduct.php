@@ -9,14 +9,14 @@
                 <p class="lead fw-normal mb-2"><?php echo $name ?></p>
                 <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
             </div>
-            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                     <i class="bi bi-dash-lg"></i>
                 </button>
 
-                <input id="form1" min="0" name="quantity" value="<?php echo $quantity ?>" type="number"
-                    class="form-control form-control-sm" />
+                <input id="form1" min="0" name="quantity" value="<?php echo $quantity ?>" type="text"
+                    class="form-control form-control-sm text-center" />
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
@@ -24,7 +24,7 @@
                 </button>
             </div>
             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0"><?php echo $price ?></h5>
+                <h5 class="mb-0"><?php echo "€".$price ?></h5>
             </div>
             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>

@@ -15,7 +15,7 @@
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
                  <form action="/product" method="get">
-                    <input type="hidden" name="idproduct" value="<?php echo $idproduct ?>">
+                    <input type="hidden" name="idproduct" value="<?php echo $idcustomer ?>">
                     <input type="hidden" name="name" value="<?php echo $name ?>">
                     <input type="hidden" name="description" value="<?php echo $description ?>">
                     <input type="hidden" name="price" value="<?php echo $price ?>">
