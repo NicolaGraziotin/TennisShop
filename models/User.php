@@ -14,7 +14,7 @@ class User extends Model {
             "s",
             [$email]);
         $idcustomer = self::fetchOne($statement)['idcustomer'];
-        self::setPersonalData('', '', '', '', '', '', $idcustomer);
+        self::setPersonalData(['', '', '', '', '', ''], $idcustomer);
         return;
     }
 
