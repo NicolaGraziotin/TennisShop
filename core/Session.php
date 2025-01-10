@@ -19,7 +19,7 @@ class Session {
     }
 
     public static function getUserId() {
-        return $_SESSION['user']['idcustomer'];
+        return $_SESSION['user']['idcustomer'] ?? false;
     }
 
     public static function isAdmin() {

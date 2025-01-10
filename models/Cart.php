@@ -16,7 +16,7 @@ class Cart extends Model {
         $statement = self::prepare("SELECT SUM(quantity) as total FROM cart WHERE idcustomer = ?",
             "i",
             [$idcustomer]);
-        return self::fetchOne($statement);
+        return self::fetchOne($statement)['total'];
     }
 
     public static function addProduct($idcustomer, $idproduct, $quantity) {

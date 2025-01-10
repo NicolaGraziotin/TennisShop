@@ -18,12 +18,8 @@ class View {
 
     public function renderTemplate($params){
         $layout = Application::$ROOT_DIR."/views/layouts/main.php";
-        $idcustomer = Session::getUserId() ?? 0;
-        $params['cartProducts'] = Cart::getCart($idcustomer);
-        $params += Cart::getTotalElements($idcustomer);
         $templateRend = $this->captureOutput($layout, $params);
-        $params['profileName'] = Session::get('user')['name'] ?? false;
-        if(!$params['profileName']){
+        if(!Session::isLogged()){
             $profile = Application::$ROOT_DIR."/views/nav/login.php";
         } else {
             $profile = Application::$ROOT_DIR."/views/nav/profile.php";

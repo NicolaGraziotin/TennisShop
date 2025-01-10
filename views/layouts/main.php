@@ -1,3 +1,7 @@
+<?php
+use app\core\Session;
+use app\models\Cart;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +53,7 @@
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
                         Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $total ?></span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo Cart::getTotalElements(Session::getUserId()) ?></span>
                     </a>
                 </div>
             </div>
