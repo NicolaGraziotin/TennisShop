@@ -53,7 +53,7 @@ class UserController extends Controller {
     }
 
     public function orders() {
-        // $params['orders'] = Cart::findOrders(Session::getUserId());
-        return $this->render('orders');
+        $params['orders'] = User::getOrders(Session::getUserId());
+        return $this->render('orders', $params);
     }
 }

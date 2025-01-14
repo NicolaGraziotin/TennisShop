@@ -52,4 +52,12 @@ class Cart extends Model {
             [$idcustomer, $idpersonaldata, $idcreditcard, $idstatus, $total]);
         return;
     }
+
+    public static function removeCart($idcustomer) {
+        $statement = self::prepare(
+            "DELETE FROM cart WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return;
+    }
 }

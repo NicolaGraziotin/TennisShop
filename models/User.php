@@ -49,4 +49,12 @@ class User extends Model {
             [$idcustomer]);
         return self::fetchOne($statement);
     }
+
+    public static function getOrders($idcustomer) {
+        $statement = self::prepare(
+            "SELECT * FROM customer_order WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return self::fetchAll($statement);
+    }
 }
