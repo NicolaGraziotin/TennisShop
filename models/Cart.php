@@ -37,7 +37,7 @@ class Cart extends Model {
         return self::fetchOne($statement)['total'];
     }
 
-    public static function getCreditCard($idcustomer) {
+    public static function getCreditCard($idcustomer, $idcreditcard) {
         $statement = self::prepare(
             "SELECT * FROM credit_card WHERE idcustomer = ?",
             "i",
@@ -47,9 +47,17 @@ class Cart extends Model {
 
     public static function checkout($idcustomer, $idpersonaldata, $idcreditcard, $idstatus, $total) {
         $statement = self::prepare(
-            "INSERT INTO customer_order (idorder, idcustomer, idpersonaldata, idcreditcard, idstatus, totalprice) VALUES (NULL, ?, ?, ?, ?, ?)",
-            "iiiii",
-            [$idcustomer, $idpersonaldata, $idcreditcard, $idstatus, $total]);
+            "INSERT INTO customer_order (idorder, idcustomer, idpersonaldata, idcreditcard, idstatus, date, totalprice) VALUES (NULL, ?, ?, ?, ?, ?, ?)",
+            "iiiisi",
+            [$idcustomer, $idpersonaldata, $idcreditcard, $idstatus, date('Y-m-d'), $total]);
+        return;
+    }
+
+    public static function setCreditCard($idcustomer, $number, $expiration, $holder, $cvv) {
+        $statement = self::prepare(
+            "INSERT INTO credit_card (idcreditcard, number, expire, cvv, holder, idcustomer) VALUES (NULL, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE expire = VALUES(expire), holder = VALUES(holder), cvv = VALUES(cvv)",
+            "ssssi",
+            [$number, $expiration, $cvv, $holder, $idcustomer]);
         return;
     }
 
