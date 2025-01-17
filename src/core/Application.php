@@ -2,7 +2,7 @@
 
 namespace app\core;
 
-use app\core\db\Database;
+use app\db\Database;
 
 class Application {
     public static Application $app;

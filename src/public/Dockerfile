@@ -1,11 +1,10 @@
 # PHP image with Apache
-FROM php:apache
+FROM php:8.1-apache
 
-# Copy virtual host into container
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN echo "DocumentRoot /var/www/html/public" > /etc/apache2/sites-available/000-default.conf
 
 # Enable rewrite mode
-RUN a2enmod rewrite
+RUN a2enmod rewrite && sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 # Install git, zip, unzip
 RUN apt-get update && \
@@ -18,10 +17,7 @@ RUN docker-php-ext-install mysqli
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
 # Change the current working directory
-WORKDIR /var/www/html
+WORKDIR /var/www/html/public
 
 # Change the owner of the container document root
 RUN chown -R www-data:www-data /var/www/html
-
-# Start Apache in foreground
-CMD ["apache2-foreground"]
