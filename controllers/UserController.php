@@ -56,4 +56,11 @@ class UserController extends Controller {
         $params['orders'] = User::getOrders(Session::getUserId());
         return $this->render('orders', $params);
     }
+
+    public function cancelOrder(Request $request, Response $response) {
+        if ($request->getMethod() === 'post') {
+            User::cancelOrder($request->getBody()['idorder']);
+            $response->redirect('/orders');
+        }
+    }
 }

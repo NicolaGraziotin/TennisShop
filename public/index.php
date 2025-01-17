@@ -44,4 +44,5 @@ $app->router->get('/logout', [UserController::class, 'logout']);
 $app->router->get('/informations', [UserController::class, 'informations']);
 $app->router->post('/informations', [UserController::class, 'informations']);
 $app->router->get('/orders', [UserController::class, 'orders']);
+$app->router->post('/cancelOrder', [UserController::class, 'cancelOrder']);
 $app->run();
