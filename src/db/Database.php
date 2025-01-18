@@ -20,4 +20,8 @@ class Database {
     public function prepare($sql){
         return $this->connection->prepare($sql);
     }
+
+    public function getLastId() {
+        return $this->connection->insert_id;
+    }
 }

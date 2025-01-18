@@ -63,4 +63,11 @@ class UserController extends Controller {
     public function dashboard() {
         return $this->render('dashboard');
     }
+
+    public function cancelOrder(Request $request, Response $response) {
+        if ($request->getMethod() === 'post') {
+            User::cancelOrder($request->getBody()['idorder']);
+            $response->redirect('/orders');
+        }
+    }
 }

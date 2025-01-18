@@ -57,4 +57,20 @@ class User extends Model {
             [$idcustomer]);
         return self::fetchAll($statement);
     }
+
+    public static function getStatusOrder($idorder) {
+        $statement = self::prepare(
+            "SELECT * FROM status JOIN customer_order WHERE idorder = ?",
+            "i",
+            [$idorder]);
+        return self::fetchOne($statement);
+    }
+
+    public static function cancelOrder($idorder) {
+        $statement = self::prepare(
+            "DELETE FROM customer_order WHERE idorder = ?",
+            "i",
+            [$idorder]);
+        return;
+    }
 }
