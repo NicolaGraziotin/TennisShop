@@ -60,7 +60,7 @@
                     <form class="mt-4">
                       <div data-mdb-input-init class="form-outline form-white mb-4">
                         <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                          value="<?php echo Cart::getCreditCard($idcustomer)['holdername']." ".Cart::getCreditCard($idcustomer)['holdersurname'] ?>"
+                          value="<?php echo Cart::getCreditCard($idcustomer)['holder'] ?>"
                           disabled />
                         <label class="form-label" for="typeName">Cardholder's name</label>
                       </div>

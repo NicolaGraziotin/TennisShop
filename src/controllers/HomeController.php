@@ -21,4 +21,8 @@ class HomeController extends Controller {
         $params['homeProducts'] = Product::getProductsByCategory($request->getBody()['idcategory']);
         return $this->render('home', $params);
     }
+
+    public function notFound() {
+        return $this->render('notFound');
+    }
 }
