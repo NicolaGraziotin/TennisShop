@@ -6,30 +6,30 @@ CREATE TABLE `cart` (
   `idcustomer` int NOT NULL,
   `idproduct` int NOT NULL,
   `quantity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `category` (
   `idcategory` int NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `credit_card` (
   `idcreditcard` int NOT NULL,
-  `number` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `expire` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `cvv` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `holder` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `number` varchar(50) NOT NULL,
+  `expire` varchar(50) NOT NULL,
+  `cvv` varchar(50) NOT NULL,
+  `holder` varchar(50) NOT NULL,
   `idcustomer` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `customer` (
   `idcustomer` int NOT NULL,
   `seller` tinyint(1) NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `surname` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `surname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `customer_order` (
   `idorder` int NOT NULL,
@@ -37,57 +37,51 @@ CREATE TABLE `customer_order` (
   `idpersonaldata` int NOT NULL,
   `idcreditcard` int NOT NULL,
   `idstatus` int NOT NULL,
-  `date` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `date` varchar(50) NOT NULL,
   `totalprice` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `notification` (
   `idnotification` int NOT NULL,
   `date` date NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `title` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
   `idcustomer` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `personal_data` (
   `idpersonaldata` int NOT NULL,
-  `country` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `state` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `city` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `address` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `cap` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `cap` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
   `idcustomer` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `product` (
   `idproduct` int NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
   `price` int NOT NULL,
   `idcategory` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `product_order` (
-  `idorder` int NOT NULL,
-  `idproduct` int NOT NULL,
-  `quantity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `review` (
   `idcustomer` int NOT NULL,
   `idproduct` int NOT NULL,
-  `title` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `rating` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `title` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `rating` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `status` (
   `idstatus` int NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 ALTER TABLE `cart`
@@ -123,10 +117,6 @@ ALTER TABLE `personal_data`
 ALTER TABLE `product`
   ADD PRIMARY KEY (`idproduct`),
   ADD KEY `idcategory` (`idcategory`);
-
-ALTER TABLE `product_order`
-  ADD PRIMARY KEY (`idorder`,`idproduct`),
-  ADD KEY `idproduct_po` (`idproduct`);
 
 ALTER TABLE `review`
   ADD PRIMARY KEY (`idcustomer`,`idproduct`),
@@ -182,10 +172,6 @@ ALTER TABLE `personal_data`
 
 ALTER TABLE `product`
   ADD CONSTRAINT `idcategory` FOREIGN KEY (`idcategory`) REFERENCES `category` (`idcategory`);
-
-ALTER TABLE `product_order`
-  ADD CONSTRAINT `idorder_po` FOREIGN KEY (`idorder`) REFERENCES `customer_order` (`idorder`),
-  ADD CONSTRAINT `idproduct_po` FOREIGN KEY (`idproduct`) REFERENCES `product` (`idproduct`);
 
 ALTER TABLE `review`
   ADD CONSTRAINT `idcustomer_rw` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`),

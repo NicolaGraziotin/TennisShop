@@ -28,7 +28,10 @@ class UserController extends Controller {
                 if (isset($request->getBody()['remind'])) {
                     Session::setCookie(24 * 3600);
                 }
-                $response->redirect('/');
+                if ($user['seller'] === 1) {
+                    return $response->redirect('/dashboard');
+                }
+                return $response->redirect('/');
             } else {
                 echo 'Invalid login<br>';
             }
@@ -55,5 +58,9 @@ class UserController extends Controller {
     public function orders() {
         $params['orders'] = User::getOrders(Session::getUserId());
         return $this->render('orders', $params);
+    }
+
+    public function dashboard() {
+        return $this->render('dashboard');
     }
 }
