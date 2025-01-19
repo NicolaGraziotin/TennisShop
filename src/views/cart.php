@@ -54,8 +54,8 @@
                       </div>
 
                       <div data-mdb-input-init class="form-outline form-white mb-4">
-                        <input type="text" name="typeNum" class="form-control form-control-lg" size="17"
-                          value="" minlength="19" maxlength="19" />
+                        <input type="text" name="typeNum" class="form-control form-control-lg" size="17" 
+                        id="cr_no" minlength="19" maxlength="19" placeholder="0000 0000 0000 0000" required />
                         <label class="form-label" for="typeNum">Card Number</label>
                       </div>
 
@@ -63,8 +63,8 @@
                         <div class="col-md-6">
                           <div data-mdb-input-init class="form-outline form-white">
                             <input type="text" name="typeExp" class="form-control form-control-lg"
-                              value="" size="7" id="exp"
-                              minlength="7" maxlength="7"/>
+                              value="" size="7" id="exp" placeholder="MM/YY"
+                              minlength="5" maxlength="5"/>
                             <label class="form-label" for="typeExp">Expiration</label>
                           </div>
                         </div>
@@ -141,3 +141,52 @@
     </div>
   </div>
 </section>
+<script>
+  //For Card Number formatted input
+  var cardNum = document.getElementById('cr_no');
+  cardNum.onkeyup = function (e) {
+      if (this.value == this.lastValue) return;
+      var caretPosition = this.selectionStart;
+      var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+      var parts = [];
+  
+      for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
+          parts.push(sanitizedValue.substring(i, i + 4));
+      }
+  
+      for (var i = caretPosition - 1; i >= 0; i--) {
+          var c = this.value[i];
+          if (c < '0' || c > '9') {
+              caretPosition--;
+          }
+      }
+      caretPosition += Math.floor(caretPosition / 4);
+  
+      this.value = this.lastValue = parts.join(' ');
+      this.selectionStart = this.selectionEnd = caretPosition;
+  }
+  
+  //For Date formatted input
+  var expDate = document.getElementById('exp');
+  expDate.onkeyup = function (e) {
+      if (this.value == this.lastValue) return;
+      var caretPosition = this.selectionStart;
+      var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+      var parts = [];
+  
+      for (var i = 0, len = sanitizedValue.length; i < len; i += 2) {
+          parts.push(sanitizedValue.substring(i, i + 2));
+      }
+  
+      for (var i = caretPosition - 1; i >= 0; i--) {
+          var c = this.value[i];
+          if (c < '0' || c > '9') {
+              caretPosition--;
+          }
+      }
+      caretPosition += Math.floor(caretPosition / 2);
+  
+      this.value = this.lastValue = parts.join('/');
+      this.selectionStart = this.selectionEnd = caretPosition;
+  }
+</script>

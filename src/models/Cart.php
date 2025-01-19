@@ -55,7 +55,8 @@ class Cart extends Model {
 
     public static function setCreditCard($idcustomer, $number, $expiration, $holder, $cvv) {
         $statement = self::prepare(
-            "INSERT INTO credit_card (idcreditcard, number, expire, cvv, holder, idcustomer) VALUES (NULL, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE expire = VALUES(expire), holder = VALUES(holder), cvv = VALUES(cvv)",
+            "INSERT INTO credit_card (idcreditcard, number, expire, cvv, holder, idcustomer) VALUES (NULL, ?, ?, ?, ?, ?) 
+                ON DUPLICATE KEY UPDATE expire = VALUES(expire), holder = VALUES(holder), cvv = VALUES(cvv)",
             "ssssi",
             [$number, $expiration, $cvv, $holder, $idcustomer]);
         return;
@@ -67,5 +68,13 @@ class Cart extends Model {
             "i",
             [$idcustomer]);
         return;
+    }
+
+    public static function getCardId($number) {
+        $statement = self::prepare(
+            "SELECT idcreditcard FROM credit_card WHERE number = ?",
+            "s",
+            [$number]);
+        return self::fetchOne($statement)['idcreditcard'];
     }
 }

@@ -21,8 +21,11 @@ class CartController extends Controller {
 
     public function checkout(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
-            Cart::setCreditCard(Session::getUserId(), $request->getBody()['typeNum'], $request->getBody()['typeExp'], $request->getBody()['typeName'], $request->getBody()['typeCvv']);
-            Cart::checkout($request->getBody()['idcustomer'], $request->getBody()['idpersonaldata'], Application::$app->db->getLastId() , $request->getBody()['idstatus'], $request->getBody()['total']);
+            Cart::setCreditCard(Session::getUserId(), $request->getBody()['typeNum'], $request->getBody()['typeExp'], 
+                $request->getBody()['typeName'], $request->getBody()['typeCvv']);
+            Cart::checkout($request->getBody()['idcustomer'], $request->getBody()['idpersonaldata'], 
+                (Application::$app->db->getLastId() == 0 ? Cart::getCardId($request->getBody()['typeNum']) : Application::$app->db->getLastId()), 
+                $request->getBody()['idstatus'], $request->getBody()['total']);
             Cart::removeCart(Session::getUserId());
             $response->redirect('/');
         }

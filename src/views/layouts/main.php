@@ -41,16 +41,22 @@ use app\models\Cart;
                             </li>
                             <li><a class="dropdown-item" href="/category?idcategory=1">Rackets</a></li>
                             <li><a class="dropdown-item" href="/category?idcategory=2">Balls</a></li>
-                            <li><a class="dropdown-item" href="/category?idcategory=3">Strings</a></li>
-                            <li><a class="dropdown-item" href="/category?idcategory=4">Bags</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=3">Apparel</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=4">Shoes</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=5">Accessories</a></li>
+                            <li><a class="dropdown-item" href="/category?idcategory=6">Bags</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a class="btn btn-outline-dark me-1" href="">
-                        <i class="bi bi-bell"></i>
-                    </a>
+                    <div class="dropdown">
+                        <a class="btn btn-outline-dark me-1" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-bell"></i>
+                        </a>
+                    </div>
                     {{profile}}
+                    
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
                         Cart
