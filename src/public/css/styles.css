@@ -3,3 +3,7 @@
     background-size: cover;
     background-position: center;
 }
+
+.dropdown-item.disabled {
+    color: black;
+}
