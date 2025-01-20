@@ -17,11 +17,14 @@ class View {
     public function renderTemplate($params){
         $layout = Application::$ROOT_DIR."/views/layouts/".Application::$app->layout.".php";
         $templateRend = $this->captureOutput($layout, $params);
+        $nav = '';
         if(!Session::isLogged()){
-            $profile = Application::$ROOT_DIR."/views/nav/login.php";
+            $nav = 'login';
+            
         } else {
-            $profile = Application::$ROOT_DIR."/views/nav/profile.php";
+            $nav = 'profile';
         }
+        $profile = Application::$ROOT_DIR."/views/nav/{$nav}.php";
         return str_replace('{{profile}}', $this->captureOutput($profile, $params), $templateRend);
     }
 
