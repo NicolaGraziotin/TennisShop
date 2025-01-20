@@ -9,7 +9,7 @@ class View {
     public function render($view, $params){
         $templateRend = $this->renderTemplate($params);
         $viewRend = $this->renderView($templateRend, $view, $params);
-        return $view === 'home' || $view === 'cart' || $view === 'product' || $view === 'orders'
+        return $view === 'home' || $view === 'cart' || $view === 'product' || $view === 'orders' || $view === 'orderDetails'
             ? $this->renderComponents($view, $viewRend, $params)
             : $viewRend;
     }
@@ -59,6 +59,14 @@ class View {
                         $$key = $value;
                     }
                     $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/orderComponent.php", $prod);
+                }
+                break;
+            case 'orderDetails':
+                foreach($params["orders"] as $prod){
+                    foreach ($prod as $key => $value) {
+                        $$key = $value;
+                    }
+                    $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/orderDetailsComponent.php", $prod);
                 }
                 break;
             default:

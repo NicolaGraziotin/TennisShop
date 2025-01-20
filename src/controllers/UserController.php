@@ -76,4 +76,9 @@ class UserController extends Controller {
             return $response->redirect('/orders');
         }
     }
+
+    public function orderDetails() {
+        $params['orders'] = User::getOrders(Session::getUserId());
+        return $this->render('orderDetails', $params);
+    }
 }

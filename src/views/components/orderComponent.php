@@ -24,7 +24,7 @@
 
         <dl class="mb-0 w-50 w-md-25">
             <dt class="text-secondary">Status:</dt>
-            <dd class="badge bg-success text-white mb-0"><?php echo User::getStatusOrder($idorder)['name']?></dd>
+            <dd class="badge bg-success text-white mb-0"><?php echo User::getStatusOrder($idorder)['name']?></dd> 
         </dl>
 
         <div class="d-flex flex-wrap gap-2 mt-3 mt-md-0 ms-md-auto">
@@ -32,7 +32,7 @@
                 <input type="text" name="idorder" value="<?php echo $idorder?>" hidden>
                 <button type="submit" class="btn btn-outline-danger btn-sm">Cancel order</button>
             </form>
-            <a href="#" class="btn btn-outline-secondary btn-sm">View details</a>
+            <a href="/orderDetails" class="btn btn-outline-secondary btn-sm">View details</a>
         </div>
         </div>
     </div>
