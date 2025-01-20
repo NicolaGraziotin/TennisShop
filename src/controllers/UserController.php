@@ -14,8 +14,7 @@ class UserController extends Controller {
     public function register(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
             User::addUser($request->getBody()['email'], $request->getBody()['password'], $request->getBody()['name'], $request->getBody()['surname']);
-            $response->redirect('/login');
-            return;
+            return $response->redirect('/login');
         }
         return $this->render('register');
     }
@@ -41,7 +40,7 @@ class UserController extends Controller {
 
     public function logout(Request $request, Response $response) {
         Session::destroy();
-        $response->redirect('/');
+        return $response->redirect('/');
     }
 
     public function informations(Request $request) {
@@ -60,14 +59,21 @@ class UserController extends Controller {
         return $this->render('orders', $params);
     }
 
-    public function dashboard() {
-        return $this->render('dashboard');
+    public function dashboard(Request $request, Response $response) {
+        $view = 'dashboard';
+        if (!Session::isAdmin()) {
+            $view = 'forbidden';
+            $response->statusCode(ERROR_FORBIDDEN);
+        } else {
+            Application::$app->layout = 'dashboard';
+        }
+        return $this->render($view);
     }
 
     public function cancelOrder(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
             User::cancelOrder($request->getBody()['idorder']);
-            $response->redirect('/orders');
+            return $response->redirect('/orders');
         }
     }
 }

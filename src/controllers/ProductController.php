@@ -15,7 +15,7 @@ class ProductController extends Controller {
     public function product(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
             if(!Session::isLogged()){
-                $response->redirect('/login');
+                return $response->redirect('/login');
             }
             Cart::addProduct(Session::getUserId(), $request->getBody()['idproduct'], $request->getBody()['quantity']);
         }
