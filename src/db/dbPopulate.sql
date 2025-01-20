@@ -43,3 +43,6 @@ INSERT INTO `personal_data` (`idpersonaldata`, `country`, `state`, `city`, `addr
 (2, 'Italia', 'Veneto', 'Vicenza', 'Via delle Rose 1', '36100', '1234567890', 2),
 (3, 'Italia', 'Veneto', 'Vicenza', 'Via delle Rose 2', '36100', '1234567890', 3),
 (4, 'Italia', 'Veneto', 'Vicenza', 'Via delle Rose 3', '36100', '1234567890', 4);
+
+INSERT INTO `status` (`idstatus`,`name`,`description`) VALUES 
+(1, 'Approvato', 'ordine approvato in fase di approvazione')
