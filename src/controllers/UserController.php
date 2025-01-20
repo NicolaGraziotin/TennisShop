@@ -77,8 +77,8 @@ class UserController extends Controller {
         }
     }
 
-    public function orderDetails() {
-        $params['orders'] = User::getOrders(Session::getUserId());
+    public function orderDetails(Request $request) {
+        $params['orderDetails'] = User::getOrderDetails($request->getBody()['idorder']);
         return $this->render('orderDetails', $params);
     }
 }

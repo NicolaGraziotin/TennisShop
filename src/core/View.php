@@ -62,7 +62,7 @@ class View {
                 }
                 break;
             case 'orderDetails':
-                foreach($params["orders"] as $prod){
+                foreach($params["orderDetails"] as $prod){
                     foreach ($prod as $key => $value) {
                         $$key = $value;
                     }
