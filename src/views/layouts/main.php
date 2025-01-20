@@ -49,10 +49,10 @@ use app\models\Cart;
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <div class="dropstart">
-                        <a class="btn btn-outline-dark  me-1" id="navbarDropdown" href="#" role="button"
+                    <div class="dropdown">
+                        <a class="btn btn-outline-dark msg-box me-1" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                            <i class="bi bi-bell"></i>
+                            <i class="bi bi-envelope"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
                             <!-- notification title -->
