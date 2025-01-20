@@ -59,17 +59,6 @@ class UserController extends Controller {
         return $this->render('orders', $params);
     }
 
-    public function dashboard(Request $request, Response $response) {
-        $view = 'dashboard';
-        if (!Session::isAdmin()) {
-            $view = 'forbidden';
-            $response->statusCode(ERROR_FORBIDDEN);
-        } else {
-            Application::$app->layout = 'dashboard';
-        }
-        return $this->render($view);
-    }
-
     public function cancelOrder(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
             User::cancelOrder($request->getBody()['idorder']);

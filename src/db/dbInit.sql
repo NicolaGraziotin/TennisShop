@@ -15,11 +15,11 @@ CREATE TABLE `category` (
 
 CREATE TABLE `credit_card` (
   `idcreditcard` int NOT NULL,
+  `idcustomer` int NOT NULL,
   `number` varchar(50) NOT NULL,
   `expire` varchar(50) NOT NULL,
   `cvv` varchar(50) NOT NULL,
-  `holder` varchar(50) NOT NULL,
-  `idcustomer` int NOT NULL
+  `holder` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `customer` (
@@ -43,30 +43,31 @@ CREATE TABLE `customer_order` (
 
 CREATE TABLE `notification` (
   `idnotification` int NOT NULL,
+  `idcustomer` int NOT NULL,
   `date` date NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `title` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL,
-  `idcustomer` int NOT NULL
+  `description` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `personal_data` (
   `idpersonaldata` int NOT NULL,
+  `idcustomer` int NOT NULL,
   `country` varchar(50) NOT NULL,
   `state` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `cap` varchar(50) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `idcustomer` int NOT NULL
+  `phone` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `product` (
   `idproduct` int NOT NULL,
+  `idcategory` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `price` int NOT NULL,
-  `idcategory` int NOT NULL
+  `stock` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `review` (

@@ -1,8 +1,9 @@
 <?php
 
 use app\core\Application;
-use app\controllers\HomeController;
 use app\controllers\CartController;
+use app\controllers\DashboardController;
+use app\controllers\HomeController;
 use app\controllers\UserController;
 use app\controllers\ProductController;
 
@@ -47,7 +48,12 @@ $app->router->get('/logout', [UserController::class, 'logout']);
 $app->router->get('/informations', [UserController::class, 'informations']);
 $app->router->post('/informations', [UserController::class, 'informations']);
 $app->router->get('/orders', [UserController::class, 'orders']);
-$app->router->get('/dashboard', [UserController::class, 'dashboard']);
 $app->router->post('/cancelOrder', [UserController::class, 'cancelOrder']);
 $app->router->get('/orderDetails', [UserController::class, 'orderDetails']);
+
+/* Dashboard Controller */
+$app->router->get('/dashboard', [DashboardController::class, 'dashboard']);
+$app->router->get('/dashboard/statistics', [DashboardController::class, 'statistics']);
+$app->router->get('/dashboard/products', [DashboardController::class, 'products']);
+
 $app->run();
