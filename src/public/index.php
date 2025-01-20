@@ -6,6 +6,9 @@ use app\controllers\CartController;
 use app\controllers\UserController;
 use app\controllers\ProductController;
 
+define('ERROR_FORBIDDEN', 403);
+define('ERROR_NOT_FOUND', 404);
+
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -46,4 +49,5 @@ $app->router->post('/informations', [UserController::class, 'informations']);
 $app->router->get('/orders', [UserController::class, 'orders']);
 $app->router->get('/dashboard', [UserController::class, 'dashboard']);
 $app->router->post('/cancelOrder', [UserController::class, 'cancelOrder']);
+
 $app->run();

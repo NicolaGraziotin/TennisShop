@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const editButton = document.getElementById('editButton');
 
     if (editButton) {
-        editButton.addEventListener('click', function() {
+        editButton.addEventListener('click', () => {
             const inputs = document.querySelectorAll('.form-control');
             inputs.forEach(input => {
                 input.disabled = !input.disabled;

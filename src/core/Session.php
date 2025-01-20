@@ -28,7 +28,7 @@ class Session {
     }
 
     public static function isAdmin() {
-        return $_SESSION['seller'] != null && $_SESSION['seller'] === 1;
+        return self::isLogged() && $_SESSION['user']['seller'] === 1;
     }
 
     public static function isLogged() {

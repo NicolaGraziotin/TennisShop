@@ -24,6 +24,7 @@ class Router {
         $url = $this->request->getUrl();
         $callback = $this->routeMap[$method][$url] ?? false;
         if (!$callback) {
+            $this->response->statusCode(ERROR_NOT_FOUND);
             $callback = $this->response->notFound();
         }
         $callback[0] = new $callback[0];
