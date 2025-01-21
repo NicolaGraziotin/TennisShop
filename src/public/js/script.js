@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setInterval(() => {
                 notification();
-            }, 1000);  
+            }, 2000);  
         }  
         
     
@@ -58,10 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (xhr.status == 200) {
                     let data = JSON.parse(xhr.responseText);
                     console.log(data);
-                    data.forEach(message => {
-                        let li = `<li class="dropdown-item">${message.description}</li>`;
-                        notify_container.innerHTML += li;
-                    });
+                    if (data.length == 0) {
+                        notify_container.innerHTML = '<li class="dropdown-item">No notifications</li>';
+                    } else {
+                        data.forEach(message => {
+                            let li = `<li class="dropdown-item">${message.description}</li>`;
+                            notify_container.innerHTML += li;
+                        });
+                    }
                 }
             }
         });
