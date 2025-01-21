@@ -15,8 +15,8 @@
                     <i class="bi bi-dash-lg"></i>
                 </button>
 
-                <input id="form1" min="0" name="quantity" value="<?php echo $quantity ?>" type="text"
-                    class="form-control form-control-sm text-center" />
+                <input id="form1" min="0" name="quantity" value="<?php echo $quantity ?>" type="number"
+                    class="form-control form-control-sm text-center" readonly/>
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
