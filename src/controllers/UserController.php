@@ -55,7 +55,7 @@ class UserController extends Controller {
     }
 
     public function orders() {
-        $params['orders'] = User::getOrders(Session::getUserId());
+        $params['orderComponent'] = User::getOrders(Session::getUserId());
         return $this->render('orders', $params);
     }
 
@@ -67,7 +67,7 @@ class UserController extends Controller {
     }
 
     public function orderDetails(Request $request) {
-        $params['orderDetails'] = User::getOrderDetails($request->getBody()['idorder']);
+        $params['orderDetailsComponent'] = User::getOrderDetails($request->getBody()['idorder']);
         return $this->render('orderDetails', $params);
     }
 }

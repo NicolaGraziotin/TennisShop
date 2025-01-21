@@ -1,7 +1,6 @@
 <?php
     use app\models\Product;
 ?>
-<!-- Products Table -->
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Products</h1>
 </div>
@@ -28,6 +27,12 @@
                     echo '<td>' . $product['description'] . '</td>';
                     echo '<td>$' . $product['price'] . '</td>';
                     echo '<td>' . $product['stock'] . '</td>';
+                    echo '<td>';
+                    echo '<form method="get" action="/dashboard/products/edit">';
+                    echo '<input type="hidden" name="idproduct" value="' . $product['idproduct'] . '">';
+                    echo '<button type="submit">Edit</button>';
+                    echo '</form>';
+                    echo '</td>';
                     echo '</tr>';
                 }
             ?>

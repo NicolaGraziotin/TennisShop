@@ -15,7 +15,7 @@ class CartController extends Controller {
         if(!Session::isLogged()){
             return $response->redirect('/login');
         }
-        $params['cartProducts'] = Cart::getCart(Session::getUserId());
+        $params['cartProduct'] = Cart::getCart(Session::getUserId());
         return $this->render('cart', $params);
     }
 

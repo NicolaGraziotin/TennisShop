@@ -36,40 +36,28 @@ class View {
 
     public function renderComponents($view, $viewRend, $params){
         $componentsContent = '';
+        $comp = '';
         switch($view){
             case 'home': case'product':
-                foreach($params["homeProducts"] as $prod){
-                    foreach ($prod as $key => $value) {
-                        $$key = $value;
-                    }
-                    $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/homeProduct.php", $prod);
-                }
+                $comp = 'homeProduct';
                 break;
             case 'cart':
-                foreach($params["cartProducts"] as $prod){
-                    foreach ($prod as $key => $value) {
-                        $$key = $value;
-                    }
-                    $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/cartProduct.php", $prod);
-                }
+                $comp = 'cartProduct';
                 break;
             case 'orders':
-                foreach($params["orders"] as $prod){
-                    foreach ($prod as $key => $value) {
-                        $$key = $value;
-                    }
-                    $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/orderComponent.php", $prod);
-                }
+                $comp = 'orderComponent';
                 break;
             case 'orderDetails':
-                foreach($params["orderDetails"] as $prod){
-                    foreach ($prod as $key => $value) {
-                        $$key = $value;
-                    }
-                    $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/orderDetailsComponent.php", $prod);
-                }
+                $comp = 'orderDetailsComponent';
                 break;
             default:
+        }
+
+        foreach($params["{$comp}"] as $prod){
+            foreach ($prod as $key => $value) {
+                $$key = $value;
+            }
+            $componentsContent .= $this->captureOutput(Application::$ROOT_DIR."/views/components/{$comp}.php", $prod);
         }
 
         return str_replace('{{components}}', $componentsContent, $viewRend);

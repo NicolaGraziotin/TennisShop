@@ -29,4 +29,14 @@ class DashboardController extends Controller {
         $params = Product::getAllProducts();
         return $this->render('dashboard/products');
     }
+
+    public function edit(Request $request, Response $response) {
+        if ($request->getMethod() === 'post') {
+            Product::setProduct($request->getBody());
+            return $response->redirect('/dashboard/products');
+        }
+        Application::$app->layout = 'dashboard';
+        $params['product'] = Product::getProductById($request->getBody()['idproduct']);
+        return $this->render('dashboard/edit', $params);
+    }
 }
