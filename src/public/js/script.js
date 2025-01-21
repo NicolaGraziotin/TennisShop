@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         notify_container.innerHTML = '<li class="dropdown-item">No notifications</li>';
                     } else {
                         data.forEach(message => {
-                            let li = `<li class="dropdown-item">${message.description}</li>`;
+                            let li = `<li class="dropdown-item"><i class="bi bi-archive-fill p-1"></i>${message.description}</li>`;
                             notify_container.innerHTML += li;
                         });
                     }

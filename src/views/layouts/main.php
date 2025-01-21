@@ -58,7 +58,7 @@
                                 </span>
                             </button>
                         </div>
-                        <ul class="dropdown-menu" id="notify-menu"></ul>
+                        <ul class="dropdown-menu notify" id="notify-menu"></ul>
                     </div>
                     {{profile}}
                     

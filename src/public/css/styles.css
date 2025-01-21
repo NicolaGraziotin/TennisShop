@@ -7,3 +7,15 @@
 .dropdown-item.disabled {
     color: black;
 }
+
+.notify{
+    width: 300px;
+}
+
+.notify li {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+}

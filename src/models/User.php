@@ -109,10 +109,10 @@ class User extends Model {
     }
 
     public static function getMessage($idcustomer) {
-        $statement2 = self::prepare(
-            "SELECT description FROM notification WHERE idcustomer = ? AND seen = 1",
+        $statement = self::prepare(
+            "SELECT * FROM notification WHERE idcustomer = ? AND seen = 1",
             "i",
             [$idcustomer]);
-        return json_encode(self::fetchAll($statement2));
+        return json_encode(self::fetchAll($statement));
     }
 }
