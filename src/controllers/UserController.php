@@ -76,4 +76,13 @@ class UserController extends Controller {
             return $response->redirect('/orders');
         }
     }
+
+    public function checkMessage() {
+        return User::anyMessage(Session::getUserId());
+    }
+
+    public function getMessage() {
+        User::readMessage(Session::getUserId());
+        return User::getMessage(Session::getUserId());
+    }
 }

@@ -11,17 +11,60 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    //ajax interval for checking new messages
-    setInterval(checkMsg,10000);
+    const notify_btn = document.getElementById('notify-btn');
+    const notify_label = document.getElementById('show-notif');
+    const notify_container = document.getElementById('notify-menu');
+    
+    if (notify_btn && notify_label && notify_container) {
+        let xhr = new XMLHttpRequest();
+    
+        function notification() {
+            xhr.open('GET', '/checkMessage', true);
+            xhr.send();
+            xhr.onload = () => {
+                if (xhr.status == 200) {
+                    let get_data = JSON.parse(xhr.responseText);
+                    console.log(get_data);
+                    if(get_data == get_data) {
+                        notify_label.innerHTML = get_data;
+                    } else {
+                        notify_btn.innerHTML += get_data;
+                    }
+                }
+            }
+        }
+    
+        window.onload = () => {
+            notification();
 
-})
+            setInterval(() => {
+                notification();
+            }, 1000);  
+        }  
+        
+    
+    
+        notify_btn.addEventListener('click', (e) => {
+            e.preventDefault();
+    
+            notify_container.classList.toggle('show');
+            
+            xhr.open('GET', '/getMessage', true);
+            xhr.send();
+            
+            notify_container.innerHTML = '';
+            
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    data.forEach(message => {
+                        let li = `<li class="dropdown-item">${message.description}</li>`;
+                        notify_container.innerHTML += li;
+                    });
+                }
+            }
+        });
+    }
+});
 
-function checkMsg(){
-    fetch('ajax/ajax.php?user_id=<?php echo Session::GetUserId(); ?>')
-        .then(response => response.text())
-        .then(data => {
-            document.querySelector('.msg-box').innerHTML = data;
-        })
-        .catch(error => console.error('Error:', error)
-    );
-};

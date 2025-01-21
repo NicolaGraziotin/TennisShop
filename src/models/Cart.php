@@ -77,4 +77,12 @@ class Cart extends Model {
             [$number]);
         return self::fetchOne($statement)['idcreditcard'];
     }
+
+    public static function setNotification($sender, $description, $idcustomer) {
+        $statement = self::prepare(
+            "INSERT INTO notification (idnotification, date, timestamp, title, description, seen, idcustomer) VALUES (NULL, ?, ?, ?, ?, 0, ?)",
+            "ssssi",
+            [date("Y-m-d"), date("H:i:s"), $sender, $description, $idcustomer]);
+        return;        
+    }
 }
