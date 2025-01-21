@@ -48,4 +48,8 @@ class DashboardController extends Controller {
         }
         return $this->render('dashboard/edit', $params);
     }
+
+    public function settings() {
+        return $this->render('dashboard/settings');
+    }
 }
