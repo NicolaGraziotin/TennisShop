@@ -1,7 +1,7 @@
 <?php
-use app\core\Application;
-use app\core\Session;
-use app\models\Cart;
+    use app\core\Application;
+    use app\core\Session;
+    use app\models\Cart;
 ?>
 <!DOCTYPE html>
 <html lang="en">
