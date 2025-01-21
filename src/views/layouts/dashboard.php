@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/dashboard">Dashboard</a>
+            <a class="navbar-brand" href="/dashboard">Tennis Shop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,8 +23,8 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/dashboard/statistics">
-                                <i class="bi bi-house"></i> Statistics
+                            <a class="nav-link active" aria-current="page" href="/dashboard">
+                                <i class="bi bi-house"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
@@ -69,8 +69,6 @@
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/script.js"></script>
 </body>
 
 </html>

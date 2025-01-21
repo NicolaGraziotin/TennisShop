@@ -53,7 +53,6 @@ $app->router->get('/orderDetails', [UserController::class, 'orderDetails']);
 
 /* Dashboard Controller */
 $app->router->get('/dashboard', [DashboardController::class, 'dashboard']);
-$app->router->get('/dashboard/statistics', [DashboardController::class, 'statistics']);
 $app->router->get('/dashboard/products', [DashboardController::class, 'products']);
 $app->router->get('/dashboard/products/edit', [DashboardController::class, 'edit']);
 $app->router->post('/dashboard/products/edit', [DashboardController::class, 'edit']);
