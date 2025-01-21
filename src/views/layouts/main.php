@@ -49,37 +49,16 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <div class="dropstart">
-                        <a class="btn btn-outline-dark  me-1" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                            <i class="bi bi-bell"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-                            <!-- notification title -->
-                            <li class="dropdown-item d-flex justify-content-between align-items-center disabled">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <p class="fw-bold mb-0">Notifications</p>
-                                    </div>
-                                </div>
-                            </li>   
-                            <li class="dropdown-item d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <p class="fst-italic mb-0">John Doe</p>
-                                        <p class="text-muted mb-0 fs-sm">john.dose@gmail.com</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown-item d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <p class="fst-italic mb-0">Alex Ray</p>
-                                        <p class="text-muted mb-0 fs-sm">alex.ray@gmail.com</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="dropdown">
+                        <div class="notify-btn" id="notify-btn">
+                            <button class="btn btn-outline-dark me-1">
+                                <span><i class="bi bi-bell-fill"></i></span>
+                                <span class="show_notif" id="show-notif">
+                                    <div class="spinner-border spinner-border-sm"></div>
+                                </span>
+                            </button>
+                        </div>
+                        <ul class="dropdown-menu notify" id="notify-menu"></ul>
                     </div>
                     {{profile}}
                     

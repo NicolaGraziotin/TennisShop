@@ -70,4 +70,13 @@ class UserController extends Controller {
         $params['orderDetailsComponent'] = User::getOrderDetails($request->getBody()['idorder']);
         return $this->render('orderDetails', $params);
     }
+
+    public function checkMessage() {
+        return User::anyMessage(Session::getUserId());
+    }
+
+    public function getMessage() {
+        User::readMessage(Session::getUserId());
+        return User::getMessage(Session::getUserId());
+    }
 }

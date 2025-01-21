@@ -89,4 +89,30 @@ class User extends Model {
             [$idorder]);
         return;
     }
+
+    public static function anyMessage($idcustomer) {
+        $statement = self::prepare(
+            "SELECT COUNT(*) as total FROM notification WHERE idcustomer = ? AND seen = 0",
+            "i",
+            [$idcustomer]);
+    
+        return self::fetchOne($statement)['total'];
+        
+    }
+
+    public static function readMessage($idcustomer) {
+        $statement = self::prepare(
+            "UPDATE notification SET seen = 1 WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return;
+    }
+
+    public static function getMessage($idcustomer) {
+        $statement = self::prepare(
+            "SELECT * FROM notification WHERE idcustomer = ? AND seen = 1",
+            "i",
+            [$idcustomer]);
+        return json_encode(self::fetchAll($statement));
+    }
 }

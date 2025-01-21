@@ -43,11 +43,12 @@ CREATE TABLE `customer_order` (
 
 CREATE TABLE `notification` (
   `idnotification` int NOT NULL,
-  `idcustomer` int NOT NULL,
   `date` date NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `timestamp` varchar(50) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL
+  `description` varchar(50) NOT NULL,
+  `seen` tinyint(1) NOT NULL,
+  `idcustomer` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `personal_data` (
