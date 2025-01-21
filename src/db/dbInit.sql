@@ -47,6 +47,7 @@ CREATE TABLE `notification` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `title` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
+  `seen` tinyint(1) NOT NULL,
   `idcustomer` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
