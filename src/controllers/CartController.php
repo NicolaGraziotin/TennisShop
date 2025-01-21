@@ -15,17 +15,18 @@ class CartController extends Controller {
         if(!Session::isLogged()){
             return $response->redirect('/login');
         }
-        $params['cartProducts'] = Cart::getCart(Session::getUserId());
+        $params['cartProduct'] = Cart::getCart(Session::getUserId());
         return $this->render('cart', $params);
     }
 
     public function checkout(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
-            Cart::setCreditCard(Session::getUserId(), $request->getBody()['typeNum'], $request->getBody()['typeExp'], 
-                $request->getBody()['typeName'], $request->getBody()['typeCvv']);
-            Cart::checkout($request->getBody()['idcustomer'], $request->getBody()['idpersonaldata'], 
-                (Application::$app->db->getLastId() == 0 ? Cart::getCardId($request->getBody()['typeNum']) : Application::$app->db->getLastId()), 
-                $request->getBody()['idstatus'], $request->getBody()['total']);
+            $body = $request->getBody();
+            Cart::setCreditCard(Session::getUserId(), $body['typeNum'], $body['typeExp'], 
+                $body['typeName'], $body['typeCvv']);
+            Cart::checkout($body['idcustomer'], $body['idpersonaldata'], 
+                (Application::$app->db->getLastId() == 0 ? Cart::getCardId($body['typeNum']) : Application::$app->db->getLastId()), 
+                $body['idstatus'], $body['total']);
             Cart::removeCart(Session::getUserId());
             Cart::setNotification("TennisShop", "Your order has been placed successfully!", Session::getUserId());
             return $response->redirect('/');

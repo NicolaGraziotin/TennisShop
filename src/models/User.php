@@ -60,7 +60,7 @@ class User extends Model {
 
     public static function getStatusOrder($idorder) {
         $statement = self::prepare(
-            "SELECT * FROM status JOIN customer_order WHERE idorder = ?",
+            "SELECT * FROM status JOIN customer_order WHERE idorder = ? AND status.idstatus = customer_order.idstatus",
             "i",
             [$idorder]);
         return self::fetchOne($statement);
@@ -69,6 +69,22 @@ class User extends Model {
     public static function cancelOrder($idorder) {
         $statement = self::prepare(
             "DELETE FROM customer_order WHERE idorder = ?",
+            "i",
+            [$idorder]);
+        return;
+    }
+
+    public static function getOrderDetails($idorder) {
+        $statement = self::prepare(
+            "SELECT * FROM customer_order WHERE idorder = ?",
+            "i",
+            [$idorder]);
+        return self::fetchAll($statement);
+    }
+
+    public static function updateOrderStatus($idorder) {
+        $statement = self::prepare(
+            "UPDATE customer_order SET idstatus = '4'  WHERE idorder = ?",
             "i",
             [$idorder]);
         return;

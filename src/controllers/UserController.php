@@ -55,19 +55,8 @@ class UserController extends Controller {
     }
 
     public function orders() {
-        $params['orders'] = User::getOrders(Session::getUserId());
+        $params['orderComponent'] = User::getOrders(Session::getUserId());
         return $this->render('orders', $params);
-    }
-
-    public function dashboard(Request $request, Response $response) {
-        $view = 'dashboard';
-        if (!Session::isAdmin()) {
-            $view = 'forbidden';
-            $response->statusCode(ERROR_FORBIDDEN);
-        } else {
-            Application::$app->layout = 'dashboard';
-        }
-        return $this->render($view);
     }
 
     public function cancelOrder(Request $request, Response $response) {
@@ -75,6 +64,11 @@ class UserController extends Controller {
             User::cancelOrder($request->getBody()['idorder']);
             return $response->redirect('/orders');
         }
+    }
+
+    public function orderDetails(Request $request) {
+        $params['orderDetailsComponent'] = User::getOrderDetails($request->getBody()['idorder']);
+        return $this->render('orderDetails', $params);
     }
 
     public function checkMessage() {
