@@ -43,7 +43,6 @@ CREATE TABLE `customer_order` (
 
 CREATE TABLE `notification` (
   `idnotification` int NOT NULL,
-  `idcustomer` int NOT NULL,
   `date` date NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `title` varchar(50) NOT NULL,
