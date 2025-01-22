@@ -68,7 +68,8 @@ CREATE TABLE `product` (
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `price` int NOT NULL,
-  `stock` int NOT NULL
+  `stock` int NOT NULL,
+  `image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `review` (
