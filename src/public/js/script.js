@@ -1,6 +1,7 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const editButton = document.getElementById('editButton');
-
+    
     if (editButton) {
         editButton.addEventListener('click', () => {
             const inputs = document.querySelectorAll('.form-control');
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#saveButton').hidden = !document.querySelector('#saveButton').hidden;
         })
     }
-
+    
     const notify_btn = document.getElementById('notify-btn');
     const notify_label = document.getElementById('show-notif');
     const notify_container = document.getElementById('notify-menu');
@@ -49,26 +50,49 @@ document.addEventListener('DOMContentLoaded', () => {
     
             notify_container.classList.toggle('show');
             
+            showMessage();
+
+            setInterval(() => {
+                showMessage();
+            }, 2000);
+        });
+
+        function showMessage() {
             xhr.open('GET', '/getMessage', true);
             xhr.send();
             
-            notify_container.innerHTML = '';
-            
+            let temp = '';
+
             xhr.onload = function() {
                 if (xhr.status == 200) {
                     let data = JSON.parse(xhr.responseText);
                     console.log(data);
                     if (data.length == 0) {
-                        notify_container.innerHTML = '<li class="dropdown-item">No notifications</li>';
+                        temp += '<li class="dropdown-item">No notifications</li>';
                     } else {
                         data.forEach(message => {
-                            let li = `<li class="dropdown-item"><i class="bi bi-archive-fill p-1"></i>${message.description}</li>`;
-                            notify_container.innerHTML += li;
+                            if(message.seen == 0) {
+                                temp += `<li class="dropdown-item" onclick="readMessage(${message.idnotification})"><i class="bi bi-archive-fill p-1"></i>${message.description}</li>`;
+                                //notify_container.innerHTML += li;
+                            } else {
+                                temp += `<li class="dropdown-item"><i class="bi bi-archive p-1"></i>${message.description}</li>`;
+                                //notify_container.innerHTML += li;
+                            }
                         });
                     }
                 }
+                notify_container.innerHTML = temp;
             }
-        });
+            
+        }
+        
+        
     }
 });
+function readMessage($idnotification) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', `/readMessage?idnotification=${$idnotification}`, true);
+    xhr.send();
+}
+
 

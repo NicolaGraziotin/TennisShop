@@ -52,6 +52,7 @@ $app->router->post('/cancelOrder', [UserController::class, 'cancelOrder']);
 $app->router->get('/checkMessage', [UserController::class, 'checkMessage']);
 $app->router->get('/getMessage', [UserController::class, 'getMessage']);
 $app->router->get('/orderDetails', [UserController::class, 'orderDetails']);
+$app->router->get('/readMessage', [UserController::class, 'readMessage']);
 
 /* Dashboard Controller */
 $app->router->get('/dashboard', [DashboardController::class, 'dashboard']);

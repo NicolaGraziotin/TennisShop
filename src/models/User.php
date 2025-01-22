@@ -100,17 +100,17 @@ class User extends Model {
         
     }
 
-    public static function readMessage($idcustomer) {
+    public static function readMessage($idcustomer, $idnotification) {
         $statement = self::prepare(
-            "UPDATE notification SET seen = 1 WHERE idcustomer = ?",
-            "i",
-            [$idcustomer]);
+            "UPDATE notification SET seen = 1 WHERE idcustomer = ? AND idnotification = ?",
+            "ii",
+            [$idcustomer, $idnotification]);
         return;
     }
 
     public static function getMessage($idcustomer) {
         $statement = self::prepare(
-            "SELECT * FROM notification WHERE idcustomer = ? AND seen = 1",
+            "SELECT * FROM notification WHERE idcustomer = ?",
             "i",
             [$idcustomer]);
         return json_encode(self::fetchAll($statement));

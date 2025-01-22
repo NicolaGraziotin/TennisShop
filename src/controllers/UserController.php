@@ -76,7 +76,11 @@ class UserController extends Controller {
     }
 
     public function getMessage() {
-        User::readMessage(Session::getUserId());
         return User::getMessage(Session::getUserId());
+    }
+
+    public function readMessage(Request $request) {
+        User::readMessage(Session::getUserId() ,$request->getBody()['idnotification']);
+        return;
     }
 }
