@@ -6,7 +6,7 @@ class Cart extends Model {
 
     public static function getCart($idcustomer) {
         $statement = self::prepare(
-            "SELECT name, price, quantity FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ?",
+            "SELECT * FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ?",
             "i",
             [$idcustomer]);
         return self::fetchAll($statement);
