@@ -49,3 +49,8 @@ INSERT INTO `status` (`idstatus`,`name`,`description`) VALUES
 (2, 'Spedito', 'ordine spedito dal magazzino'),
 (3, 'In consegna', 'ordine in consegna presso il destinatario'),
 (4, 'Consegnato', 'ordine consegnato al destinatario con successo');
+
+INSERT INTO `shipping` (`idshipping`,`name`,`fee`,`active`) VALUES 
+(1, 'DHL', 5, True),
+(2, 'UPS', 10, False),
+(3, 'BRT', 7, False);

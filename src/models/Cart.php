@@ -85,4 +85,20 @@ class Cart extends Model {
             [date("Y-m-d"), date("H:i:s"), $sender, $description, $idcustomer]);
         return;        
     }
+
+    public static function getCurrentShipping() {
+        $statement = self::prepare(
+            "SELECT * FROM shipping WHERE active = ?",
+            "i",
+            [True]);
+        return self::fetchOne($statement);
+    }
+
+    public static function getShippings() {
+        $statement = self::prepare(
+            "SELECT * FROM shipping",
+            "",
+            []);
+        return self::fetchAll($statement);
+    }
 }

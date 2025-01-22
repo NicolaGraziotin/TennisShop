@@ -38,7 +38,7 @@ CREATE TABLE `customer_order` (
   `idcreditcard` int NOT NULL,
   `idstatus` int NOT NULL,
   `date` varchar(50) NOT NULL,
-  `totalprice` int NOT NULL
+  `totalprice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `notification` (
@@ -67,7 +67,7 @@ CREATE TABLE `product` (
   `idcategory` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
-  `price` int NOT NULL,
+  `price` double NOT NULL,
   `stock` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -83,6 +83,13 @@ CREATE TABLE `status` (
   `idstatus` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `shipping` (
+  `idshipping` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `fee` double NOT NULL,
+  `active` boolean NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -126,6 +133,9 @@ ALTER TABLE `review`
 
 ALTER TABLE `status`
   ADD PRIMARY KEY (`idstatus`);
+
+ALTER TABLE `shipping`
+  ADD PRIMARY KEY (`idshipping`);
 
 
 ALTER TABLE `category`

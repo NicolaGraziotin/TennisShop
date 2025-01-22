@@ -27,4 +27,16 @@ class Admin extends Model {
             []);
         return self::fetchOne($statement)['COUNT(*)'];
     }
+
+    public static function setShipping($idshipping) {
+        self::prepare(
+            "UPDATE shipping SET active = ?",
+            "i",
+            [False]);
+        self::prepare(
+            "UPDATE shipping SET active = ? WHERE idshipping = ?",
+            "is",
+            [True, $idshipping]);
+        return;
+    }
 }

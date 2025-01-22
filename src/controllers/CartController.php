@@ -16,6 +16,7 @@ class CartController extends Controller {
             return $response->redirect('/login');
         }
         $params['cartProduct'] = Cart::getCart(Session::getUserId());
+        $params['shipping'] = Cart::getCurrentShipping()['fee'];
         return $this->render('cart', $params);
     }
 

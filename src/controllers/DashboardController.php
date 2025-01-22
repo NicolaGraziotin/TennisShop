@@ -7,25 +7,18 @@ use app\core\Application;
 use app\core\Request;
 use app\core\Response;
 use app\core\Session;
+use app\models\Admin;
 use app\models\Product;
 
 class DashboardController extends Controller {
-    
-    public function __construct() {
-        Application::$app->layout = 'dashboard';
-    }
 
     public function dashboard(Request $request, Response $response) {
-        if (!Session::isAdmin()) {
-            $response->statusCode(ERROR_FORBIDDEN);
-            return $this->render('forbidden');
-        }
-        return $this->render('dashboard/dashboard');
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/dashboard');
     }
 
-    public function products() {
+    public function products(Request $request, Response $response) {
         $params = Product::getAllProducts();
-        return $this->render('dashboard/products');
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/products');
     }
 
     public function edit(Request $request, Response $response) {
@@ -46,10 +39,23 @@ class DashboardController extends Controller {
                 'stock' => ''
             ];
         }
-        return $this->render('dashboard/edit', $params);
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/edit', $params);
     }
 
-    public function settings() {
-        return $this->render('dashboard/settings');
+    public function settings(Request $request, Response $response) {
+        if ($request->getMethod() === 'post') {
+            $body = $request->getBody();
+            Admin::setShipping($body['idshipping']);
+            return $response->redirect('/dashboard/settings');
+        }
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/settings');
+    }
+
+    private function checkAdmin(Request $request, Response $response) {
+        if (!Session::isAdmin()) {
+            $response->statusCode(ERROR_FORBIDDEN);
+            return $this->render('forbidden');
+        }
+        Application::$app->layout = 'dashboard';
     }
 }

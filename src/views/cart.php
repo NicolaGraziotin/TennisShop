@@ -5,7 +5,6 @@
 
   $idcustomer = Session::getUserId();
   $totalPrice = Cart::totalCartPrice($idcustomer);
-  $shipping = 5; // Shipping cost (DA MODIFICARE CON UNA VARIABILE SUCCESSIVAMENTE)
 ?>
 
 <section class="h-100 h-custom" style="background-color: #eee;">
@@ -93,7 +92,7 @@
                         <p class="mb-2">Shipping</p>
                         <p class="mb-2">€
                           <?php echo $shipping?>
-                        </p> <!-- Shipping cost (DA MODIFICARE CON UNA VARIABILE SUCCESSIVAMENTE)-->
+                        </p>
                       </div>
 
                       <div class="d-flex justify-content-between mb-4">
