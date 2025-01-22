@@ -6,7 +6,7 @@ INSERT INTO `category` (`idcategory`, `name`) VALUES
 (5, 'Accessori'),
 (6, 'Borse da tennis');
 
-INSERT INTO `product` (`idproduct`, `name`, `description`, `price`, `idcategory`, `stock`) VALUES
+INSERT INTO `product` (`idproduct`, `name`, `description`, `price`, `idcategory`, `stock`, `image`) VALUES
 
 (null, 'Wilson Pro Staff', 'Racchetta professionale', 250, 1, 10, 'wilsonprostaff'),
 (null, 'Babolat Pure Drive', 'Racchetta per potenza', 220, 1, 10, 'babolatpuredrive'),
