@@ -8,29 +8,29 @@ INSERT INTO `category` (`idcategory`, `name`) VALUES
 
 INSERT INTO `product` (`idproduct`, `name`, `description`, `price`, `idcategory`, `stock`) VALUES
 
-(null, 'Wilson Pro Staff', 'Racchetta professionale', 250, 1, 10),
-(null, 'Babolat Pure Drive', 'Racchetta per potenza', 220, 1, 10),
-(null, 'Head Radical MP', 'Racchetta versatile', 210, 1, 10),
+(null, 'Wilson Pro Staff', 'Racchetta professionale', 250, 1, 10, 'wilsonprostaff'),
+(null, 'Babolat Pure Drive', 'Racchetta per potenza', 220, 1, 10, 'babolatpuredrive'),
+(null, 'Head Radical MP', 'Racchetta versatile', 210, 1, 10, 'headradical'),
 
-(null, 'Wilson US Open', 'Palline ufficiali US Open', 10, 2, 10),
-(null, 'Babolat Gold', 'Palline per superfici dure', 8, 2, 10),
-(null, 'Head Tour', 'Palline da competizione', 9, 2, 10),
+(null, 'Wilson US Open', 'Palline ufficiali US Open', 10, 2, 10, 'wilsonball'),
+(null, 'Babolat Gold', 'Palline per superfici dure', 8, 2, 10, 'babolatball'),
+(null, 'Head Tour', 'Palline da competizione', 9, 2, 10, 'headball'),
 
-(null, 'Nike Court Polo', 'Polo traspirante', 60, 3, 10),
-(null, 'Adidas Match Skirt', 'Gonna da tennis', 50, 3, 10),
-(null, 'Lacoste Tennis Shorts', 'Shorts eleganti', 70, 3, 10),
+(null, 'Nike Court Polo', 'Polo traspirante', 60, 3, 10, 'nikepolo'),
+(null, 'Adidas Match Skirt', 'Gonna da tennis', 50, 3, 10, 'adidasskirt'),
+(null, 'Lacoste Tennis Shorts', 'Shorts eleganti', 70, 3, 10, 'lacosteshort'),
 
-(null, 'Nike Air Zoom Vapor', 'Scarpe leggere e veloci', 140, 4, 10),
-(null, 'Adidas Barricade', 'Scarpe resistenti', 130, 4, 10),
-(null, 'Asics Gel Resolution', 'Scarpe per supporto', 120, 4, 10),
+(null, 'Nike Air Zoom Vapor', 'Scarpe leggere e veloci', 140, 4, 10, 'nikezoom'),
+(null, 'Adidas Barricade', 'Scarpe resistenti', 130, 4, 10, 'adidasbarricade'),
+(null, 'Asics Gel Resolution', 'Scarpe per supporto', 120, 4, 10, 'asicsgel'),
 
-(null, 'Polsini Nike', 'Polsini assorbenti', 15, 5, 10),
-(null, 'Babolat Overgrip', 'Grip per racchette', 12, 5, 10),
-(null, 'Cappellino Adidas', 'Cappellino per sole', 25, 5, 10),
+(null, 'Polsini Nike', 'Polsini assorbenti', 15, 5, 10, 'polsininike'),
+(null, 'Babolat Overgrip', 'Grip per racchette', 12, 5, 10, 'babolatovergrip'),
+(null, 'Cappellino Adidas', 'Cappellino per sole', 25, 5, 10, 'adidascap'),
 
-(null, 'Wilson Super Tour', 'Borsa capiente per 12 racchette', 150, 6, 10),
-(null, 'Babolat Pure Aero Bag', 'Borsa leggera e resistente', 130, 6, 10),
-(null, 'Head Djokovic Bag', 'Borsa ufficiale di Djokovic', 170, 6, 10);
+(null, 'Wilson Super Tour', 'Borsa capiente per 12 racchette', 150, 6, 10, 'wilsonbag'),
+(null, 'Babolat Pure Aero Bag', 'Borsa leggera e resistente', 130, 6, 10, 'babolatbag'),
+(null, 'Head Djokovic Bag', 'Borsa ufficiale di Djokovic', 170, 6, 10, 'headbag');
 
 INSERT INTO `customer` (`idcustomer`, `seller`, `email`, `password`, `name`, `surname`) VALUES
 (1, 1, 'admin@email', 'aaa', 'Admin', 'Admin'),
