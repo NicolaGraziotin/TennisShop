@@ -7,11 +7,11 @@
             </div>
             <div class="col-md-3 col-lg-3 col-xl-3">
                 <p class="lead fw-normal mb-2"><?php echo $name ?></p>
-                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                <p><span class="text-muted"><?php echo $description ?></span></p>
             </div>
             <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                    onclick="updateQuantity(this, 'decrease', <?php echo $idproduct ?>)">
                     <i class="bi bi-dash-lg"></i>
                 </button>
 
@@ -19,7 +19,7 @@
                     class="form-control form-control-sm text-center" readonly/>
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                    onclick="updateQuantity(this, 'increase',<?php echo $idproduct ?>)">
                     <i class="bi bi-plus-lg"></i>
                 </button>
             </div>
@@ -32,3 +32,35 @@
         </div>
     </div>
 </div>
+<script>
+    function updateQuantity(button, action, idproduct) {
+        const parentDiv = button.parentNode;
+        const input = parentDiv.querySelector('input[name="quantity"]');
+        let currentQuantity = parseInt(input.value);
+
+        if (action === 'increase') {
+            currentQuantity++;
+        } else if (action === 'decrease' && currentQuantity > 0) {
+            currentQuantity--;
+        }
+
+        input.value = currentQuantity;
+
+        // Invio AJAX al server
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', `/updateQuantity?idproduct=${idproduct}&quantity=${currentQuantity}`, true);
+
+        xhr.send();
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Quantità aggiornata con successo:', xhr.responseText);
+            } else {
+                console.error('Errore nell\'aggiornamento della quantità');
+            }
+        };
+
+        updateTotalPrice();
+    }
+
+</script>

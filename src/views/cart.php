@@ -83,7 +83,7 @@
 
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">€
+                        <p class="mb-2" id="subtototal">€
                           <?php echo $totalPrice?>
                         </p>
                       </div>
@@ -97,7 +97,7 @@
 
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">€
+                        <p class="mb-2" id="total">€
                           <?php echo $totalPrice + $shipping?>
                         </p>
                       </div>
@@ -107,7 +107,7 @@
                       <input type="text" name="idpersonaldata"
                         value="<?php echo User::getPersonalInformations($idcustomer)['idpersonaldata']?>" hidden>
                       <input type="text" name="idstatus" value="1" hidden>
-                      <input type="text" name="total" value="<?php echo $totalPrice + $shipping?>" hidden>
+                      <input type="text" name="total" value="<?php echo Cart::totalCartPrice($idcustomer) + $shipping?>" hidden>
 
                       <?php if(Cart::getTotalElements($idcustomer) > 0): ?>
                       <button type="submit" data-mdb-button-init data-mdb-ripple-init
@@ -187,5 +187,22 @@
   
       this.value = this.lastValue = parts.join('/');
       this.selectionStart = this.selectionEnd = caretPosition;
+  }
+
+  function updateTotalPrice() {
+    //AJAX update
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/updateTotalPrice', true);
+
+    xhr.send();
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        let data = JSON.parse(xhr.responseText);
+        document.getElementById('subtototal').innerText = '€' + data;
+
+        document.getElementById('total').innerText = '€' + (data + <?php echo $shipping?>);
+      }
+    };
   }
 </script>

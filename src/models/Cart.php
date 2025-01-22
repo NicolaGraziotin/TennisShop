@@ -6,7 +6,7 @@ class Cart extends Model {
 
     public static function getCart($idcustomer) {
         $statement = self::prepare(
-            "SELECT * FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ?",
+            "SELECT idcustomer, quantity, product.* FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ?",
             "i",
             [$idcustomer]);
         return self::fetchAll($statement);
@@ -100,5 +100,13 @@ class Cart extends Model {
             "",
             []);
         return self::fetchAll($statement);
+    }
+
+    public static function updateQuantity($idcustomer, $idproduct, $quantity) {
+        $statement = self::prepare(
+            "UPDATE cart SET quantity = ? WHERE idcustomer = ? AND idproduct = ?",
+            "iii",
+            [$quantity, $idcustomer, $idproduct]);
+        return;
     }
 }
