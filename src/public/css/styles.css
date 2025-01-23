@@ -19,8 +19,12 @@
     overflow-wrap: break-word;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input#form1::-webkit-inner-spin-button,
+input#form1::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.number-w {
+    width: 5rem;
 }

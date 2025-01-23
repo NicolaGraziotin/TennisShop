@@ -8,9 +8,10 @@
             <div class="col-md-3 col-lg-3 col-xl-3">
                 <p class="lead fw-normal mb-2"><?php echo $name ?></p>
                 <p><span class="text-muted"><?php echo $description ?></span></p>
+                <p><span class="text-muted">Diponibilità: <?php echo $stock ?></span></p>
             </div>
             <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                <button class="btn btn-link px-2"
                     onclick="updateQuantity(this, 'decrease', <?php echo $idproduct ?>)">
                     <i class="bi bi-dash-lg"></i>
                 </button>
@@ -18,7 +19,7 @@
                 <input id="form1" min="0" name="quantity" value="<?php echo $quantity ?>" type="number"
                     class="form-control form-control-sm text-center" readonly/>
 
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                <button class="btn btn-link px-2"
                     onclick="updateQuantity(this, 'increase',<?php echo $idproduct ?>)">
                     <i class="bi bi-plus-lg"></i>
                 </button>
@@ -38,7 +39,7 @@
         const input = parentDiv.querySelector('input[name="quantity"]');
         let currentQuantity = parseInt(input.value);
 
-        if (action === 'increase') {
+        if (action === 'increase' && currentQuantity < <?php echo $stock ?>) {
             currentQuantity++;
         } else if (action === 'decrease' && currentQuantity > 0) {
             currentQuantity--;

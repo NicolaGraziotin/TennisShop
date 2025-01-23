@@ -109,4 +109,38 @@ class Cart extends Model {
             [$quantity, $idcustomer, $idproduct]);
         return;
     }
+
+    public static function checkStock($idcustomer) {
+        $statement = self::prepare(
+            "SELECT idproduct, quantity FROM cart WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        $cart = self::fetchAll($statement);
+        foreach ($cart as $product) {
+            $statement = self::prepare(
+                "SELECT stock FROM product WHERE idproduct = ?",
+                "i",
+                [$product['idproduct']]);
+            $stock = self::fetchOne($statement)['stock'];
+            if ($stock < $product['quantity']) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static function removeStock($idcustomer) {
+        $statement = self::prepare(
+            "SELECT idproduct, quantity FROM cart WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        $cart = self::fetchAll($statement);
+        foreach ($cart as $product) {
+            self::prepare(
+                "UPDATE product SET stock = stock - ? WHERE idproduct = ?",
+                "ii",
+                [$product['quantity'], $product['idproduct']]);
+        }
+        return;
+    }
 }

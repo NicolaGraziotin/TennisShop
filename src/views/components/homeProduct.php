@@ -21,6 +21,7 @@
                     <input type="text" name="price" value="<?php echo $price ?>" hidden>
                     <input type="text" name="idcategory" value="<?php echo $idcategory ?>" hidden>
                     <input type="text" name="image" value="<?php echo $image ?>" hidden>
+                    <input type="text" name="stock" value="<?php echo $stock ?>" hidden>
                     <button type="submit" class="btn btn-outline-dark mt-auto">Apri</button>
                  </form>
             </div>

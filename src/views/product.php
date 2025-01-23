@@ -10,6 +10,7 @@
                     <span>€<?php echo $price ?></span>
                 </div>
                 <p class="lead"><?php echo $description ?></p>
+                <p class="small">Diponibilità: <?php echo $stock?></p>
                 <form action="" method="post">
                     <div class="d-flex">
                         <input type="number" name="idproduct" value="<?php echo $idproduct ?>" hidden>
@@ -17,7 +18,8 @@
                         <input type="number" name="price" value="<?php echo $price ?>" hidden>
                         <input type="text" name="description" value="<?php echo $description ?>" hidden>
                         <input type="text" name="image" value="<?php echo $image ?>" hidden>
-                        <input class="col-md-6 form-control text-center me-3" type="number" name="quantity" value="1" style="max-width: 3rem" />
+                        <input type="number" name="stock" value="<?php echo $stock ?>" hidden>
+                        <input class="col-md-6 form-control text-center number-w me-3" type="number" name="quantity" min="1" max="<?php echo $stock ?>" value="1"/>
                         <button class="col-md-6 btn btn-outline-dark flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
