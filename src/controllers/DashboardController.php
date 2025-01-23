@@ -23,7 +23,14 @@ class DashboardController extends Controller {
 
     public function edit(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
-            Product::setProduct($request->getBody());
+            $file = Session::getFileImage();
+            if (!$file) {
+                return $response->redirect('/dashboard/products');
+            }
+            $image = $file['name'];
+            $path = Application::$ROOT_DIR . '/public/assets/' . $image;
+            move_uploaded_file($file['tmp_name'], $path);
+            Product::setProduct($request->getBody(), $image);
             return $response->redirect('/dashboard/products');
         }
         $params = [];

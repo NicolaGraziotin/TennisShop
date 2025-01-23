@@ -83,4 +83,8 @@ class UserController extends Controller {
         User::readMessage(Session::getUserId() ,$request->getBody()['idnotification']);
         return;
     }
+
+    public function updateOrderStatus(Request $request) {
+        User::updateOrderStatus($request->getBody()['idorder'],$request->getBody()['idstatus']);
+    }
 }

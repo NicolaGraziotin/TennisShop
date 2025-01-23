@@ -50,4 +50,8 @@ class Session {
         self::setCookie(-3600);
         return;
     }
+
+    public static function getFileImage() {
+        return $_FILES['image'] ?? false;
+    }
 }

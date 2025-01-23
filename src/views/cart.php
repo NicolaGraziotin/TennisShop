@@ -107,7 +107,7 @@
                       <input type="text" name="idpersonaldata"
                         value="<?php echo User::getPersonalInformations($idcustomer)['idpersonaldata']?>" hidden>
                       <input type="text" name="idstatus" value="1" hidden>
-                      <input type="text" name="total" value="<?php echo Cart::totalCartPrice($idcustomer) + $shipping?>" hidden>
+                      <input type="text" id="totalPrice" name="total" value="<?php echo Cart::totalCartPrice($idcustomer) + $shipping?>" hidden>
 
                       <?php if(Cart::getTotalElements($idcustomer) > 0): ?>
                       <button type="submit" data-mdb-button-init data-mdb-ripple-init
@@ -202,6 +202,7 @@
         document.getElementById('subtototal').innerText = '€' + data;
 
         document.getElementById('total').innerText = '€' + (data + <?php echo $shipping?>);
+        document.getElementById('totalPrice').value = data + <?php echo $shipping?>;
       }
     };
   }

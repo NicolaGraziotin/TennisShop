@@ -82,11 +82,11 @@ class User extends Model {
         return self::fetchAll($statement);
     }
 
-    public static function updateOrderStatus($idorder) {
+    public static function updateOrderStatus($idorder, $statusorder) {
         $statement = self::prepare(
-            "UPDATE customer_order SET idstatus = '4'  WHERE idorder = ?",
-            "i",
-            [$idorder]);
+            "UPDATE customer_order SET idstatus = ?  WHERE idorder = ?",
+            "ii",
+            [$statusorder, $idorder]);
         return;
     }
 
