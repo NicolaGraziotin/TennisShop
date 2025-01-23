@@ -40,7 +40,7 @@ class CartController extends Controller {
         }
     }
 
-    public function payment() {
+    public function payment(Request $request, Response $response) {
         return $this->render('payment');
     }
 
@@ -52,7 +52,7 @@ class CartController extends Controller {
         return;
     }
 
-    public function updateTotalPrice() {
+    public function updateTotalPrice(Request $request, Response $response) {
         return Cart::totalCartPrice(Session::getUserId()); 
     }
 }

@@ -43,7 +43,7 @@ class UserController extends Controller {
         return $response->redirect('/');
     }
 
-    public function informations(Request $request) {
+    public function informations(Request $request, Response $response) {
         $idcustomer = Session::getUserId();
         if($request->getMethod() === 'post') {
             $personal_data = array_values($request->getBody());
@@ -66,25 +66,25 @@ class UserController extends Controller {
         }
     }
 
-    public function orderDetails(Request $request) {
+    public function orderDetails(Request $request, Response $response) {
         $params['orderDetailsComponent'] = User::getOrderDetails($request->getBody()['idorder']);
         return $this->render('orderDetails', $params);
     }
 
-    public function checkMessage() {
+    public function checkMessage(Request $request, Response $response) {
         return User::anyMessage(Session::getUserId());
     }
 
-    public function getMessage() {
+    public function getMessage(Request $request, Response $response) {
         return User::getMessage(Session::getUserId());
     }
 
-    public function readMessage(Request $request) {
+    public function readMessage(Request $request, Response $response) {
         User::readMessage(Session::getUserId() ,$request->getBody()['idnotification']);
         return;
     }
 
-    public function updateOrderStatus(Request $request) {
+    public function updateOrderStatus(Request $request, Response $response) {
         User::updateOrderStatus($request->getBody()['idorder'],$request->getBody()['idstatus']);
     }
 }
