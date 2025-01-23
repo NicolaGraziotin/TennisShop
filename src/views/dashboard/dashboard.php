@@ -10,7 +10,7 @@
         <div class="card text-white bg-primary mb-3">
             <div class="card-body">
                 <h5 class="card-title">Total Sales</h5>
-                <p class="card-text">$<?= Admin::getTotalSales() ?></p>
+                <p class="card-text">$ <?= Admin::getTotalSales() ?? 0 ?></p>
             </div>
         </div>
     </div>

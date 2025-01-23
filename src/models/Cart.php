@@ -94,7 +94,7 @@ class Cart extends Model {
         return self::fetchOne($statement);
     }
 
-    public static function getShippings() {
+    public static function getAllShippings() {
         $statement = self::prepare(
             "SELECT * FROM shipping",
             "",

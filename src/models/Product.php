@@ -39,4 +39,26 @@ class Product extends Model {
             [$product['idproduct'], $product['name'], $product['idcategory'], $product['description'], $product['price'], $product['stock'], $image]);
         return;
     }
+
+    public static function getAllCategories() {
+        $statement = self::prepare(
+            "SELECT * FROM category");
+        return self::fetchAll($statement);
+    }
+
+    public static function getCategoryById($idcategory) {
+        $statement = self::prepare(
+            "SELECT * FROM category WHERE idcategory = ?",
+            "i",
+            [$idcategory]);
+        return self::fetchOne($statement);
+    }
+
+    public static function deleteProduct($idproduct) {
+        $statement = self::prepare(
+            "DELETE FROM product WHERE idproduct = ?",
+            "i",
+            [$idproduct]);
+        return;
+    }
 }
