@@ -50,13 +50,11 @@
 <script>
     // Initial state of the order
     let currentOrderState = parseInt("<?php echo $idstatus; ?>"); // Converte in numero
-    console.log("Stato iniziale:", currentOrderState);
 
     // Update status
     function updateState() {
         // If the state is out the limit, stop the update 
         if (currentOrderState < 1 || currentOrderState > 4) {
-            console.log("Stato non valido o ordine completato.");
             clearInterval(updateInterval); // Stop setInterval
             return;
         }
@@ -88,8 +86,7 @@
                 break;
         }
         currentOrderState++;
-        console.log("Stato aggiornato:", currentOrderState);
-        
+
         // AJAX
         let xhr = new XMLHttpRequest();
 
