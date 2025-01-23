@@ -87,4 +87,8 @@ class UserController extends Controller {
     public function updateOrderStatus(Request $request, Response $response) {
         User::updateOrderStatus($request->getBody()['idorder'],$request->getBody()['idstatus']);
     }
+
+    public function sendNotification(Request $request, Response $response) {
+        User::sendNotification($request->getBody()['title'], $request->getBody()['message'], Session::getUserId());
+    }
 }

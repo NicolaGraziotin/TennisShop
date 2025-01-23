@@ -64,6 +64,19 @@
             return;
         }
 
+        function sendNotification(title, message) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', `/sendNotification?title=${title}&message=${message}`, true);
+            xhr.send();
+
+            xhr.onload = () => {
+                if (xhr.status == 200) {
+                    console.log("NOTIFICATION");
+                }
+        }
+
+    }
+
         // Update progress bar
         let progressBar = document.querySelector('.progress-bar');
         switch (currentOrderState) {
@@ -78,18 +91,21 @@
             progressBar.style.backgroundColor = "#008000";
             progressBar.querySelector('.progress-description').innerText = "Spedito";
             progressBar.setAttribute('aria-valuenow', 50);
+            sendNotification("Tennishop", "Il tuo ordine è stato spedito");
             break;
             case 3:
             progressBar.style.width = "75%";
             progressBar.style.backgroundColor = "#e6b800";
             progressBar.querySelector('.progress-description').innerText = "In consegna";
             progressBar.setAttribute('aria-valuenow', 75);
+            sendNotification("Tennishop", "Il tuo ordine è in consegna");
             break;
             case 4:
             progressBar.style.width = "100%";
             progressBar.style.backgroundColor = "#b30000";
             progressBar.querySelector('.progress-description').innerText = "Consegnato";
             progressBar.setAttribute('aria-valuenow', 100);
+            sendNotification("Tennishop", "Il tuo ordine è stato consegnato");
             break;
         }
         
@@ -107,6 +123,7 @@
         currentOrderState++;
     }
 
+    
     // Interval
     const updateInterval = setInterval(updateState, 2000);
 </script>

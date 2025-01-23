@@ -115,4 +115,11 @@ class User extends Model {
             [$idcustomer]);
         return json_encode(self::fetchAll($statement));
     }
+
+    public static function sendNotification($title, $message, $idcustomer) {
+        self::prepare("INSERT INTO notification (idnotification, date, timestamp, title, description, seen, idcustomer) VALUES (NULL, ?, ?, ?, ?, 0, ?)",
+            "ssssi",
+            [date("Y-m-d"), date("H:i:s"), $title, $message, $idcustomer]);
+        return;
+    }
 }
