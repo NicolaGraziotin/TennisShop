@@ -23,11 +23,7 @@ class DashboardController extends Controller {
 
     public function edit(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
-            $file = Session::getFileImage();
-            $image = 'assets/products/' . $file['name'];
-            $path = Application::$ROOT_DIR . '/public/' . $image;
-            move_uploaded_file($file['tmp_name'], $path);
-            Product::setProduct($request->getBody(), $image);
+            $this->uploadFile($request->getBody());
             return $response->redirect('/dashboard/products');
         }
         $params = [];
@@ -55,11 +51,25 @@ class DashboardController extends Controller {
         return $this->checkAdmin($request, $response) ?? $this->render('dashboard/settings');
     }
 
+    public function delete(Request $request, Response $response) {
+        Product::deleteProduct($request->getBody()['idproduct']);
+        return $response->redirect('/dashboard/products');
+    }
+
     private function checkAdmin(Request $request, Response $response) {
         if (!Session::isAdmin()) {
             $response->statusCode(ERROR_FORBIDDEN);
             return $this->render('forbidden');
         }
         Application::$app->layout = 'dashboard';
+    }
+
+    private function uploadFile($body) {
+        $file = Session::getFileImage();
+        $image = 'assets/products/' . $file['name'];
+        $path = Application::$ROOT_DIR . '/public/' . $image;
+        move_uploaded_file($file['tmp_name'], $path);
+        Product::setProduct($body, $image);
+        return;
     }
 }
