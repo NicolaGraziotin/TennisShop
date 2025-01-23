@@ -60,8 +60,9 @@
                         </div>
                         <ul class="dropdown-menu notify" id="notify-menu"></ul>
                     </div>
+
                     {{profile}}
-                    
+
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
                         Cart
@@ -72,7 +73,9 @@
         </div>
     </nav>
     <!-- Main -->
+    <main class="min-vh-100">
     {{view}}
+    </main>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
@@ -87,5 +90,4 @@
     <!-- Core theme JS-->
     <script src="js/script.js"></script>
 </body>
-
 </html>
