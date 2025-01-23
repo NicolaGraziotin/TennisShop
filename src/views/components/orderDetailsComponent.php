@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="horizontal-timeline">
+        <!-- <div class="horizontal-timeline">
             <ul class="list-inline items d-flex justify-content-between">
                 <li class="list-inline-item items-list" id="ordered">
                     <p class="py-1 px-2 rounded text-white" >Ordered</p>
@@ -42,6 +42,11 @@
                     <p class="py-1 px-2 rounded text-white" >Delivered</p>
                 </li>
             </ul>
+        </div> -->
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                <span class="progress-description">Caricamento</span>
+            </div>
         </div>
     </div>
 </div>
@@ -59,44 +64,47 @@
             return;
         }
 
-        // Change status 
-        let deliveredState;
+        // Update progress bar
+        let progressBar = document.querySelector('.progress-bar');
         switch (currentOrderState) {
             case 1:
-                deliveredState = document.querySelector("#ordered");
-                deliveredState.querySelector('p').style.backgroundColor = "#007FFF";
-                break;
+            progressBar.style.width = "25%";   
+            progressBar.style.backgroundColor = "0000cc";    
+            progressBar.querySelector('.progress-description').innerText = "Approvato";
+            progressBar.setAttribute('aria-valuenow', 25);
+            break;
             case 2:
-                deliveredState = document.querySelector("#ordered");
-                deliveredState.querySelector('p').style.backgroundColor = "#007FFF";
-                deliveredState = document.querySelector("#shipped");
-                deliveredState.querySelector('p').style.backgroundColor = "#28a745";
-                break;
+            progressBar.style.width = "50%";
+            progressBar.style.backgroundColor = "#008000";
+            progressBar.querySelector('.progress-description').innerText = "Spedito";
+            progressBar.setAttribute('aria-valuenow', 50);
+            break;
             case 3:
-                deliveredState = document.querySelector("#ordered");
-                deliveredState.querySelector('p').style.backgroundColor = "#007FFF";
-                deliveredState = document.querySelector("#shipped");
-                deliveredState.querySelector('p').style.backgroundColor = "#28a745";
-                deliveredState = document.querySelector("#on-the-way");
-                deliveredState.querySelector('p').style.backgroundColor = "#ffc107";
-                break;
+            progressBar.style.width = "75%";
+            progressBar.style.backgroundColor = "#e6b800";
+            progressBar.querySelector('.progress-description').innerText = "In consegna";
+            progressBar.setAttribute('aria-valuenow', 75);
+            break;
             case 4:
-                deliveredState = document.querySelector("#delivered");
-                deliveredState.querySelector('p').style.backgroundColor = "#dc3545";
-                break;
+            progressBar.style.width = "100%";
+            progressBar.style.backgroundColor = "#b30000";
+            progressBar.querySelector('.progress-description').innerText = "Consegnato";
+            progressBar.setAttribute('aria-valuenow', 100);
+            break;
         }
-        currentOrderState++;
-
+        
         // AJAX
         let xhr = new XMLHttpRequest();
-
+        
         xhr.open('GET',`/updateOrderStatus?idorder=${<?php echo $idorder; ?>}&idstatus=${currentOrderState}`,true);
         xhr.send();
         xhr.onload = () => {
-                if (xhr.status == 200) {
-                    console.log("Done");
-                }
+            if (xhr.status == 200) {
+                console.log("Done");
             }
+        }
+        
+        currentOrderState++;
     }
 
     // Interval
