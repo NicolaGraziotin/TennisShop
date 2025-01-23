@@ -54,13 +54,13 @@
 
 <script>
     // Initial state of the order
-    let currentOrderState = parseInt("<?php echo $idstatus; ?>"); // Converte in numero
+    let currentOrderState = parseInt("<?php echo $idstatus; ?>"); 
 
     // Update status
     function updateState() {
         // If the state is out the limit, stop the update 
         if (currentOrderState < 1 || currentOrderState > 4) {
-            clearInterval(updateInterval); // Stop setInterval
+            clearInterval(updateInterval); 
             return;
         }
 
