@@ -36,6 +36,7 @@ $app->router->get('/payment', [CartController::class, 'payment']);
 $app->router->post('/checkout', [CartController::class, 'checkout']);
 $app->router->get('/updateQuantity', [CartController::class, 'updateQuantity']);
 $app->router->get('/updateTotalPrice', [CartController::class, 'updateTotalPrice']);
+$app->router->get('/removeProduct', [CartController::class, 'removeCartProduct']);
 
 /* Product Controller */
 $app->router->get('/product', [ProductController::class, 'product']);

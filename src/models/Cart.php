@@ -6,7 +6,7 @@ class Cart extends Model {
 
     public static function getCart($idcustomer) {
         $statement = self::prepare(
-            "SELECT idcustomer, quantity, product.* FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ?",
+            "SELECT idcustomer, quantity, product.* FROM cart JOIN product ON cart.idproduct = product.idproduct WHERE idcustomer = ? AND QUANTITY > 0",
             "i",
             [$idcustomer]);
         return self::fetchAll($statement);
@@ -141,6 +141,14 @@ class Cart extends Model {
                 "ii",
                 [$product['quantity'], $product['idproduct']]);
         }
+        return;
+    }
+
+    public static function removeCartZero($idcustomer) {
+        $statement = self::prepare(
+            "DELETE FROM cart WHERE idcustomer = ? AND quantity = 0",
+            "i",
+            [$idcustomer]);
         return;
     }
 }

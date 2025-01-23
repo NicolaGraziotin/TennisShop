@@ -15,6 +15,7 @@ class CartController extends Controller {
         if(!Session::isLogged()){
             return $response->redirect('/login');
         }
+        Cart::removeCartZero(Session::getUserId());
         $params['cartProduct'] = Cart::getCart(Session::getUserId());
         $params['shipping'] = Cart::getCurrentShipping()['fee'];
         return $this->render('cart', $params);
@@ -24,6 +25,11 @@ class CartController extends Controller {
         if ($request->getMethod() === 'post') {
             $body = $request->getBody();
             if(Cart::checkStock(Session::getUserId())) {
+                Cart::removeCartZero(Session::getUserId());
+                if(Cart::getCart(Session::getUserId()) == null) {
+                    Cart::setNotification("TennisShop", "No selected items in cart", Session::getUserId());
+                    return $response->redirect('/cart');
+                }
                 Cart::setCreditCard(Session::getUserId(), $body['typeNum'], $body['typeExp'], 
                     $body['typeName'], $body['typeCvv']);
                 Cart::checkout($body['idcustomer'], $body['idpersonaldata'], 
@@ -46,13 +52,16 @@ class CartController extends Controller {
 
     public function updateQuantity(Request $request) {
         if ($request->getMethod() === 'get') {
-            Cart::updateQuantity(Session::getUserId(), $request->getBody()['idproduct'], $request->getBody()['quantity']);
-            
+            Cart::updateQuantity(Session::getUserId(), $request->getBody()['idproduct'], $request->getBody()['quantity']);  
         }
         return;
     }
 
     public function updateTotalPrice() {
         return Cart::totalCartPrice(Session::getUserId()); 
+    }
+
+    public function removeCartProduct() {
+        Cart::removeCartZero(Session::getUserId());
     }
 }

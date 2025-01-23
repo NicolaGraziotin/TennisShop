@@ -45,6 +45,10 @@
             currentQuantity--;
         }
 
+        if (currentQuantity === 0) {
+            updateCart();
+        }
+
         input.value = currentQuantity;
 
         // Invio AJAX al server
@@ -62,6 +66,18 @@
         };
 
         updateTotalPrice();
+    }
+
+    function updateCart() {
+        // Rimuovi il prodotto dal carrello
+        const productCard = event.target.closest('.card');
+        productCard.remove();
+
+        // Invio AJAX al server per aggiornare il carrello
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', `/removeProduct`, true);
+
+        xhr.send();
     }
 
 </script>
