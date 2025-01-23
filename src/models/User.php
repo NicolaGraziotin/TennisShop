@@ -52,7 +52,7 @@ class User extends Model {
 
     public static function getOrders($idcustomer) {
         $statement = self::prepare(
-            "SELECT * FROM customer_order WHERE idcustomer = ?",
+            "SELECT * FROM customer_order WHERE idcustomer = ? ORDER BY idorder DESC",
             "i",
             [$idcustomer]);
         return self::fetchAll($statement);
