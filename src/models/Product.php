@@ -32,11 +32,11 @@ class Product extends Model {
         return self::fetchOne($statement)['idproduct'];
     }
 
-    public static function setProduct($product) {
+    public static function setProduct($product, $image) {
         $statement = self::prepare(
-            "INSERT INTO product (idproduct, name, idcategory, description, price, stock) VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE name = VALUES(name), idcategory = VALUES(idcategory), description = VALUES(description), price = VALUES(price), stock = VALUES(stock)",
-            "isisdi",
-            [$product['idproduct'], $product['name'], $product['idcategory'], $product['description'], $product['price'], $product['stock']]);
+            "INSERT INTO product (idproduct, name, idcategory, description, price, stock, image) VALUES (?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE name = VALUES(name), idcategory = VALUES(idcategory), description = VALUES(description), price = VALUES(price), stock = VALUES(stock), image = VALUES(image)",
+            "isisdis",
+            [$product['idproduct'], $product['name'], $product['idcategory'], $product['description'], $product['price'], $product['stock'], $image]);
         return;
     }
 }
