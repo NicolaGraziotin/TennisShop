@@ -2,9 +2,6 @@
     use app\models\User;
 ?>
 
-<?php $statusorder = User::updateOrderStatus($idorder)?>
-
-
 <div class="row">
     <div class="col mb-3">
         <p class="small text-muted mb-1">User ID:</p>
@@ -19,26 +16,6 @@
         <p>#<?php echo $idorder ?></p>
     </div>
 </div>
-
-<!-- Inserire dettagli articoli??? -->
-<!-- <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
-  <div class="row">
-    <div class="col-md-8 col-lg-9">
-      <p>BEATS Solo 3 Wireless Headphones</p>
-    </div>
-    <div class="col-md-4 col-lg-3">
-      <p>£299.99</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 col-lg-9">
-      <p class="mb-0">Shipping</p>
-    </div>
-    <div class="col-md-4 col-lg-3">
-      <p class="mb-0">£33.00</p>
-    </div>
-  </div>
-</div> -->
 
 <div class="row my-4">
     <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
@@ -71,31 +48,57 @@
 
 
 <script>
-    //state of the order
-    const currentOrderState = "<?php echo $idstatus; ?>";
-    console.log(currentOrderState == 4);
-    // Array of states for tracking
-    const states = ["#ordered", "#shipped", "#on-the-way", "#delivered"];
-    const colors = ["#007FFF", "#28a745", "#ffc107", "#dc3545"]; // Change colors for each state
-    let currentStateIndex = 0;
+    // Initial state of the order
+    let currentOrderState = parseInt("<?php echo $idstatus; ?>"); // Converte in numero
 
-    if(currentOrderState == 4) {
-        const deliveredState = document.querySelector("#delivered");
-        if (deliveredState) {
-            deliveredState.querySelector('p').style.backgroundColor = "#dc3545";
+    // Update status
+    function updateState() {
+        // If the state is out the limit, stop the update 
+        if (currentOrderState < 1 || currentOrderState > 4) {
+            clearInterval(updateInterval); // Stop setInterval
+            return;
         }
-        
-    } else {
-        // Function to update the color
-        function updateStateColor() {
-            if (currentStateIndex < states.length) {
-                const currentState = document.querySelector(states[currentStateIndex]);
-                currentState.querySelector('p').style.backgroundColor = colors[currentStateIndex];
-                currentStateIndex++;
+
+        // Change status 
+        let deliveredState;
+        switch (currentOrderState) {
+            case 1:
+                deliveredState = document.querySelector("#ordered");
+                deliveredState.querySelector('p').style.backgroundColor = "#007FFF";
+                break;
+            case 2:
+                deliveredState = document.querySelector("#ordered");
+                deliveredState.querySelector('p').style.backgroundColor = "#007FFF";
+                deliveredState = document.querySelector("#shipped");
+                deliveredState.querySelector('p').style.backgroundColor = "#28a745";
+                break;
+            case 3:
+                deliveredState = document.querySelector("#ordered");
+                deliveredState.querySelector('p').style.backgroundColor = "#007FFF";
+                deliveredState = document.querySelector("#shipped");
+                deliveredState.querySelector('p').style.backgroundColor = "#28a745";
+                deliveredState = document.querySelector("#on-the-way");
+                deliveredState.querySelector('p').style.backgroundColor = "#ffc107";
+                break;
+            case 4:
+                deliveredState = document.querySelector("#delivered");
+                deliveredState.querySelector('p').style.backgroundColor = "#dc3545";
+                break;
+        }
+        currentOrderState++;
+
+        // AJAX
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET',`/updateOrderStatus?idorder=${<?php echo $idorder; ?>}&idstatus=${currentOrderState}`,true);
+        xhr.send();
+        xhr.onload = () => {
+                if (xhr.status == 200) {
+                    console.log("Done");
+                }
             }
-        }
     }
 
-    // Start the state transition every 3 seconds
-    setInterval(updateStateColor, 3000);
+    // Interval
+    const updateInterval = setInterval(updateState, 2000);
 </script>
