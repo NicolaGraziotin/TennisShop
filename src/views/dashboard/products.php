@@ -18,6 +18,7 @@
                 <th>Prezzo</th>
                 <th>Disponibilità</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

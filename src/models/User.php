@@ -34,11 +34,11 @@ class User extends Model {
         return self::fetchOne($statement);
     }
 
-    public static function checkUser($email, $password) {
+    public static function getUser($email) {
         $statement = self::prepare(
-            "SELECT * FROM customer WHERE email = ? AND password = ?",
-            "ss",
-            [$email, $password]);
+            "SELECT * FROM customer WHERE email = ?",
+            "s",
+            [$email]);
         return self::fetchOne($statement);
     }
 

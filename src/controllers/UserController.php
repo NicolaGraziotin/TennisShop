@@ -13,7 +13,8 @@ class UserController extends Controller {
 
     public function register(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
-            User::addUser($request->getBody()['email'], $request->getBody()['password'], $request->getBody()['name'], $request->getBody()['surname']);
+            $passwordEnc = password_hash($request->getBody()['password'], PASSWORD_DEFAULT);
+            User::addUser($request->getBody()['email'], $passwordEnc, $request->getBody()['name'], $request->getBody()['surname']);
             return $response->redirect('/login');
         }
         return $this->render('register');
@@ -21,18 +22,28 @@ class UserController extends Controller {
 
     public function login(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
-            $user = User::checkUser($request->getBody()['email'], $request->getBody()['password']);
-            if ($user) {
+            $user = User::getUser($request->getBody()['email']) ?? False;
+            if ($user && password_verify($request->getBody()['password'], $user['password'])) {
                 Session::set('user', $user);
                 if (isset($request->getBody()['remind'])) {
                     Session::setCookie(24 * 3600);
                 }
-                if ($user['seller'] === 1) {
+                if (Session::isAdmin()) {
                     return $response->redirect('/dashboard');
                 }
                 return $response->redirect('/');
             } else {
-                echo 'Invalid login<br>';
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const errorDiv = document.createElement('div');
+                            errorDiv.className = 'error-popup';
+                            errorDiv.textContent = 'Credenziali non valide';
+                            document.body.appendChild(errorDiv);
+
+                            // Rimuovi il popup dopo 3 secondi
+                            setTimeout(() => errorDiv.remove(), 3000);
+                        });
+                    </script>";
             }
         }
         return $this->render('login');
