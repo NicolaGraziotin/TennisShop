@@ -107,7 +107,8 @@ ALTER TABLE `credit_card`
   ADD KEY `idcustomer_cc` (`idcustomer`);
 
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`idcustomer`);
+  ADD PRIMARY KEY (`idcustomer`),
+  ADD UNIQUE KEY `email` (`email`);
 
 ALTER TABLE `customer_order`
   ADD PRIMARY KEY (`idorder`),

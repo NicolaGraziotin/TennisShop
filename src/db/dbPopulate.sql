@@ -33,10 +33,14 @@ INSERT INTO `product` (`idproduct`, `name`, `description`, `price`, `idcategory`
 (null, 'Head Djokovic Bag', 'Borsa ufficiale di Djokovic', 170, 6, 10, 'assets/products/headbag.webp');
 
 INSERT INTO `customer` (`idcustomer`, `seller`, `email`, `password`, `name`, `surname`) VALUES
-(1, 1, 'admin@email', '$2y$10$lVS0qggIoxy4GnDf5NgfROMmF6NKu8uw4L/RcCW3.6Vm1lrbiG2k6', 'Admin', 'Admin'), --admin
-(2, 0, 'nicola@email', '$2y$10$rZQF9GR6n.Gt54XdV.MFF.Fc10CaFcp72Tgu0CAK3TAsj35nDcX6y', 'Nicola', 'Graziotin'), --nicola
-(3, 0, 'fra@email', '$2y$10$AIHb5HwZZ/GuBNd3TcFMN.abGHIlBGiJtpHrBtqdAUXdY9KzeSlbq', 'Francesco', 'Marcatelli'), --fra
-(4, 0, 'mattia@email', '$2y$10$r695aTRwikXy7gltQmUT6e1QL9eOnvarljCKVSpIQUtFeKIkj6AJq', 'Mattia', 'Galli'); --matti
+
+(1, 1, 'admin@email', '$2y$10$lVS0qggIoxy4GnDf5NgfROMmF6NKu8uw4L/RcCW3.6Vm1lrbiG2k6', 'Admin', 'Admin'), 
+
+(2, 0, 'nicola@email', '$2y$10$rZQF9GR6n.Gt54XdV.MFF.Fc10CaFcp72Tgu0CAK3TAsj35nDcX6y', 'Nicola', 'Graziotin'), 
+
+(3, 0, 'fra@email', '$2y$10$AIHb5HwZZ/GuBNd3TcFMN.abGHIlBGiJtpHrBtqdAUXdY9KzeSlbq', 'Francesco', 'Marcatelli'), 
+
+(4, 0, 'mattia@email', '$2y$10$r695aTRwikXy7gltQmUT6e1QL9eOnvarljCKVSpIQUtFeKIkj6AJq', 'Mattia', 'Galli'); 
 
 INSERT INTO `personal_data` (`idpersonaldata`, `country`, `state`, `city`, `address`, `cap`, `phone`, `idcustomer`) VALUES
 (1, '', '', '', '', '', '', 1),
