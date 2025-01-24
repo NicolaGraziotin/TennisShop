@@ -2,6 +2,9 @@
     use app\core\Application;
     use app\core\Session;
     use app\models\Cart;
+    use app\models\Product;
+
+    $categories = Product::getAllCategories();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,25 +36,22 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                            data-bs-toggle="dropdown" aria-expanded="false">Categorie</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/">All Products</a></li>
+                            <li><a class="dropdown-item" href="/">Tutti i prodotti</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="/category?idcategory=1">Rackets</a></li>
-                            <li><a class="dropdown-item" href="/category?idcategory=2">Balls</a></li>
-                            <li><a class="dropdown-item" href="/category?idcategory=3">Apparel</a></li>
-                            <li><a class="dropdown-item" href="/category?idcategory=4">Shoes</a></li>
-                            <li><a class="dropdown-item" href="/category?idcategory=5">Accessories</a></li>
-                            <li><a class="dropdown-item" href="/category?idcategory=6">Bags</a></li>
+                            <?php foreach ($categories as $category): ?>
+                                <li><a class="dropdown-item" href="/category?idcategory=<?php echo $category['idcategory']; ?>"><?php echo $category['name']; ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </li>
                 </ul>
                 <div class="mb-2 mb-lg-0 w-50 me-auto">
                     <form class="d-flex" action="/search" method="get">
                         <div class="input-group w-100">
-                            <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <input type="search" class="form-control rounded" name="search" placeholder="Cerca" aria-label="Search" aria-describedby="search-addon" />
                             <button type="submit" class="input-group-text border-0" id="search-addon">
                                 <i class="bi bi-search"></i>
                             </span>
@@ -75,7 +75,7 @@
 
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
-                        Cart
+                        Carrello
                         <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo Cart::getTotalElements(Session::getUserId()) ?></span>
                     </a>
                 </div>
@@ -88,29 +88,15 @@
     </main>
     <div id="cookieBanner" class="fixed-bottom bg-dark text-white text-center p-4 d-none">
         <p class="fs-5 mb-3">
-            We use cookies and other tracking technologies to improve your browsing experience on our website, to show you
-            personalized content and targeted ads, to analyze our website traffic, and to understand where our visitors are
-            coming from.
+            Utilizziamo cookie e altre tecnologie di tracciamento per migliorare la tua esperienza di navigazione sul nostro sito.
         </p>
         <div class="d-flex flex-column flex-md-row justify-content-center gap-2">
             <button id="acceptCookies" class="btn btn-teal text-white fw-semibold px-4 py-2">
-            I Agree
-            </button>
-            <button id="declineCookies" class="btn btn-secondary fw-semibold px-4 py-2">
-            I Decline
+                Accetto
             </button>
         </div>
-        <button class="btn btn-link text-light mt-2">Change my preferences</button>
     </div>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Tennis Shop 2025</p>
-        </div>
-        <div class="container text-center">
-            <a class="m-0 text-white" href="/contact">Contact</a>
-        </div>
-    </footer>
+    <?php include Application::$ROOT_DIR.'/views/footer.php' ?>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

@@ -1,10 +1,17 @@
+<?php
+    use app\core\Application;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,12 +36,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard/products">
-                                <i class="bi bi-box"></i> Products
+                                <i class="bi bi-box"></i> Prodotti
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="bi bi-people"></i> Customers
+                                <i class="bi bi-people"></i> Clienti
                             </a>
                         </li>
                         <li class="nav-item">
@@ -44,7 +51,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard/settings">
-                                <i class="bi bi-gear"></i> Settings
+                                <i class="bi bi-gear"></i> Impostazioni
                             </a>
                         </li>
                     </ul>
@@ -58,14 +65,7 @@
         </div>
     </div>
 
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Tennis Shop 2025</p>
-        </div>
-        <div class="container text-center">
-            <a class="m-0 text-white" href="/contact">Contact</a>
-        </div>
-    </footer>
+    <?php include Application::$ROOT_DIR.'/views/footer.php' ?>
     <!-- Bootstrap core JS-->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
