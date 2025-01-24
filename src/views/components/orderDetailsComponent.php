@@ -1,51 +1,37 @@
 <?php
     use app\models\User;
+
+    $userAnag = User::getUserAnag($idcustomer);
 ?>
 
 <div class="row">
     <div class="col mb-3">
-        <p class="small text-muted mb-1">User ID:</p>
-        <p><?php echo $idcustomer?></p>
+        <p class="small text-muted mb-1">User:</p>
+        <p><?php echo $userAnag['name'] . ' ' . $userAnag['surname'] ?></p>
     </div>
     <div class="col mb-3">
-        <p class="small text-muted mb-1">Date:</p>
+        <p class="small text-muted mb-1">Data:</p>
         <p><?php echo $date?></p>
     </div>
     <div class="col mb-3">
-        <p class="small text-muted mb-1">Order ID:</p>
+        <p class="small text-muted mb-1">ID Ordine:</p>
         <p>#<?php echo $idorder ?></p>
     </div>
 </div>
 
 <div class="row my-4">
     <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-        <p class="lead fw-bold mb-0" style="color: #007FFF;">Price: € <?php echo $totalprice?></p>
+        <p class="lead fw-bold mb-0" style="color: #007FFF;">Prezzo: € <?php echo $totalprice?></p>
     </div>
 </div>
 
-<p class="lead fw-bold mb-4 pb-2">Tracking Order</p>
+<p class="lead fw-bold mb-4 pb-2">Tracciamento ordine</p>
 
 <div class="row">
     <div class="col-lg-12">
-        <!-- <div class="horizontal-timeline">
-            <ul class="list-inline items d-flex justify-content-between">
-                <li class="list-inline-item items-list" id="ordered">
-                    <p class="py-1 px-2 rounded text-white" >Ordered</p>
-                </li>
-                <li class="list-inline-item items-list" id="shipped">
-                    <p class="py-1 px-2 rounded text-white" >Shipped</p>
-                </li>
-                <li class="list-inline-item items-list" id="on-the-way">
-                    <p class="py-1 px-2 rounded text-white" >On the way</p>
-                </li>
-                <li class="list-inline-item items-list" id="delivered">
-                    <p class="py-1 px-2 rounded text-white" >Delivered</p>
-                </li>
-            </ul>
-        </div> -->
         <div class="progress">
             <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                <span class="progress-description">Caricamento</span>
+                <span class="progress-description"></span>
             </div>
         </div>
     </div>

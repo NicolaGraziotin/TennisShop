@@ -122,4 +122,12 @@ class User extends Model {
             [date("Y-m-d"), date("H:i:s"), $title, $message, $idcustomer]);
         return;
     }
+
+    public static function getUserAnag($idcustomer) {
+        $statement = self::prepare(
+            "SELECT name, surname FROM customer WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return self::fetchOne($statement);
+    }
 }
