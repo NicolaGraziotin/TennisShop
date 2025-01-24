@@ -44,3 +44,11 @@ input#form1::-webkit-outer-spin-button {
     text-align: center;
     white-space: nowrap;
 }
+
+.btn-teal {
+    background-color: #008080;
+}
+
+.btn-teal:hover {
+    background-color: #006666;
+}

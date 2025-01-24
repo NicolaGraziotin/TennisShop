@@ -88,7 +88,28 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
     }
+
+    // Controlla se l'utente ha già accettato o rifiutato i cookie
+    if (!localStorage.getItem("cookieConsent")) {
+        document.getElementById("cookieBanner").classList.remove("d-none");
+    }
+
+    // Funzione per nascondere il banner e salvare la preferenza
+    function acceptCookies() {
+        localStorage.setItem("cookieConsent", "accepted");
+        document.getElementById("cookieBanner").classList.add("d-none");
+    }
+
+    function declineCookies() {
+        localStorage.setItem("cookieConsent", "declined");
+        document.getElementById("cookieBanner").classList.add("d-none");
+    }
+
+    document.getElementById("acceptCookies").addEventListener("click", acceptCookies);
+    document.getElementById("declineCookies").addEventListener("click", declineCookies);
+
 });
+
 function readMessage($idnotification) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', `/readMessage?idnotification=${$idnotification}`, true);

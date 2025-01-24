@@ -86,6 +86,22 @@
     <main class="min-vh-100">
     {{view}}
     </main>
+    <div id="cookieBanner" class="fixed-bottom bg-dark text-white text-center p-4 d-none">
+        <p class="fs-5 mb-3">
+            We use cookies and other tracking technologies to improve your browsing experience on our website, to show you
+            personalized content and targeted ads, to analyze our website traffic, and to understand where our visitors are
+            coming from.
+        </p>
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-2">
+            <button id="acceptCookies" class="btn btn-teal text-white fw-semibold px-4 py-2">
+            I Agree
+            </button>
+            <button id="declineCookies" class="btn btn-secondary fw-semibold px-4 py-2">
+            I Decline
+            </button>
+        </div>
+        <button class="btn btn-link text-light mt-2">Change my preferences</button>
+    </div>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
