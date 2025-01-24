@@ -13,9 +13,22 @@ class UserController extends Controller {
 
     public function register(Request $request, Response $response) {
         if ($request->getMethod() === 'post') {
-            $passwordEnc = password_hash($request->getBody()['password'], PASSWORD_DEFAULT);
-            User::addUser($request->getBody()['email'], $passwordEnc, $request->getBody()['name'], $request->getBody()['surname']);
-            return $response->redirect('/login');
+            $user = User::getUser($request->getBody()['email']) ?? False;
+            if (!$user) {
+                $passwordEnc = password_hash($request->getBody()['password'], PASSWORD_DEFAULT);
+                User::addUser($request->getBody()['email'], $passwordEnc, $request->getBody()['name'], $request->getBody()['surname']);
+                return $response->redirect('/login');
+            }
+            echo "<script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'error-popup';
+                        errorDiv.textContent = 'Email già in uso';
+                        document.body.appendChild(errorDiv);
+
+                        setTimeout(() => errorDiv.remove(), 3000);
+                    });
+                </script>";
         }
         return $this->render('register');
     }
@@ -40,7 +53,6 @@ class UserController extends Controller {
                             errorDiv.textContent = 'Credenziali non valide';
                             document.body.appendChild(errorDiv);
 
-                            // Rimuovi il popup dopo 3 secondi
                             setTimeout(() => errorDiv.remove(), 3000);
                         });
                     </script>";
