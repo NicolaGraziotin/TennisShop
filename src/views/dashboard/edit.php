@@ -5,7 +5,7 @@
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Edit</h1>
+    <h1 class="h2">Modifica</h1>
 </div>
 <div class="w-75">
     <form method="post" action="/dashboard/products/edit" enctype="multipart/form-data">
@@ -43,7 +43,7 @@
             <label for="image">Immagine</label>
             <input type="file" class="form-control" name="image" accept="image/*" required>
         </div>
-        <button type="submit" class="btn btn-primary mt-3 mb-3">Edit</button>
+        <button type="submit" class="btn btn-primary mt-3 mb-3">Modifica</button>
     </form>
     <a class="btn btn-primary mt-3 mb-3" href="/dashboard/products">Indietro</a>
 </div>

@@ -27,7 +27,7 @@ class CartController extends Controller {
             if(Cart::checkStock(Session::getUserId())) {
                 Cart::removeCartZero(Session::getUserId());
                 if(Cart::getCart(Session::getUserId()) == null) {
-                    Cart::setNotification("TennisShop", "No selected items in cart", Session::getUserId());
+                    Cart::setNotification("TennisShop", "Nessun articolo selezionato nel carrello.", Session::getUserId());
                     return $response->redirect('/cart');
                 }
                 Cart::setCreditCard(Session::getUserId(), $body['typeNum'], $body['typeExp'], 
@@ -37,10 +37,10 @@ class CartController extends Controller {
                     $body['idstatus'], $body['total']);
                 Cart::removeStock(Session::getUserId());
                 Cart::removeCart(Session::getUserId());
-                Cart::setNotification("TennisShop", "Your order has been placed successfully!", Session::getUserId());
+                Cart::setNotification("TennisShop", "Il tuo ordine è avvenuto con successo!", Session::getUserId());
                 return $response->redirect('/');
             } else {
-                Cart::setNotification("TennisShop", "Some products are out of stock!", Session::getUserId());
+                Cart::setNotification("TennisShop", "Un prodotto non è più disponibile!", Session::getUserId());
                 return $response->redirect('/cart');
             }
         }

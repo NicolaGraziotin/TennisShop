@@ -22,7 +22,7 @@
                         <input class="col-md-6 form-control text-center number-w me-3" type="number" name="quantity" min="1" max="<?php echo $stock ?>" value="1"/>
                         <button class="col-md-6 btn btn-outline-dark flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>
-                            Add to cart
+                            Aggiungi al carrello
                         </button>
                     </div>
                 </form>
@@ -33,7 +33,7 @@
 <!-- Related items section-->
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
-        <h2 class="fw-bolder mb-4">Related products</h2>
+        <h2 class="fw-bolder mb-4">Prodotti correlati</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {{components}}
         </div>

@@ -1,14 +1,8 @@
-<?php
-    use app\models\Cart;
-
-    $shippings = Cart::getAllShippings();
-?>
-
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Settings</h1>
+    <h1 class="h2">Impostazioni</h1>
 </div>
 <div class="d-flex mt-5 mb-5">
-    <h3>Scegli il corriere</h3>
+    <h4>Seleziona il corriere</h4>
     <form class="d-flex mx-3" action="" method="post">
         <select class="form-select" name="idshipping" onchange="this.form.submit()">
         <?php foreach ($shippings as $shipping):?>

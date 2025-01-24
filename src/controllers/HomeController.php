@@ -14,10 +14,6 @@ class HomeController extends Controller {
         return $this->render('home', $params);
     }
 
-    public function contact(Request $request, Response $response) {
-        return $this->render('contact');
-    }
-
     public function category(Request $request, Response $response) {
         $params['homeProduct'] = Product::getProductsByCategory($request->getBody()['idcategory']);
         return $this->render('home', $params);

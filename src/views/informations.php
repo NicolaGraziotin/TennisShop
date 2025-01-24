@@ -75,7 +75,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Country</h6>
+                  <h6 class="mb-0">Paese</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="country" name="country" value="<?php echo $country ?>"
@@ -85,7 +85,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">State</h6>
+                  <h6 class="mb-0">Regione</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="state" name="state" value="<?php echo $state ?>" disabled>
@@ -94,7 +94,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">City</h6>
+                  <h6 class="mb-0">Città</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="city" name="city" value="<?php echo $city ?>" disabled>
@@ -103,7 +103,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Address</h6>
+                  <h6 class="mb-0">Indirizzo</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="address" name="address" value="<?php echo $address ?>"
@@ -122,7 +122,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Phone</h6>
+                  <h6 class="mb-0">Cellulare</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $phone ?>" disabled>
@@ -131,10 +131,10 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                    <button type="button" class="btn btn-info" id="editButton">Edit</button>
+                    <button type="button" class="btn btn-info" id="editButton">Modifica</button>
                 </div>
                 <div class="col-sm-9">
-                  <button type="submit" class="btn btn-info" id="saveButton" hidden>Save</button>
+                  <button type="submit" class="btn btn-info" id="saveButton" hidden>Salva</button>
                 </div>
               </div>
             </div>

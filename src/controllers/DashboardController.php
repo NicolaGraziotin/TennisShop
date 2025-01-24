@@ -8,6 +8,7 @@ use app\core\Request;
 use app\core\Response;
 use app\core\Session;
 use app\models\Admin;
+use app\models\Cart;
 use app\models\Product;
 
 class DashboardController extends Controller {
@@ -48,7 +49,8 @@ class DashboardController extends Controller {
             Admin::setShipping($body['idshipping']);
             return $response->redirect('/dashboard/settings');
         }
-        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/settings');
+        $params['shippings'] = Cart::getAllShippings();
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/settings', $params);
     }
 
     public function delete(Request $request, Response $response) {
