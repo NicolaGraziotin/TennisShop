@@ -61,4 +61,12 @@ class Product extends Model {
             [$idproduct]);
         return;
     }
+
+    public static function searchProducts($name) {
+        $statement = self::prepare(
+            "SELECT * FROM product WHERE name LIKE ?",
+            "s",
+            ["%$name%"]);
+        return self::fetchAll($statement);
+    }
 }

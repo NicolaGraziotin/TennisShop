@@ -46,10 +46,6 @@ class CartController extends Controller {
         }
     }
 
-    public function payment(Request $request, Response $response) {
-        return $this->render('payment');
-    }
-
     public function updateQuantity(Request $request) {
         if ($request->getMethod() === 'get') {
             Cart::updateQuantity(Session::getUserId(), $request->getBody()['idproduct'], $request->getBody()['quantity']);  

@@ -48,6 +48,16 @@
                         </ul>
                     </li>
                 </ul>
+                <div class="mb-2 mb-lg-0 w-50 me-auto">
+                    <form class="d-flex" action="/search" method="get">
+                        <div class="input-group w-100">
+                            <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <button type="submit" class="input-group-text border-0" id="search-addon">
+                                <i class="bi bi-search"></i>
+                            </span>
+                        </div>
+                    </form>
+                </div>
                 <div class="d-flex">
                     <div class="dropdown">
                         <div class="notify-btn" id="notify-btn">

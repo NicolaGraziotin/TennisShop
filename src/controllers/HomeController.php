@@ -26,4 +26,9 @@ class HomeController extends Controller {
     public function notFound(Request $request, Response $response) {
         return $this->render('notFound');
     }
+
+    public function search(Request $request, Response $response) {
+        $params['homeProduct'] = Product::searchProducts($request->getBody()['search']);
+        return $this->render('home', $params);
+    }
 }
