@@ -26,7 +26,7 @@ CREATE TABLE `customer` (
   `idcustomer` int NOT NULL,
   `seller` tinyint(1) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(128) NOT NULL,
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -122,7 +122,7 @@ ALTER TABLE `notification`
 
 ALTER TABLE `personal_data`
   ADD PRIMARY KEY (`idpersonaldata`),
-  ADD UNIQUE KEY `idcustomer_pd` (`idcustomer`) USING BTREE;
+  ADD UNIQUE KEY `idcustomer_pd` (`idcustomer`);
 
 ALTER TABLE `product`
   ADD PRIMARY KEY (`idproduct`),
