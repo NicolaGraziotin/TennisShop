@@ -41,32 +41,32 @@
                     
                     <form action="/checkout" method="post">
                       <div class="form-outline form-white mb-4">
-                        <input type="text" name="typeName" class="form-control form-control-lg" size="17" minlength="1"
-                          placeholder="Nome Cognome" required/>
-                        <label class="form-label" for="typeName">Proprietario</label>
+                        <input type="text" name="typeName" id="proprietario" class="form-control form-control-lg" size="17" minlength="1"
+                          placeholder="Nome Cognome" required>
+                        <label class="form-label" for="proprietario">Proprietario</label>
                       </div>
 
                       <div class="form-outline form-white mb-4">
                         <input type="text" name="typeNum" class="form-control form-control-lg" size="17" 
-                        id="cr_no" minlength="19" maxlength="19" placeholder="0000 0000 0000 0000" required />
-                        <label class="form-label" for="typeNum">Numero Carta</label>
+                        id="carta" minlength="19" maxlength="19" placeholder="0000 0000 0000 0000" required>
+                        <label class="form-label" for="carta">Numero Carta</label>
                       </div>
 
                       <div class="row mb-4">
                         <div class="col-md-6">
                           <div class="form-outline form-white">
                             <input type="text" name="typeExp" class="form-control form-control-lg"
-                              value="" size="7" id="exp" placeholder="MM/YY"
-                              minlength="5" maxlength="5" required/>
-                            <label class="form-label" for="typeExp">Scadenza</label>
+                              value="" size="7" id="scadenza" placeholder="MM/YY"
+                              minlength="5" maxlength="5" required>
+                            <label class="form-label" for="scadenza">Scadenza</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-outline form-white">
                             <input type="password" name="typeCvv" class="form-control form-control-lg"
-                              placeholder="000" size="1" minlength="3"
-                              maxlength="3" required/>
-                            <label class="form-label" for="typeCvv">CVV</label>
+                              placeholder="000" size="1" minlength="3" id="cvv"
+                              maxlength="3" required>
+                            <label class="form-label" for="cvv">CVV</label>
                           </div>
                         </div>
                       </div>
@@ -100,23 +100,10 @@
                       <input type="text" name="idstatus" value="1" hidden>
                       <input type="text" id="totalPrice" name="total" value="<?php echo Cart::totalCartPrice($idcustomer) + $shipping?>" hidden>
 
-                      <?php if(Cart::getTotalElements($idcustomer) > 0): ?>
-                      <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                        class="btn btn-info btn-block btn-lg">
-                        <div class="d-flex justify-content-between">
-                          <i class="bi bi-cart-check-fill"></i>
-                          <span><i class="fas fa-long-arrow-alt-right ms-2"></i>Paga</span>
-                        </div>
+                      <button type="submit" class="btn btn-info btn-block btn-lg" <?php echo Cart::getTotalElements($idcustomer) > 0 ? '' : 'disabled'?>>
+                        <i class="bi bi-cart-check-fill"></i>
+                        <span><i class="fas fa-long-arrow-alt-right ms-2"></i>Paga</span>
                       </button>
-                      <?php else: ?>
-                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                        class="btn btn-info btn-block btn-lg" disabled>
-                          <div class="d-flex justify-content-between">
-                            <i class="bi bi-cart-check-fill"></i>
-                            <span><i class="fas fa-long-arrow-alt-right ms-2"></i>Paga</span>
-                          </div>
-                        </button>
-                      <?php endif; ?>
                     </form>
                   </div>
                 </div>
@@ -130,7 +117,7 @@
 </section>
 <script>
   //For Card Number formatted input
-  var cardNum = document.getElementById('cr_no');
+  var cardNum = document.getElementById('carta');
   cardNum.onkeyup = function (e) {
       if (this.value == this.lastValue) return;
       var caretPosition = this.selectionStart;
@@ -154,7 +141,7 @@
   }
   
   //For Date formatted input
-  var expDate = document.getElementById('exp');
+  var expDate = document.getElementById('scadenza');
   expDate.onkeyup = function (e) {
       if (this.value == this.lastValue) return;
       var caretPosition = this.selectionStart;

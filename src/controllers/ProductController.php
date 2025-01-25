@@ -19,7 +19,7 @@ class ProductController extends Controller {
             }
             Cart::addProduct(Session::getUserId(), $request->getBody()['idproduct'], $request->getBody()['quantity']);
         }
-        $params = $request->getBody();
+        $params = Product::getProductById($request->getBody()['idproduct']);
         $params['homeProduct'] = array_slice(Product::getAllProducts(), 0, 4);
         return $this->render('product', $params);
     }
