@@ -1,6 +1,10 @@
 <?php
     use app\models\Admin;
+    use app\models\Product;
 
+    $products = Product::getAllProducts();
+    $productsId = array_column($products, 'idproduct');
+    $productsStock = array_column($products, 'stock');
 ?>
 <!-- Statistics Cards -->
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -34,7 +38,7 @@
     <div class="col-md-12">
         <div class="card mb-3">
             <div class="card-body">
-                <h2 class="card-title">Vendite</h2>
+                <h2 class="card-title">Inventario</h2>
                 <canvas id="salesChart"></canvas>
             </div>
         </div>
@@ -46,11 +50,11 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: Array.from({length: 100}, (_, i) => i + 1),
+                    labels: Array.from(<?= json_encode($productsId) ?>),
                     datasets: [{
-                        label: 'Vendite totali',
-                        data: Array.from({length: 100}, (_, i) => i + 1),
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        label: 'Prodotti rimasti',
+                        data: Array.from(<?= json_encode($productsStock) ?>),
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     }]
@@ -60,13 +64,13 @@
                         x: {
                             title: {
                                 display: true,
-                                text: 'Tempo'
+                                text: 'Id prodotto'
                             }
                         },
                         y: {
                             title: {
                                 display: true,
-                                text: 'Vendite totali'
+                                text: 'Disponibilità'
                             },
                             beginAtZero: true
                         }
