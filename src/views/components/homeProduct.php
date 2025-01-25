@@ -1,7 +1,7 @@
 <div class="col mb-5">
     <div class="card h-100">
         <!-- Product image-->
-        <img class="card-img-top" src="<?php echo $image?>" alt="..." />
+        <img class="card-img-top" src="<?php echo $image?>" alt="...">
         <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">

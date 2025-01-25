@@ -32,7 +32,10 @@
                 <input type="text" name="idorder" value="<?php echo $idorder?>" hidden>
                 <button type="submit" class="btn btn-outline-danger btn-sm">Cancella ordine</button>
             </form>
-            <a href="/orderDetails?idorder=<?php echo $idorder ?>" class="btn btn-outline-secondary btn-sm">Vedi dettagli</a>
+            <form action="/orderDetails" method="get">
+                <input type="text" name="idorder" value="<?php echo $idorder?>" hidden>
+                <button type="submit" class="btn btn-outline-secondary btn-sm">Vedi dettagli</button>
+            </form>
         </div>
         </div>
     </div>

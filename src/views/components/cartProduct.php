@@ -17,7 +17,7 @@
                 </button>
 
                 <input id="form1" min="0" name="quantity" value="<?php echo $quantity ?>" type="number"
-                    class="form-control form-control-sm text-center" readonly/>
+                    class="form-control form-control-sm text-center" readonly>
 
                 <button class="btn btn-link px-2"
                     onclick="updateQuantity(this, 'increase',<?php echo $idproduct ?>)">
@@ -25,7 +25,7 @@
                 </button>
             </div>
             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0"><?php echo "€".$price ?></h5>
+                <h5 class="mb-0"><?php echo "€ ".$price ?></h5>
             </div>
             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
