@@ -70,9 +70,28 @@
                         </div>
                         <ul class="dropdown-menu notify" id="notify-menu"></ul>
                     </div>
-
-                    {{profile}}
-
+                    <?php if (!Session::isLogged()): ?>
+                        <a class="btn btn-outline-dark me-1" href="/login">
+                            <i class="bi bi-person-x"></i>
+                            Login
+                        </a>
+                    <?php else: ?>
+                        <div class="dropdown">
+                            <a class="btn btn-outline-dark me-1" id="navbarDropdown" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-check-fill"></i>
+                                <?php echo Session::get('user')['name'] ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/informations">Informazioni personali</a></li>
+                                <li><a class="dropdown-item" href="/orders">Ordini</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
                     <a class="btn btn-outline-dark" href="/cart">
                         <i class="bi-cart-fill me-2"></i>
                         Carrello

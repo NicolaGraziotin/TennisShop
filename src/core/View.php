@@ -7,25 +7,12 @@ use app\models\Cart;
 class View {
 
     public function render($view, $params){
-        $templateRend = $this->renderTemplate($params);
+        $layout = Application::$ROOT_DIR."/views/layouts/".Application::$app->layout.".php";
+        $templateRend = $this->captureOutput($layout, $params);
         $viewRend = $this->renderView($templateRend, $view, $params);
         return $view === 'home' || $view === 'cart' || $view === 'product' || $view === 'orders' || $view === 'orderDetails'
             ? $this->renderComponents($view, $viewRend, $params)
             : $viewRend;
-    }
-
-    public function renderTemplate($params){
-        $layout = Application::$ROOT_DIR."/views/layouts/".Application::$app->layout.".php";
-        $templateRend = $this->captureOutput($layout, $params);
-        $nav = '';
-        if(!Session::isLogged()){
-            $nav = 'login';
-            
-        } else {
-            $nav = 'profile';
-        }
-        $profile = Application::$ROOT_DIR."/views/nav/{$nav}.php";
-        return str_replace('{{profile}}', $this->captureOutput($profile, $params), $templateRend);
     }
 
     public function renderView($template, $view, $params){
