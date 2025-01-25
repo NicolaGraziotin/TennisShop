@@ -17,7 +17,7 @@
                         <label for="number" hidden>number</label>
                         <input class="col-md-6 form-control text-center number-w me-3" type="number" id="number" name="quantity" min="1" max="<?php echo $stock ?>" value="1">
                         <button class="col-md-6 btn btn-outline-dark flex-shrink-0" type="submit">
-                            <em  class="bi-cart-fill me-1"></em>>
+                            <em  class="bi-cart-fill me-1"></em>
                             Aggiungi al carrello
                         </button>
                     </div>

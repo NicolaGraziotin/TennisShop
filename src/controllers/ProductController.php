@@ -18,6 +18,7 @@ class ProductController extends Controller {
                 return $response->redirect('/login');
             }
             Cart::addProduct(Session::getUserId(), $request->getBody()['idproduct'], $request->getBody()['quantity']);
+            return $response->redirect('/cart');
         }
         $params = Product::getProductById($request->getBody()['idproduct']);
         $params['homeProduct'] = array_slice(Product::getAllProducts(), 0, 4);

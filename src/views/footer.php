@@ -2,7 +2,7 @@
 <footer class="py-5 bg-dark text-white">
     <div class="container d-flex">
         <div class="container mt-3">
-            <h5 class="mb-2"><strong>Contatti:</strong></h5>
+            <p class="mb-2 h5"><strong>Contatti:</strong></p>
             <p class="mb-1"><strong>Compagnia:</strong> Tennis Shop</p>
             <p class="mb-1"><strong>Indirizzo:</strong> Via dell'Università 50, Cesena, Italia</p>
             <p class="mb-1"><strong>Email:</strong> tennisShop@unibo.it</p>
