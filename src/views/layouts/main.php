@@ -10,18 +10,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title><?php echo Application::$app->title; ?></title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <!-- Bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,10 +40,15 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/">Tutti i prodotti</a></li>
                             <li>
-                                <hr class="dropdown-divider" />
+                                <hr class="dropdown-divider">
                             </li>
                             <?php foreach ($categories as $category): ?>
-                                <li><a class="dropdown-item" href="/category?idcategory=<?php echo $category['idcategory']; ?>"><?php echo $category['name']; ?></a></li>
+                                <li>
+                                    <form action="/category" method="get">
+                                        <input type="hidden" name="idcategory" value="<?php echo $category['idcategory']; ?>">
+                                        <button type="submit" class="dropdown-item"><?php echo $category['name']; ?></button>
+                                    </form>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     </li>
@@ -51,10 +56,10 @@
                 <div class="mb-2 mb-lg-0 w-50 me-auto">
                     <form class="d-flex" action="/search" method="get">
                         <div class="input-group w-100">
-                            <input type="search" class="form-control rounded" name="search" placeholder="Cerca" aria-label="Search" aria-describedby="search-addon" />
+                            <input type="search" class="form-control rounded" name="search" placeholder="Cerca" aria-label="Search" aria-describedby="search-addon">
                             <button type="submit" class="input-group-text border-0" id="search-addon">
                                 <i class="bi bi-search"></i>
-                            </span>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -77,16 +82,16 @@
                         </a>
                     <?php else: ?>
                         <div class="dropdown">
-                            <a class="btn btn-outline-dark me-1" id="navbarDropdown" href="#" role="button"
+                            <a class="btn btn-outline-dark me-1" id="userDropdown" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-check-fill"></i>
                                 <?php echo Session::get('user')['name'] ?>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" href="/informations">Informazioni personali</a></li>
                                 <li><a class="dropdown-item" href="/orders">Ordini</a></li>
                                 <li>
-                                    <hr class="dropdown-divider" />
+                                    <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
