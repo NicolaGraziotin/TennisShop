@@ -10,7 +10,7 @@ class View {
         $layout = Application::$ROOT_DIR."/views/layouts/".Application::$app->layout.".php";
         $templateRend = $this->captureOutput($layout, $params);
         $viewRend = $this->renderView($templateRend, $view, $params);
-        return $view === 'home' || $view === 'cart' || $view === 'product' || $view === 'orders' || $view === 'orderDetails'
+        return $view === 'home' || $view === 'cart' || $view === 'product' || $view === 'orders'
             ? $this->renderComponents($view, $viewRend, $params)
             : $viewRend;
     }
@@ -33,9 +33,6 @@ class View {
                 break;
             case 'orders':
                 $comp = 'orderComponent';
-                break;
-            case 'orderDetails':
-                $comp = 'orderDetailsComponent';
                 break;
             default:
         }

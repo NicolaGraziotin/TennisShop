@@ -90,7 +90,10 @@ class UserController extends Controller {
     }
 
     public function orderDetails(Request $request, Response $response) {
-        $params['orderDetailsComponent'] = User::getOrderDetails($request->getBody()['idorder']);
+        $params = User::getOrderDetails($request->getBody()['idorder']);
+        $params['anag'] = User::getUserAnag($params['idcustomer']);
+        $params['card'] = User::getCardById($params['idcreditcard']);
+        $params['info'] = User::getPersonalInformations($params['idcustomer']);
         return $this->render('orderDetails', $params);
     }
 

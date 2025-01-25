@@ -79,7 +79,7 @@ class User extends Model {
             "SELECT * FROM customer_order WHERE idorder = ?",
             "i",
             [$idorder]);
-        return self::fetchAll($statement);
+        return self::fetchOne($statement);
     }
 
     public static function updateOrderStatus($idorder, $statusorder) {
@@ -128,6 +128,14 @@ class User extends Model {
             "SELECT name, surname FROM customer WHERE idcustomer = ?",
             "i",
             [$idcustomer]);
+        return self::fetchOne($statement);
+    }
+
+    public static function getCardById($idcreditcard) {
+        $statement = self::prepare(
+            "SELECT * FROM credit_card WHERE idcreditcard = ?",
+            "i",
+            [$idcreditcard]);
         return self::fetchOne($statement);
     }
 }
