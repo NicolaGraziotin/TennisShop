@@ -4,7 +4,7 @@
     $products = Product::getAllProducts();
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Prodotti</h1>
+    <h1>Prodotti</h1>
     <a class="btn btn-primary mt-3 mb-3" href="/dashboard/products/edit">Aggiungi prodotto</a>
 </div>
 <div class="table-responsive">

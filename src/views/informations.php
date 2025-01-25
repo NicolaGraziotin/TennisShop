@@ -10,7 +10,7 @@
               <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
                 width="150">
               <div class="mt-3">
-                <h4><?php echo $name." ".$surname ?></h4>
+                <p class="h4"><?php echo $name." ".$surname ?></p>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Paese</h6>
+                  <label for="country" class="mb-0 h6">Paese</label>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="country" name="country" value="<?php echo $country ?>"
@@ -85,7 +85,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Regione</h6>
+                  <label for="state" class="mb-0 h6">Regione</label>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="state" name="state" value="<?php echo $state ?>" disabled>
@@ -94,7 +94,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Città</h6>
+                  <label for="city" class="mb-0 h6">Città</label>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="city" name="city" value="<?php echo $city ?>" disabled>
@@ -103,7 +103,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Indirizzo</h6>
+                  <label for="address" class="mb-0 h6">Indirizzo</label>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="address" name="address" value="<?php echo $address ?>"
@@ -113,7 +113,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">CAP</h6>
+                  <label for="cap" class="mb-0 h6">CAP</label>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="cap" name="cap" value="<?php echo $cap ?>" disabled>
@@ -122,7 +122,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Cellulare</h6>
+                  <label for="phone" class="mb-0 h6">Cellulare</label>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $phone ?>" disabled>

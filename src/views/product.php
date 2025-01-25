@@ -13,10 +13,11 @@
                 <p class="small">Diponibilità: <?php echo $stock?></p>
                 <form action="/product" method="post">
                     <div class="d-flex">
-                        <input type="number" name="idproduct" value="<?php echo $idproduct ?>" hidden>
-                        <input class="col-md-6 form-control text-center number-w me-3" type="number" name="quantity" min="1" max="<?php echo $stock ?>" value="1">
+                        <input type="hidden" name="idproduct" value="<?php echo $idproduct ?>">
+                        <label for="number" hidden>number</label>
+                        <input class="col-md-6 form-control text-center number-w me-3" type="number" id="number" name="quantity" min="1" max="<?php echo $stock ?>" value="1">
                         <button class="col-md-6 btn btn-outline-dark flex-shrink-0" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
+                            <em  class="bi-cart-fill me-1"></em>>
                             Aggiungi al carrello
                         </button>
                     </div>

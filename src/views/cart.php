@@ -15,7 +15,7 @@
           <div class="card-body p-4">
             <div class="row">
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="/" class="text-body"><i class="bi bi-arrow-left me-2"></i>
+                <h5 class="mb-3"><a href="/" class="text-body"><em class="bi bi-arrow-left me-2"></em>
                     Torna ad acquistare</a></h5>
 
                 <hr>
@@ -94,15 +94,15 @@
                         </p>
                       </div>
                       
-                      <input type="text" name="idcustomer" value="<?php echo $idcustomer?>" hidden>
-                      <input type="text" name="idpersonaldata"
-                        value="<?php echo User::getPersonalInformations($idcustomer)['idpersonaldata']?>" hidden>
-                      <input type="text" name="idstatus" value="1" hidden>
-                      <input type="text" id="totalPrice" name="total" value="<?php echo Cart::totalCartPrice($idcustomer) + $shipping?>" hidden>
+                      <input type="hidden" name="idcustomer" value="<?php echo $idcustomer?>">
+                      <input type="hidden" name="idpersonaldata"
+                        value="<?php echo User::getPersonalInformations($idcustomer)['idpersonaldata']?>">
+                      <input type="hidden" name="idstatus" value="1">
+                      <input type="hidden" id="totalPrice" name="total" value="<?php echo Cart::totalCartPrice($idcustomer) + $shipping?>">
 
                       <button type="submit" class="btn btn-info btn-block btn-lg" <?php echo Cart::getTotalElements($idcustomer) > 0 ? '' : 'disabled'?>>
-                        <i class="bi bi-cart-check-fill"></i>
-                        <span><i class="fas fa-long-arrow-alt-right ms-2"></i>Paga</span>
+                        <em class="bi bi-cart-check-fill"></em>
+                        <span><em class="fas fa-long-arrow-alt-right ms-2"></em>Paga</span>
                       </button>
                     </form>
                   </div>

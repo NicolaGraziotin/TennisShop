@@ -2,7 +2,7 @@
     use app\core\Application;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,27 +31,27 @@
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/dashboard">
-                                <i class="bi bi-house"></i> Dashboard
+                                <em class="bi bi-house"></em> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard/products">
-                                <i class="bi bi-box"></i> Prodotti
+                                <em class="bi bi-box"></em> Prodotti
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="bi bi-people"></i> Clienti
+                                <em class="bi bi-people"></em> Clienti
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <i class="bi bi-bar-chart"></i> Reports
+                                <em class="bi bi-bar-chart"></em> Reports
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard/settings">
-                                <i class="bi bi-gear"></i> Impostazioni
+                                <em class="bi bi-gear"></em> Impostazioni
                             </a>
                         </li>
                     </ul>

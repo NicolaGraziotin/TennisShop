@@ -72,10 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         data.forEach(message => {
                             if(message.seen == 0) {
-                                temp += `<li class="dropdown-item" onclick="readMessage(${message.idnotification})"><i class="bi bi-archive-fill p-1"></i>${message.description}</li>`;
+                                temp += `<li class="dropdown-item" onclick="readMessage(${message.idnotification})"><em  class="bi bi-archive-fill p-1"></em>>${message.description}</li>`;
                                 //notify_container.innerHTML += li;
                             } else {
-                                temp += `<li class="dropdown-item"><i class="bi bi-archive p-1"></i>${message.description}</li>`;
+                                temp += `<li class="dropdown-item"><em class="bi bi-archive p-1"></em>${message.description}</li>`;
                                 //notify_container.innerHTML += li;
                             }
                         });
@@ -100,13 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("cookieBanner").classList.add("d-none");
     }
 
-    function declineCookies() {
-        localStorage.setItem("cookieConsent", "declined");
-        document.getElementById("cookieBanner").classList.add("d-none");
-    }
-
     document.getElementById("acceptCookies").addEventListener("click", acceptCookies);
-    document.getElementById("declineCookies").addEventListener("click", declineCookies);
 
 });
 

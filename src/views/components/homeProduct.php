@@ -15,13 +15,7 @@
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
                  <form action="/product" method="get">
-                    <input type="text" name="idproduct" value="<?php echo $idproduct ?>" hidden>
-                    <input type="text" name="name" value="<?php echo $name ?>" hidden>
-                    <input type="text" name="description" value="<?php echo $description ?>" hidden>
-                    <input type="text" name="price" value="<?php echo $price ?>" hidden>
-                    <input type="text" name="idcategory" value="<?php echo $idcategory ?>" hidden>
-                    <input type="text" name="image" value="<?php echo $image ?>" hidden>
-                    <input type="text" name="stock" value="<?php echo $stock ?>" hidden>
+                    <input type="hidden" id="idproduct" name="idproduct" value="<?php echo $idproduct ?>">
                     <button type="submit" class="btn btn-outline-dark mt-auto">Apri</button>
                  </form>
             </div>

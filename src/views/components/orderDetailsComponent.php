@@ -21,7 +21,7 @@
 
 <div class="row my-4">
     <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-        <p class="lead fw-bold mb-0" style="color: #007FFF;">Prezzo: € <?php echo $totalprice?></p>
+        <p class="lead fw-bold mb-0">Prezzo: € <?php echo $totalprice?></p>
     </div>
 </div>
 

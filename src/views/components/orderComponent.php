@@ -29,11 +29,11 @@
 
         <div class="d-flex flex-wrap gap-2 mt-3 mt-md-0 ms-md-auto">
             <form action="/cancelOrder" method="post">
-                <input type="text" name="idorder" value="<?php echo $idorder?>" hidden>
+                <input type="hidden" id="cancOrder" name="idorder" value="<?php echo $idorder?>">
                 <button type="submit" class="btn btn-outline-danger btn-sm">Cancella ordine</button>
             </form>
             <form action="/orderDetails" method="get">
-                <input type="text" name="idorder" value="<?php echo $idorder?>" hidden>
+                <input type="hidden" id="detOrder" name="idorder" value="<?php echo $idorder?>">
                 <button type="submit" class="btn btn-outline-secondary btn-sm">Vedi dettagli</button>
             </form>
         </div>

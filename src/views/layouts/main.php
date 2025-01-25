@@ -7,7 +7,7 @@
     $categories = Product::getAllCategories();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="utf-8">
@@ -56,9 +56,10 @@
                 <div class="mb-2 mb-lg-0 w-50 me-auto">
                     <form class="d-flex" action="/search" method="get">
                         <div class="input-group w-100">
-                            <input type="search" class="form-control rounded" name="search" placeholder="Cerca" aria-label="Search" aria-describedby="search-addon">
+                            <label for="search" hidden>search</label>
+                            <input type="search" id="search" class="form-control rounded" name="search" placeholder="Cerca" aria-label="Search" aria-describedby="search-addon">
                             <button type="submit" class="input-group-text border-0" id="search-addon">
-                                <i class="bi bi-search"></i>
+                                <em class="bi bi-search"></em>
                             </button>
                         </div>
                     </form>
@@ -67,7 +68,7 @@
                     <div class="dropdown">
                         <div class="notify-btn" id="notify-btn">
                             <button class="btn btn-outline-dark me-1">
-                                <span><i class="bi bi-bell-fill"></i></span>
+                                <span><em class="bi bi-bell-fill"></em></span>
                                 <span class="show_notif" id="show-notif">
                                     <div class="spinner-border spinner-border-sm"></div>
                                 </span>
@@ -77,14 +78,14 @@
                     </div>
                     <?php if (!Session::isLogged()): ?>
                         <a class="btn btn-outline-dark me-1" href="/login">
-                            <i class="bi bi-person-x"></i>
+                            <em class="bi bi-person-x"></em>
                             Login
                         </a>
                     <?php else: ?>
                         <div class="dropdown">
                             <a class="btn btn-outline-dark me-1" id="userDropdown" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-check-fill"></i>
+                                <em class="bi bi-person-check-fill"></em>
                                 <?php echo Session::get('user')['name'] ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="userDropdown">
@@ -98,7 +99,7 @@
                         </div>
                     <?php endif; ?>
                     <a class="btn btn-outline-dark" href="/cart">
-                        <i class="bi-cart-fill me-2"></i>
+                        <em class="bi-cart-fill me-2"></em>
                         Carrello
                         <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo Cart::getTotalElements(Session::getUserId()) ?></span>
                     </a>

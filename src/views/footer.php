@@ -11,11 +11,11 @@
         <div class="container mt-3">
             <p>Seguici sui social per rimanere aggiornato!</p>
             <ul class="list-inline">
-                <li class="list-inline-item"><a class="bi bi-facebook text-white" href="https://facebook.com"></a></li>
-                <li class="list-inline-item"><a class="bi bi-instagram text-white" href="https://instagram.com"></a></li>
-                <li class="list-inline-item"><a class="bi bi-twitter-x text-white" href="https://x.com"></a></li>
-                <li class="list-inline-item"><a class="bi bi-linkedin text-white" href="https://linkedin.com"></a></li>
-                <li class="list-inline-item"><a class="bi bi-youtube text-white" href="https://youtube.com"></a></li>
+                <li class="list-inline-item"><a class="bi bi-facebook text-white" href="https://facebook.com" title="facebook"></a></li>
+                <li class="list-inline-item"><a class="bi bi-instagram text-white" href="https://instagram.com" title="instagram"></a></li>
+                <li class="list-inline-item"><a class="bi bi-twitter-x text-white" href="https://x.com" title="x"></a></li>
+                <li class="list-inline-item"><a class="bi bi-linkedin text-white" href="https://linkedin.com" title="linkedin"></a></li>
+                <li class="list-inline-item"><a class="bi bi-youtube text-white" href="https://youtube.com" title="youtube"></a></li>
             </ul>
             <p>Copyright &copy; Tennis Shop <?php echo date('Y'); ?></p>
         </div>
