@@ -67,32 +67,32 @@
         let progressBar = document.querySelector('.progress-bar');
         switch (currentOrderState) {
             case 1:
-            progressBar.style.width = "25%";   
-            progressBar.style.backgroundColor = "0000cc";    
-            progressBar.querySelector('.progress-description').innerText = "Approvato";
-            progressBar.setAttribute('aria-valuenow', 25);
-            break;
+                progressBar.style.width = "25%";   
+                progressBar.style.backgroundColor = "0000cc";    
+                progressBar.querySelector('.progress-description').innerText = "Approvato";
+                progressBar.setAttribute('aria-valuenow', 25);
+                break;
             case 2:
-            progressBar.style.width = "50%";
-            progressBar.style.backgroundColor = "#008000";
-            progressBar.querySelector('.progress-description').innerText = "Spedito";
-            progressBar.setAttribute('aria-valuenow', 50);
-            sendNotification("Tennishop", "Il tuo ordine è stato spedito");
-            break;
+                progressBar.style.width = "50%";
+                progressBar.style.backgroundColor = "#008000";
+                progressBar.querySelector('.progress-description').innerText = "Spedito";
+                progressBar.setAttribute('aria-valuenow', 50);
+                sendNotification("Tennishop", "Il tuo ordine numero <?php echo $idorder; ?> è stato spedito");
+                break;
             case 3:
-            progressBar.style.width = "75%";
-            progressBar.style.backgroundColor = "#e6b800";
-            progressBar.querySelector('.progress-description').innerText = "In consegna";
-            progressBar.setAttribute('aria-valuenow', 75);
-            sendNotification("Tennishop", "Il tuo ordine è in consegna");
-            break;
+                progressBar.style.width = "75%";
+                progressBar.style.backgroundColor = "#e6b800";
+                progressBar.querySelector('.progress-description').innerText = "In consegna";
+                progressBar.setAttribute('aria-valuenow', 75);
+                sendNotification("Tennishop", "Il tuo ordine numero <?php echo $idorder; ?> è in consegna");
+                break;
             case 4:
-            progressBar.style.width = "100%";
-            progressBar.style.backgroundColor = "#b30000";
-            progressBar.querySelector('.progress-description').innerText = "Consegnato";
-            progressBar.setAttribute('aria-valuenow', 100);
-            sendNotification("Tennishop", "Il tuo ordine è stato consegnato");
-            break;
+                progressBar.style.width = "100%";
+                progressBar.style.backgroundColor = "#b30000";
+                progressBar.querySelector('.progress-description').innerText = "Consegnato";
+                progressBar.setAttribute('aria-valuenow', 100);
+                sendNotification("Tennishop", "Il tuo ordine numero <?php echo $idorder; ?> è stato consegnato");
+                break;
         }
         
         // AJAX

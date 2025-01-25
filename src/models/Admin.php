@@ -30,7 +30,7 @@ class Admin extends Model {
 
     public static function getTotalUsers() {
         $statement = self::prepare(
-            "SELECT COUNT(*) FROM customer",
+            "SELECT COUNT(*) FROM customer WHERE seller = 0",
             "",
             []);
         return self::fetchOne($statement)['COUNT(*)'];

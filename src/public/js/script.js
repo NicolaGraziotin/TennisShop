@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const editButton = document.getElementById('editButton');
-    
+
     if (editButton) {
         editButton.addEventListener('click', () => {
             const inputs = document.querySelectorAll('.form-control');
@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#saveButton').hidden = !document.querySelector('#saveButton').hidden;
         })
     }
-    
+
     const notify_btn = document.getElementById('notify-btn');
     const notify_label = document.getElementById('show-notif');
     const notify_container = document.getElementById('notify-menu');
-    
+
     if (notify_btn && notify_label && notify_container) {
         let xhr = new XMLHttpRequest();
-    
+
         function notification() {
             xhr.open('GET', '/checkMessage', true);
             xhr.send();
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (xhr.status == 200) {
                     let get_data = JSON.parse(xhr.responseText);
                     console.log(get_data);
-                    if(get_data == get_data) {
+                    if (get_data == get_data) {
                         notify_label.innerHTML = get_data;
                     } else {
                         notify_btn.innerHTML += get_data;
@@ -34,22 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-    
+
         window.onload = () => {
             notification();
 
             setInterval(() => {
                 notification();
-            }, 2000);  
-        }  
-        
-    
-    
+            }, 2000);
+        }
+
         notify_btn.addEventListener('click', (e) => {
             e.preventDefault();
-    
+
             notify_container.classList.toggle('show');
-            
+
             showMessage();
 
             setInterval(() => {
@@ -60,18 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
         function showMessage() {
             xhr.open('GET', '/getMessage', true);
             xhr.send();
-            
+
             let temp = '';
 
-            xhr.onload = function() {
+            xhr.onload = function () {
                 if (xhr.status == 200) {
                     let data = JSON.parse(xhr.responseText);
                     console.log(data);
                     if (data.length == 0) {
-                        temp += '<li class="dropdown-item">No notifications</li>';
+                        temp += '<li class="dropdown-item">Non ci sono notifiche</li>';
                     } else {
                         data.forEach(message => {
-                            if(message.seen == 0) {
+                            if (message.seen == 0) {
                                 temp += `<li class="dropdown-item" onclick="readMessage(${message.idnotification})"><em  class="bi bi-archive-fill p-1"></em>${message.description}</li>`;
                                 //notify_container.innerHTML += li;
                             } else {
@@ -83,13 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 notify_container.innerHTML = temp;
             }
-            
         }
-        
-        
     }
 
-    // Controlla se l'utente ha già accettato o rifiutato i cookie
+    // Controlla se l'utente ha già accettato i cookie
     if (!localStorage.getItem("cookieConsent")) {
         document.getElementById("cookieBanner").classList.remove("d-none");
     }
