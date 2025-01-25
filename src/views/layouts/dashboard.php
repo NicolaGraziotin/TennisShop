@@ -40,7 +40,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/dashboard/customers">
                                 <em class="bi bi-people"></em> Clienti
                             </a>
                         </li>

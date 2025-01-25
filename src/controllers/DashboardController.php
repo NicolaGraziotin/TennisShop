@@ -18,8 +18,13 @@ class DashboardController extends Controller {
     }
 
     public function products(Request $request, Response $response) {
-        $params = Product::getAllProducts();
-        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/products');
+        $params['products'] = Product::getAllProducts();
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/products', $params);
+    }
+
+    public function customers(Request $request, Response $response) {
+        $params['customers'] = Admin::getAllCustomers();
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/customers', $params);
     }
 
     public function edit(Request $request, Response $response) {
@@ -53,9 +58,14 @@ class DashboardController extends Controller {
         return $this->checkAdmin($request, $response) ?? $this->render('dashboard/settings', $params);
     }
 
-    public function delete(Request $request, Response $response) {
+    public function deleteProduct(Request $request, Response $response) {
         Product::deleteProduct($request->getBody()['idproduct']);
         return $response->redirect('/dashboard/products');
+    }
+
+    public function deleteCustomer(Request $request, Response $response) {
+        Admin::deleteCustomer($request->getBody()['idcustomer']);
+        return $response->redirect('/dashboard/customers');
     }
 
     private function checkAdmin(Request $request, Response $response) {

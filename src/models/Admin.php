@@ -20,6 +20,14 @@ class Admin extends Model {
         return self::fetchOne($statement)['COUNT(*)'];
     }
 
+    public static function getTotalOrdersById($idcustomer) {
+        $statement = self::prepare(
+            "SELECT COUNT(*) FROM customer_order WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return self::fetchOne($statement)['COUNT(*)'];
+    }
+
     public static function getTotalUsers() {
         $statement = self::prepare(
             "SELECT COUNT(*) FROM customer",
@@ -37,6 +45,22 @@ class Admin extends Model {
             "UPDATE shipping SET active = ? WHERE idshipping = ?",
             "is",
             [True, $idshipping]);
+        return;
+    }
+
+    public static function getAllCustomers() {
+        $statement = self::prepare(
+            "SELECT * FROM customer",
+            "",
+            []);
+        return self::fetchAll($statement);
+    }
+
+    public static function deleteCustomer($idcustomer) {
+        self::prepare(
+            "DELETE FROM customer WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
         return;
     }
 }

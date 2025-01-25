@@ -63,7 +63,9 @@ $app->router->get('/dashboard', [DashboardController::class, 'dashboard']);
 $app->router->get('/dashboard/products', [DashboardController::class, 'products']);
 $app->router->get('/dashboard/products/edit', [DashboardController::class, 'edit']);
 $app->router->post('/dashboard/products/edit', [DashboardController::class, 'edit']);
-$app->router->get('/dashboard/products/delete', [DashboardController::class, 'delete']);
+$app->router->get('/dashboard/products/delete', [DashboardController::class, 'deleteProduct']);
+$app->router->get('/dashboard/customers', [DashboardController::class, 'customers']);
+$app->router->get('/dashboard/customers/delete', [DashboardController::class, 'deleteCustomer']);
 $app->router->get('/dashboard/settings', [DashboardController::class, 'settings']);
 $app->router->post('/dashboard/settings', [DashboardController::class, 'settings']);
 

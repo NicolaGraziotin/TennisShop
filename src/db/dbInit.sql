@@ -166,28 +166,28 @@ ALTER TABLE `status`
 
 
 ALTER TABLE `cart`
-  ADD CONSTRAINT `idcustomer_cart` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`),
-  ADD CONSTRAINT `idproduct_cart` FOREIGN KEY (`idproduct`) REFERENCES `product` (`idproduct`);
+  ADD CONSTRAINT `idcustomer_cart` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `idproduct_cart` FOREIGN KEY (`idproduct`) REFERENCES `product` (`idproduct`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `credit_card`
-  ADD CONSTRAINT `idcustomer_cc` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`);
+  ADD CONSTRAINT `idcustomer_cc` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `customer_order`
-  ADD CONSTRAINT `idcreditcard_o` FOREIGN KEY (`idcreditcard`) REFERENCES `credit_card` (`idcreditcard`),
-  ADD CONSTRAINT `idcustomer_o` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`),
-  ADD CONSTRAINT `idpersonaldata_o` FOREIGN KEY (`idpersonaldata`) REFERENCES `personal_data` (`idpersonaldata`),
-  ADD CONSTRAINT `idstatus_o` FOREIGN KEY (`idstatus`) REFERENCES `status` (`idstatus`);
+  ADD CONSTRAINT `idcreditcard_o` FOREIGN KEY (`idcreditcard`) REFERENCES `credit_card` (`idcreditcard`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `idcustomer_o` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `idpersonaldata_o` FOREIGN KEY (`idpersonaldata`) REFERENCES `personal_data` (`idpersonaldata`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `idstatus_o` FOREIGN KEY (`idstatus`) REFERENCES `status` (`idstatus`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `notification`
-  ADD CONSTRAINT `idcustomer` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`);
+  ADD CONSTRAINT `idcustomer` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `personal_data`
-  ADD CONSTRAINT `idcustomer_pd` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`);
+  ADD CONSTRAINT `idcustomer_pd` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `product`
-  ADD CONSTRAINT `idcategory` FOREIGN KEY (`idcategory`) REFERENCES `category` (`idcategory`);
+  ADD CONSTRAINT `idcategory` FOREIGN KEY (`idcategory`) REFERENCES `category` (`idcategory`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `review`
-  ADD CONSTRAINT `idcustomer_rw` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`),
-  ADD CONSTRAINT `idproduct_rw` FOREIGN KEY (`idproduct`) REFERENCES `product` (`idproduct`);
+  ADD CONSTRAINT `idcustomer_rw` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `idproduct_rw` FOREIGN KEY (`idproduct`) REFERENCES `product` (`idproduct`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
