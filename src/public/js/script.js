@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             xhr.onload = function () {
                 if (xhr.status == 200) {
                     let data = JSON.parse(xhr.responseText);
-                    console.log(data);
                     if (data.length == 0) {
                         temp += '<li class="dropdown-item">Non ci sono notifiche</li>';
                     } else {
