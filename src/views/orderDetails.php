@@ -1,4 +1,4 @@
-<section class="bg-light py-5">
+<div class="bg-light py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-8 col-xl-6">
             <div class="card border-top border-bottom border-3" style="border-color: #007FFF !important;">
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script>
     // Initial state of the order
