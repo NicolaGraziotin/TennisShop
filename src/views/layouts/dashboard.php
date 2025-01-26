@@ -45,11 +45,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <em class="bi bi-bar-chart"></em> Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/dashboard/settings">
                                 <em class="bi bi-gear"></em> Impostazioni
                             </a>
