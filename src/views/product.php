@@ -10,7 +10,7 @@
                     <span>€ <?php echo $price ?></span>
                 </div>
                 <p class="lead"><?php echo $description ?></p>
-                <p class="small">Diponibilità: <?php echo $stock?></p>
+                <p class="small">Disponibilità: <?php echo $stock?></p>
                 <form action="/product" method="post">
                     <div class="d-flex">
                         <input type="hidden" name="idproduct" value="<?php echo $idproduct ?>">

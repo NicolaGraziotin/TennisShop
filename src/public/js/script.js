@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const editButton = document.getElementById('editButton');
 
@@ -33,14 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
+            
         }
 
         window.onload = () => {
             notification();
-
-            setInterval(() => {
-                notification();
-            }, 2000);
         }
 
         notify_btn.addEventListener('click', (e) => {
@@ -49,10 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             notify_container.classList.toggle('show');
 
             showMessage();
-
-            setInterval(() => {
-                showMessage();
-            }, 2000);
         });
 
         function showMessage() {
@@ -70,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         data.forEach(message => {
                             if (message.seen == 0) {
-                                temp += `<li class="dropdown-item" onclick="readMessage(${message.idnotification})"><em  class="bi bi-archive-fill p-1"></em>${message.description}</li>`;
+                                temp += `<li class="dropdown-item notification" id="${message.idnotification}"><em  class="bi bi-archive-fill p-1"></em>${message.description}</li>`;                 
                                 //notify_container.innerHTML += li;
                             } else {
                                 temp += `<li class="dropdown-item"><em class="bi bi-archive p-1"></em>${message.description}</li>`;
@@ -79,8 +71,25 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
                     }
                 }
+
                 notify_container.innerHTML = temp;
+
+                const messages = document.querySelectorAll('.notification');
+                messages.forEach(message => {
+                    message.addEventListener('click', () => {
+                        readMessage(message.id);
+                        //showMessage();
+                    });
+                });
             }
+        }
+
+
+        function readMessage($idnotification) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', `/readMessage?idnotification=${$idnotification}`, true);
+            xhr.send();
+            notification();
         }
     }
 
@@ -99,10 +108,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function readMessage($idnotification) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', `/readMessage?idnotification=${$idnotification}`, true);
-    xhr.send();
-}
 
 
