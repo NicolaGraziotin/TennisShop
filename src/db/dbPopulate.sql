@@ -8,29 +8,29 @@ INSERT INTO `category` (`idcategory`, `name`) VALUES
 
 INSERT INTO `product` (`idproduct`, `name`, `description`, `price`, `idcategory`, `stock`, `image`) VALUES
 
-(null, 'Wilson Pro Staff', 'Racchetta professionale', 250, 1, 10, 'assets/products/wilsonprostaff.webp'),
-(null, 'Babolat Pure Drive', 'Racchetta per potenza', 220, 1, 10, 'assets/products/babolatpuredrive.webp'),
-(null, 'Head Radical MP', 'Racchetta versatile', 210, 1, 10, 'assets/products/headradical.webp'),
+(null, 'Wilson Pro Staff', 'Racchetta professionale', 250, 1, 15, 'assets/products/wilsonprostaff.webp'),
+(null, 'Babolat Pure Drive', 'Racchetta per potenza', 220, 1, 23, 'assets/products/babolatpuredrive.webp'),
+(null, 'Head Radical MP', 'Racchetta versatile', 210, 1, 45, 'assets/products/headradical.webp'),
 
-(null, 'Wilson US Open', 'Palline ufficiali US Open', 10, 2, 10, 'assets/products/wilsonball.webp'),
-(null, 'Babolat Gold', 'Palline per superfici dure', 8, 2, 10, 'assets/products/babolatball.webp'),
+(null, 'Wilson US Open', 'Palline ufficiali US Open', 10, 2, 32, 'assets/products/wilsonball.webp'),
+(null, 'Babolat Gold', 'Palline per superfici dure', 8, 2, 18, 'assets/products/babolatball.webp'),
 (null, 'Head Tour', 'Palline da competizione', 9, 2, 10, 'assets/products/headball.webp'),
 
-(null, 'Nike Court Polo', 'Polo traspirante', 60, 3, 10, 'assets/products/nikepolo.webp'),
-(null, 'Adidas Match Skirt', 'Gonna da tennis', 50, 3, 10, 'assets/products/adidasskirt.webp'),
-(null, 'Lacoste Tennis Shorts', 'Shorts eleganti', 70, 3, 10, 'assets/products/lacosteshort.webp'),
+(null, 'Nike Court Polo', 'Polo traspirante', 60, 3, 19, 'assets/products/nikepolo.webp'),
+(null, 'Adidas Match Skirt', 'Gonna da tennis', 50, 3, 9, 'assets/products/adidasskirt.webp'),
+(null, 'Lacoste Tennis Shorts', 'Shorts eleganti', 70, 3, 28, 'assets/products/lacosteshort.webp'),
 
-(null, 'Nike Air Zoom Vapor', 'Scarpe leggere e veloci', 140, 4, 10, 'assets/products/nikezoom.webp'),
-(null, 'Adidas Barricade', 'Scarpe resistenti', 130, 4, 10, 'assets/products/adidasbarricade.webp'),
-(null, 'Asics Gel Resolution', 'Scarpe per supporto', 120, 4, 10, 'assets/products/asicsgel.webp'),
+(null, 'Nike Air Zoom Vapor', 'Scarpe leggere e veloci', 140, 4, 34, 'assets/products/nikezoom.webp'),
+(null, 'Adidas Barricade', 'Scarpe resistenti', 130, 4, 11, 'assets/products/adidasbarricade.webp'),
+(null, 'Asics Gel Resolution', 'Scarpe per supporto', 120, 4, 15, 'assets/products/asicsgel.webp'),
 
-(null, 'Polsini Nike', 'Polsini assorbenti', 15, 5, 10, 'assets/products/polsininike.webp'),
-(null, 'Babolat Overgrip', 'Grip per racchette', 12, 5, 10, 'assets/products/babolatovergrip.webp'),
-(null, 'Cappellino Adidas', 'Cappellino per sole', 25, 5, 10, 'assets/products/adidascap.webp'),
+(null, 'Polsini Nike', 'Polsini assorbenti', 15, 5, 21, 'assets/products/polsininike.webp'),
+(null, 'Babolat Overgrip', 'Grip per racchette', 12, 5, 24, 'assets/products/babolatovergrip.webp'),
+(null, 'Cappellino Adidas', 'Cappellino per sole', 25, 5, 31, 'assets/products/adidascap.webp'),
 
-(null, 'Wilson Super Tour', 'Borsa capiente per 12 racchette', 150, 6, 10, 'assets/products/wilsonbag.webp'),
-(null, 'Babolat Pure Aero Bag', 'Borsa leggera e resistente', 130, 6, 10, 'assets/products/babolatbag.webp'),
-(null, 'Head Djokovic Bag', 'Borsa ufficiale di Djokovic', 170, 6, 10, 'assets/products/headbag.webp');
+(null, 'Wilson Super Tour', 'Borsa capiente per 12 racchette', 150, 6, 40, 'assets/products/wilsonbag.webp'),
+(null, 'Babolat Pure Aero Bag', 'Borsa leggera e resistente', 130, 6, 35, 'assets/products/babolatbag.webp'),
+(null, 'Head Djokovic Bag', 'Borsa ufficiale di Djokovic', 170, 6, 37, 'assets/products/headbag.webp');
 
 /*passwords: admin, nicola, fra, matti*/
 INSERT INTO `customer` (`idcustomer`, `seller`, `email`, `password`, `name`, `surname`) VALUES
