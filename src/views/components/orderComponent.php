@@ -24,7 +24,26 @@
 
         <dl class="mb-0 w-50 w-md-25">
             <dt class="text-secondary">Stato:</dt>
-            <dd class="badge bg-success text-white mb-0"><?php echo User::getStatusOrder($idorder)['name']?></dd>
+            <?php 
+                $status = User::getStatusOrder($idorder)['name'];
+                $badgeClass = 'bg-secondary'; // Default class
+
+                switch ($status) {
+                    case 'Approvato':
+                        $badgeClass = 'bg-info';
+                        break;
+                    case 'Spedito':
+                        $badgeClass = 'bg-success';
+                        break;
+                    case 'In consegna':
+                        $badgeClass = 'bg-warning';
+                        break;
+                    case 'Consegnato':
+                        $badgeClass = 'bg-danger';
+                        break;
+                }
+            ?>
+            <dd class="badge <?php echo $badgeClass; ?> text-white mb-0"><?php echo $status; ?></dd>
         </dl>
 
         <div class="d-flex flex-wrap gap-2 mt-3 mt-md-0 ms-md-auto">
