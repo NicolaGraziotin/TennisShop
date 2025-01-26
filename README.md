@@ -1,6 +1,8 @@
 # Progetto Tecnologie Web | Tennis Shop
 Tecnologia utilizzata attraverso [Docker](https://www.docker.com/)
+- [Apache](https://httpd.apache.org/)
 - [MySQL](https://www.mysql.com/it/)
+- [PHP](https://www.php.net/)
 - [phpMyAdmin](https://www.phpmyadmin.net/)
 
 ## Installazione:
