@@ -57,6 +57,7 @@ $app->router->get('/orderDetails', [UserController::class, 'orderDetails']);
 $app->router->get('/readMessage', [UserController::class, 'readMessage']);
 $app->router->get('/updateOrderStatus', [UserController::class, 'updateOrderStatus']);
 $app->router->get('/sendNotification', [UserController::class, 'sendNotification']);
+$app->router->get('/deleteAllMessages', [UserController::class, 'deleteNotification']);
 
 /* Dashboard Controller */
 $app->router->get('/dashboard', [DashboardController::class, 'dashboard']);

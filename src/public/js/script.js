@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function showMessage() {
             xhr.open('GET', '/getMessage', true);
             xhr.send();
-
+            
             let temp = '';
 
             xhr.onload = function () {
@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
                     }
+                    //detele all notification
+                    temp += '<li class="dropdown-item" id="deleteNotifications"><em class="bi bi-trash p-1"></em>Elimina tutte le notifiche</li>';
                 }
 
                 notify_container.innerHTML = temp;
@@ -80,9 +82,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         //showMessage();
                     });
                 });
+
+                const deleteNotifications = document.getElementById('deleteNotifications');
+                deleteNotifications.addEventListener('click', () => {
+                    deleteAllMessages();
+                });
             }
         }
 
+        function deleteAllMessages() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/deleteAllMessages', true);
+            xhr.send();
+            showMessage();
+        }
 
         function readMessage($idnotification) {
             let xhr = new XMLHttpRequest();
@@ -91,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             notification();
         }
     }
+
 
     // Controlla se l'utente ha già accettato i cookie
     if (!localStorage.getItem("cookieConsent")) {
@@ -104,8 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById("acceptCookies").addEventListener("click", acceptCookies);
-
 });
-
-
-

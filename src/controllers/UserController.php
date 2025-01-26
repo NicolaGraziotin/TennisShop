@@ -117,4 +117,8 @@ class UserController extends Controller {
     public function sendNotification(Request $request, Response $response) {
         User::sendNotification($request->getBody()['title'], $request->getBody()['message'], Session::getUserId());
     }
+
+    public function deleteNotification(Request $request, Response $response) {
+        User::deleteNotification(Session::getUserId());
+    }
 }

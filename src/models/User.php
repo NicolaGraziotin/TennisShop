@@ -138,4 +138,12 @@ class User extends Model {
             [$idcreditcard]);
         return self::fetchOne($statement);
     }
+
+    public static function deleteNotification($idcustomer) {
+        $statement = self::prepare(
+            "DELETE FROM notification WHERE idcustomer = ?",
+            "i",
+            [$idcustomer]);
+        return;
+    }
 }

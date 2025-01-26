@@ -48,7 +48,7 @@
 
                       <div class="form-outline form-white mb-4">
                         <input type="text" name="typeNum" class="form-control form-control-lg" size="17" 
-                        id="carta" minlength="19" maxlength="19" placeholder="0000 0000 0000 0000" required>
+                        id="carta" minlength="16" maxlength="19" placeholder="0000 0000 0000 0000" pattern="[0-9\s]{19,19}" required>
                         <label class="form-label" for="carta">Numero Carta</label>
                       </div>
 
@@ -57,7 +57,7 @@
                           <div class="form-outline form-white">
                             <input type="text" name="typeExp" class="form-control form-control-lg"
                               value="" size="7" id="scadenza" placeholder="MM/YY"
-                              minlength="5" maxlength="5" required>
+                              minlength="5" maxlength="5" pattern="^(0[1-9]|1[0-2])/\d{2}$" required>
                             <label class="form-label" for="scadenza">Scadenza</label>
                           </div>
                         </div>
