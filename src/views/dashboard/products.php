@@ -5,6 +5,14 @@
     <h1>Prodotti</h1>
     <a class="btn btn-primary" href="/dashboard/products/edit">Aggiungi prodotto</a>
 </div>
+<div class="mb-3">
+    <form method="get" action="/dashboard/products/search">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Cerca prodotti" aria-label="Cerca prodotti">
+            <button class="btn btn-outline-secondary" type="submit">Cerca</button>
+        </div>
+    </form>
+</div>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>

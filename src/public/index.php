@@ -68,5 +68,6 @@ $app->router->get('/dashboard/customers', [DashboardController::class, 'customer
 $app->router->get('/dashboard/customers/delete', [DashboardController::class, 'deleteCustomer']);
 $app->router->get('/dashboard/settings', [DashboardController::class, 'settings']);
 $app->router->post('/dashboard/settings', [DashboardController::class, 'settings']);
+$app->router->get('/dashboard/products/search', [DashboardController::class, 'search']);
 
 $app->run();
