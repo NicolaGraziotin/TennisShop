@@ -10,25 +10,25 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `category` (
   `idcategory` int NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `credit_card` (
   `idcreditcard` int NOT NULL,
   `idcustomer` int NOT NULL,
-  `number` varchar(50) NOT NULL,
-  `expire` varchar(50) NOT NULL,
-  `cvv` varchar(50) NOT NULL,
-  `holder` varchar(50) NOT NULL
+  `number` varchar(250) NOT NULL,
+  `expire` varchar(250) NOT NULL,
+  `cvv` varchar(250) NOT NULL,
+  `holder` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `customer` (
   `idcustomer` int NOT NULL,
   `seller` tinyint(1) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(250) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `surname` varchar(50) NOT NULL
+  `name` varchar(250) NOT NULL,
+  `surname` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `customer_order` (
@@ -37,16 +37,16 @@ CREATE TABLE `customer_order` (
   `idpersonaldata` int NOT NULL,
   `idcreditcard` int NOT NULL,
   `idstatus` int NOT NULL,
-  `date` varchar(50) NOT NULL,
+  `date` varchar(250) NOT NULL,
   `totalprice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `notification` (
   `idnotification` int NOT NULL,
   `date` date NOT NULL,
-  `timestamp` varchar(50) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL,
+  `timestamp` varchar(250) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `description` varchar(250) NOT NULL,
   `seen` tinyint(1) NOT NULL,
   `idcustomer` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -54,41 +54,33 @@ CREATE TABLE `notification` (
 CREATE TABLE `personal_data` (
   `idpersonaldata` int NOT NULL,
   `idcustomer` int NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `state` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `cap` varchar(50) NOT NULL,
-  `phone` varchar(50) NOT NULL
+  `country` varchar(250) NOT NULL,
+  `state` varchar(250) NOT NULL,
+  `city` varchar(250) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `cap` varchar(250) NOT NULL,
+  `phone` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `product` (
   `idproduct` int NOT NULL,
   `idcategory` int NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `description` varchar(250) NOT NULL,
   `price` double NOT NULL,
   `stock` int NOT NULL,
-  `image` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `review` (
-  `idcustomer` int NOT NULL,
-  `idproduct` int NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL,
-  `rating` varchar(50) NOT NULL
+  `image` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `status` (
   `idstatus` int NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(50) NOT NULL
+  `name` varchar(250) NOT NULL,
+  `description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `shipping` (
   `idshipping` int NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(250) NOT NULL,
   `fee` double NOT NULL,
   `active` boolean NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -128,10 +120,6 @@ ALTER TABLE `personal_data`
 ALTER TABLE `product`
   ADD PRIMARY KEY (`idproduct`),
   ADD KEY `idcategory` (`idcategory`);
-
-ALTER TABLE `review`
-  ADD PRIMARY KEY (`idcustomer`,`idproduct`),
-  ADD KEY `idproduct_rw` (`idproduct`);
 
 ALTER TABLE `status`
   ADD PRIMARY KEY (`idstatus`);
@@ -186,8 +174,4 @@ ALTER TABLE `personal_data`
 
 ALTER TABLE `product`
   ADD CONSTRAINT `idcategory` FOREIGN KEY (`idcategory`) REFERENCES `category` (`idcategory`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `review`
-  ADD CONSTRAINT `idcustomer_rw` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `idproduct_rw` FOREIGN KEY (`idproduct`) REFERENCES `product` (`idproduct`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;

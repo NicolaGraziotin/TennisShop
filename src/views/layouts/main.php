@@ -74,7 +74,9 @@
                                 </span>
                             </button>
                         </div>
-                        <ul class="dropdown-menu notify" id="notify-menu"></ul>
+                        <ul class="dropdown-menu notify" id="notify-menu">
+                            <li class="dropdown-item">Non ci sono notifiche</li>
+                        </ul>
                     </div>
                     <?php if (!Session::isLogged()): ?>
                         <a class="btn btn-outline-dark me-1" href="/login">
