@@ -85,8 +85,13 @@ class DashboardController extends Controller {
         return;
     }
 
-    public function search(Request $request, Response $response) {
+    public function searchProducts(Request $request, Response $response) {
         $params['products'] = Product::searchProducts($request->getBody()['search']);
         return $this->checkAdmin($request, $response) ?? $this->render('dashboard/products', $params);
+    }
+
+    public function searchCustomers(Request $request, Response $response) {
+        $params['customers'] = Admin::searchCustomers($request->getBody()['surname']);
+        return $this->checkAdmin($request, $response) ?? $this->render('dashboard/customers', $params);
     }
 }

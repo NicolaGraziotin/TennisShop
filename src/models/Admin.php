@@ -63,4 +63,12 @@ class Admin extends Model {
             [$idcustomer]);
         return;
     }
+
+    public static function searchCustomers($surname) {
+        $statement = self::prepare(
+            "SELECT * FROM customer WHERE surname LIKE ?",
+            "s",
+            ["%$surname%"]);
+        return self::fetchAll($statement);
+    }
 }
